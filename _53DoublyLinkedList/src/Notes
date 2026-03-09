@@ -1,0 +1,28 @@
+limitations of "Singly Linked List"
+
+1. Get --> 0(n) time complexity
+2. if only head is given
+3. More space is used
+4. we can't move  backward this is the biggest limitation
+
+
+Doubly LinkedList
+solve the biggest limitation
+
+ class Node {
+   int val;
+   Node next;
+   Node prev;
+ }
+
+
+can we create a doubly linked list using one pointer with every node ?
+yes possible
+
+by storing XOR of addresses of previous and next nodes!
+
+
+## Circular linked list
+1) Singly
+2) Doubly
+

@@ -1,0 +1,45 @@
+# Java Inheritance
+Inheritance is one of the key features of OOP that allows us to create a new class from a existing class.
+
+THe new class that is created is known as sub-class(child or derived class) and the existing class from where the child class is derived is known as superclass(parent or base class).
+
+Class A(Parent)   <----- Class B(child)
+
+we use extends keyword relation between A & B
+
+## Method Overriding
+If a subclass provides the specific implementation of the method that has been declared by one of its parent class, it is known as method overriding .
+. Method overriding is also known as runtime polymorphism . Hence we can achieve Polymorphism in java with help of Inheritance.
+
+
+## super  keyword in Java
+
+super is a special keyword in java that is used to refer to the instance of the immediate parent class.
+Used of super Keyword in java
+=> Uses of super Keyword in java
+* It is use to refer to an instance variable if the immediate parent
+  class.
+* It is used to invoke a method of the immediate parent class.
+* It is used to invoke a constructor of immediate parent class.
+
+# this vs super
+
+1. this is an implicit reference variable keyword used to represent the current class.
+
+super is am implicit reference variable keyword used to represent the immediate parent class.
+
+2. this is to invoke methods of the current class
+
+super is used to invoke methods of the immediate parent class.
+
+3. this is used to invoke a constructor of the current class.
+
+super is used to invoke a constructor of the immediate parent class.
+
+4. this refers to the instance and static variables to the current class
+
+super refers to the instance and static variable of immediate parent class.
+
+5. this can be used to return and pass as an argument in the context of current class object.
+
+super can be used to return and pass as an argument in the context of an immediate parent class object.

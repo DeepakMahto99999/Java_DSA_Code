@@ -1,0 +1,40 @@
+Queues flow the FIFO -> First in First Out and LILO -> Last in Last out principle
+
+In Queue have rear and front
+rear -- push --> pichhe
+front ---> pop || peek ---> aage
+
+In Java, you cannot instantiate a Queue like this:
+Queue<Integer> q = new Queue<>();
+because Queue is an interface, not a class, and you cannot create objects from an interface directly.
+
+stack               queue
+pop                  remove , poll
+peek                 peek , element
+push                 add
+
+
+Types of queue:
+1) Queue
+2) Deque
+3) Circular Queue
+
+
+## Advantages of Linked list implementation of queue over array implementation
+1) Unlimited size
+2)  LL works like a queue
+
+## Disadvantages
+1) size --> LL has two members
+
+
+###Circular queue
+ArrayImplementation ---< limitation ---< fixed sized
+1. Add (enqueue) elements till the last index — rear goes to the end.
+2. Remove (dequeue) a few elements from the front — front moves ahead.
+3. But now even though the front part of the array is "empty", you cannot add new elements because rear has reached the end — this causes "false full" condition.
+
+### Deque in Java Collection
+Doubly Ended Queue
+
+// implement --> array/DLL

@@ -1,0 +1,69 @@
+💿 What is a Stack?
+
+A stack is a linear data structure that works on the LIFO  principle:
+
+Last In, First Out
+Just like a CD rack, where the last CD you place on top is the first one you take out.
+
+we can also say FILO - First In, Last Out
+
+🔼 push = Add a CD
+You push a CD onto the rack — this means you're adding an item to the top of the stack.
+
+
+🔽 pop = Remove the top CD
+You pop a CD from the rack — this means you're removing the item from the top of the stack.
+
+
+👀 peek = See the top CD
+You peek to see what's on top of the stack without removing it
+
+
+// Syntax and In-build functions
+Stack <Data_Type> name = new Stack<>();
+
+
+1.basicsOfStacks
+2.copyStack
+3.displayStack
+4.insertionInStack
+5.reverseStack
+
+
+## Stack Underflow
+if stack is empty you are trying to do st.peek() st.pop() --> EmptyStackException
+
+
+## Stack Overflow
+if stack is full and you are trying to do st.push()  ---> StackOverFlowError
+when occur
+* Actual memory is full
+* Implement using Arrays - sizes - fixed
+
+6. underFlowOverflow
+
+##  Array implementation of Stack
+
+7.arrayImplementation
+
+## LinkedList implementation of Stack
+7. linkedListImplementation
+
+## Advantages of Array Implementation over linkedList
+1. Size --> for every element -> space taken is one block
+   but in linkedList two block
+
+2. fixed size of stack
+
+Disadvantages:
+1. Size --> fixed --> overflow
+
+
+## Advantages of linkedList Implementation over Array
+1. Unlimited size
+
+Disadvantages:
+1- size --> two data members
+2 display --> reverse --> space complexity
+
+

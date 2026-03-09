@@ -1,0 +1,57 @@
+Collection in Java
+group of similar objects
+
+What is a Framework?
+Unified architecture to do something
+
+Collection Framework?
+Manipulate and represent java collections  in standard way.
+set of classes and interface
+
+Interface :Blueprint of a class
+
+interface Car{
+stop();  --> method have no body --> Abstract method
+movefwd();
+moveBWD();
+getKms();
+getModel();
+}
+
+The class implement method of interface they must have body and implement keyword
+all method should be in that class
+
+Implement class c1 {
+stop(){}
+movefwd(){}
+moveBWD(){}
+getKms(){}
+getModel(){}
+}
+
+Collection Framework Hierarchy
+
+Iterable(interface)   ------> Collection<Interface>
+
+have four sub-Interface
+List<Interface>     Queue<Interface>   Dequeue<Interface>  Set<Interface>
+ArrayList<class>    LinkedList<class>   ArrayDequeue<class> Hashset<class>
+linkedList<class>   PriorityQueue<class> LinkedList<class>   LinkedHashSet<class>
+Stack<class>                                               SortedSet<Interface>
+                                                                  |
+                                                             TreeSet<class>
+
+Map<Interface>
+HashTable<class>
+HashMap<class>
+SortedMap<Interface>----> TreeMap<class>
+
+
+Methods of Collection Interface
+add(E e)
+clear()
+contains(object o)
+equals(object o)
+remove(object o)
+size()
+

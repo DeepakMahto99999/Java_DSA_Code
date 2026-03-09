@@ -1,0 +1,33 @@
+sorted roted array
+10 11 12 1 2 3 4 5 6 7
+0  1  2  3 4 5 6 7 8 9
+
+
+for unique element
+
+For any index mid, when you split the array:
+Either left part (start → mid) is sorted
+OR right part (mid → end) is sorted
+Both parts can never be unsorted
+This is the core invariant used in binary search on rotated arrays.
+
+
+for minimum element
+The minimum element is the first element smaller than the last element.
+If mid is bigger than the last element, the minimum is on the right.”
+If the mid element ≤ last element, it means the minimum element lies
+between start and mid (inclusive).
+
+If the mid element > last element, it means the minimum element lies
+between mid + 1 and end (inclusive).
+
+
+
+
+The pivot index in the context of binary search
+on a rotated sorted array is the index at which the rotation occurs.
+Array before rotation: [1, 2, 3, 4, 5, 6, 7]
+Array after rotation: [5, 6, 7, 1, 2, 3, 4]
+Here, the pivot index is 3 because 1 (the smallest element)
+is located at index 3
+

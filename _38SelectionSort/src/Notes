@@ -1,0 +1,22 @@
+* What is Selection Sort?
+
+Selection Sort works like this:
+Select the smallest element from the unsorted part of the array
+Put it at its correct position (swap it with the first unsorted element)
+Repeat this for every position
+This is why it is called SELECTION sort — you select the minimum every time.
+
+
+Time complexity is always n^2
+
+
+Selection sort in unstable algorithm
+
+4 10 4* 2
+2 10 4* 4
+2 4* 10 4
+2 4* 4 10
+
+An advantage of selection sort is :-
+It takes maximum O(N) swaps while the other techniques take O(N^2) swaps.
+

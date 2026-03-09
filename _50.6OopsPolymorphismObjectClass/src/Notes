@@ -1,0 +1,39 @@
+Java Heap Memory
+
+java Heap space is used by java runtime to allocate memory to Objects and JRE classes. Whenever we create an object, it's always created in Heap space.
+
+Any object created in the heap space has global access and can be referenced from anywhere of the application.
+
+
+Java Stack Memory
+
+Java Stack memory contains method-specific values that are short-lived and references to other objects in the heap that is getting referred from the method.
+
+Whenever a method is invoked , a new block is created in the stack memory for the method to hold local primitive values and reference to other objects in the method.As soon as the method ends, the block becomes unused and becomes available for the next method. Stack memory size ids very less compared to Heap memory.
+
+
+Java Object Class
+
+Object class is parent in java.lang.package . Every class in java is directly or indirectly derived from the Object class. if a class does not extend any other class then it a direct child class of object and if extends another class then it is indirectly derived. Therefore the Object class methods are available to all java classes. Hence Object class acts as a root of the inheritance hierarchy in any Java Program.
+
+clone() , toString() , hashcode() , equals()
+
+
+Java Polymorphism
+
+
+Polymorphism allows us to perform a single action in different ways. In other words, polymorphism allows you to define one interface and have multiple implementations.The word "Poly" means many and "morphs" means forms , So it means may forms . There ar two types of Polymorphism.
+
+* Runtime Polymorphism
+When a child class overrides a method of its parent class, it is an example of runtime polymorphism, also known as method overriding
+
+Why is it called Runtime Polymorphism?
+In method overriding, the method that gets executed is determined at runtime based on the object type (not the reference type).
+This allows dynamic method dispatch, meaning the Java Virtual Machine (JVM) decides at runtime which method to call
+
+
+* Compile-time Polymorphism
+
+
+
+

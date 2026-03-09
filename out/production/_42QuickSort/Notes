@@ -1,0 +1,19 @@
+it is divide and conquer algorithm
+
+chose a pivot element move to its correct position .
+if u are move to the correct position ensure that
+left element are less than pivot element
+and right element are greater than pivot element order does not matter .
+
+7 13 8 5 10 2 4
+5 2 4 7 8 13 10
+5 2 4   8 13 10
+4 2 5
+4 2       13 10
+2 4       10 13
+2            10
+
+2 4 5 7 8 10 13
+
+no quick sort in not stable algorithm
+

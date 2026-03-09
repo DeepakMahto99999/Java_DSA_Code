@@ -1,0 +1,60 @@
+### Infix expression
+  An infix expression is the standard human-readable format for math
+  expressions, where:
+  Operators (+, -, *, /) are written between operands.
+
+--> BOD-MAS RULES:-
+--> D,M > A,S ---> D and M have same preference also A and S
+---> if equal preference then we go left to right
+
+String str = "9 - 5 + 3*4/6";
+we take two stack :- val and op
+1) ch --> Number --> val.push(ch)
+2) if(op.size() == 0) op.push(ch)
+3) ch --> Operator --> soch samajke dalna hai operator stack me
+   if(op.peek() priority >= ch
+   top --> Niptao
+   op.push(ch)
+4) while(val.size() > 1) {
+    kaam
+   }
+
+🔢 2. What is a Prefix Expression?
+In a prefix expression, the operator comes before the operands.
+<operator> <operand1> <operand2>
+
+✅ Examples:
+Infix	         Prefix	                 Explanation
+9 + 5	         + 9 5	                 Add 9 and 5
+9 - 5 + 2	     + - 9 5 2	             First 9 - 5, then + 2
+3 * (4 + 5)      * 3 + 4 5	             Add 4 + 5, then * 3
+(6 / 2) + 3      + / 6 2 3	             Divide 6 / 2, then + 3
+
+infix :- 9 - 5 + 3 * 4 / 6
+         val op val
+prefix :- 9 - 5 + *34 /6
+          9 - 5 + /*346
+          -95 + /*346
+          +-95/*346
+
+        9 - (5 + 3) * 4 / 6
+we take two stack :- val and op
+we push the 9 as char in val stack
+2) if(op.size() == 0) op.push(ch)
+3) if ch is '(' op.push(ch)
+4) if op.peek is '(' and next is operator then op.push(ch)
+5) if closing bracket then v1 = 5 , v2 = 3 , x = + => v1 O v2 => Ov1v2
+ then push +53 as char
+6) then check what is precedence of current operator
+
+## Postfix expressions
+in : v1 o v2
+pre : o v1 v2
+po : v1 v2 o
+
+9 - (5+3) * 4/6
+9 - 53+ * 4/6
+9 - 53+4* /6
+9 - 53+4*6/
+953+4*6/-
+

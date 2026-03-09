@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/_0BasicQuestionPractice/_0BasicQuestionPractice.iml" filepath="$PROJECT_DIR$/_0BasicQuestionPractice/_0BasicQuestionPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_10Number_system/_10Number_system.iml" filepath="$PROJECT_DIR$/_10Number_system/_10Number_system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_11OOPs/_11OOPs.iml" filepath="$PROJECT_DIR$/_11OOPs/_11OOPs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_12Methods/_12Methods.iml" filepath="$PROJECT_DIR$/_12Methods/_12Methods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_13Methods&amp;Scope/_13Methods&amp;Scope.iml" filepath="$PROJECT_DIR$/_13Methods&amp;Scope/_13Methods&amp;Scope.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_14Array/_14Array.iml" filepath="$PROJECT_DIR$/_14Array/_14Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_15Array2/_15Array2.iml" filepath="$PROJECT_DIR$/_15Array2/_15Array2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_16Array3/_16Array3.iml" filepath="$PROJECT_DIR$/_16Array3/_16Array3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_17Array4/_17Array4.iml" filepath="$PROJECT_DIR$/_17Array4/_17Array4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_18Array5/_18Array5.iml" filepath="$PROJECT_DIR$/_18Array5/_18Array5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_19Arrays6/_19Arrays6.iml" filepath="$PROJECT_DIR$/_19Arrays6/_19Arrays6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1Basic2/_1Basic2.iml" filepath="$PROJECT_DIR$/_1Basic2/_1Basic2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_20Arrays2D/_20Arrays2D.iml" filepath="$PROJECT_DIR$/_20Arrays2D/_20Arrays2D.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_21Arrays2D1/_21Arrays2D1.iml" filepath="$PROJECT_DIR$/_21Arrays2D1/_21Arrays2D1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_22Array2D2/_22Array2D2.iml" filepath="$PROJECT_DIR$/_22Array2D2/_22Array2D2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_23Array2D3/_23Array2D3.iml" filepath="$PROJECT_DIR$/_23Array2D3/_23Array2D3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_24Arraylist/_24Arraylist.iml" filepath="$PROJECT_DIR$/_24Arraylist/_24Arraylist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_25TimeAndSpaceComplexity/_25TimeAndSpaceComplexity.iml" filepath="$PROJECT_DIR$/_25TimeAndSpaceComplexity/_25TimeAndSpaceComplexity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_26TimeComplexity/_26TimeComplexity.iml" filepath="$PROJECT_DIR$/_26TimeComplexity/_26TimeComplexity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_27Recursion/_27Recursion.iml" filepath="$PROJECT_DIR$/_27Recursion/_27Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_28Recursion2/_28Recursion2.iml" filepath="$PROJECT_DIR$/_28Recursion2/_28Recursion2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_29Recursion3/_29Recursion3.iml" filepath="$PROJECT_DIR$/_29Recursion3/_29Recursion3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_30Recursion4/_30Recursion4.iml" filepath="$PROJECT_DIR$/_30Recursion4/_30Recursion4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_31Recursion5/_31Recursion5.iml" filepath="$PROJECT_DIR$/_31Recursion5/_31Recursion5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_32RecursionOnArray/_32RecursionOnArray.iml" filepath="$PROJECT_DIR$/_32RecursionOnArray/_32RecursionOnArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_33LinearSearch/_33LinearSearch.iml" filepath="$PROJECT_DIR$/_33LinearSearch/_33LinearSearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_34RecursionOnString/_34RecursionOnString.iml" filepath="$PROJECT_DIR$/_34RecursionOnString/_34RecursionOnString.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_35RecursionOnSubset/_35RecursionOnSubset.iml" filepath="$PROJECT_DIR$/_35RecursionOnSubset/_35RecursionOnSubset.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_36RecursionFrogProblem/_36RecursionFrogProblem.iml" filepath="$PROJECT_DIR$/_36RecursionFrogProblem/_36RecursionFrogProblem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_37BubbleSort/_37BubbleSort.iml" filepath="$PROJECT_DIR$/_37BubbleSort/_37BubbleSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_38SelectionSort/_38SelectionSort.iml" filepath="$PROJECT_DIR$/_38SelectionSort/_38SelectionSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_39InsertionSort/_39InsertionSort.iml" filepath="$PROJECT_DIR$/_39InsertionSort/_39InsertionSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_3_Variables_IO/_3_variables_IO.iml" filepath="$PROJECT_DIR$/_3_Variables_IO/_3_variables_IO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_40ProblemOnSortingAlgorithms/_40ProblemOnSortingAlgorithms.iml" filepath="$PROJECT_DIR$/_40ProblemOnSortingAlgorithms/_40ProblemOnSortingAlgorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_41MergeSort/_41MergeSort.iml" filepath="$PROJECT_DIR$/_41MergeSort/_41MergeSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_42QuickSort/_42QuickSort.iml" filepath="$PROJECT_DIR$/_42QuickSort/_42QuickSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_43Count_Bucket_RadixSort/_43Count_Bucket_RadixSort.iml" filepath="$PROJECT_DIR$/_43Count_Bucket_RadixSort/_43Count_Bucket_RadixSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_44ProblemSortingAlgorithms-2/_44ProblemSortingAlgorithms-2.iml" filepath="$PROJECT_DIR$/_44ProblemSortingAlgorithms-2/_44ProblemSortingAlgorithms-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_45BinarySearch/_45BinarySearch.iml" filepath="$PROJECT_DIR$/_45BinarySearch/_45BinarySearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_46SearchRotatedSortedArray/_46SearchRotatedSortedArray.iml" filepath="$PROJECT_DIR$/_46SearchRotatedSortedArray/_46SearchRotatedSortedArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_47BinarySearchProblems/_47BinarySearchProblems.iml" filepath="$PROJECT_DIR$/_47BinarySearchProblems/_47BinarySearchProblems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_48BinarySearchAnswerValuePattern/_48BinarySearchAnswerValuePattern.iml" filepath="$PROJECT_DIR$/_48BinarySearchAnswerValuePattern/_48BinarySearchAnswerValuePattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_49String/_49String.iml" filepath="$PROJECT_DIR$/_49String/_49String.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_4ScannerClass/_4ScannerClass.iml" filepath="$PROJECT_DIR$/_4ScannerClass/_4ScannerClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.1OOPClassesObjConsKeyword/_50.1OOPClassesObjConsKeyword.iml" filepath="$PROJECT_DIR$/_50.1OOPClassesObjConsKeyword/_50.1OOPClassesObjConsKeyword.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.2PackagesStaticSingletonClassIn-built Methods/_50.2PackagesStaticSingletonClassIn-built Methods.iml" filepath="$PROJECT_DIR$/_50.2PackagesStaticSingletonClassIn-built Methods/_50.2PackagesStaticSingletonClassIn-built Methods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.3OopsInheritance/_50.3OopsInheritance.iml" filepath="$PROJECT_DIR$/_50.3OopsInheritance/_50.3OopsInheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.4OopsEncapsulation/_50.4OopsEncapsulation.iml" filepath="$PROJECT_DIR$/_50.4OopsEncapsulation/_50.4OopsEncapsulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.5OopsAbstractionInterfacesLambda/_50.5OopsAbstractionInterfacesLambda.iml" filepath="$PROJECT_DIR$/_50.5OopsAbstractionInterfacesLambda/_50.5OopsAbstractionInterfacesLambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.6OopsPolymorphismObjectClass/_50.6OopsPolymorphismObjectClass.iml" filepath="$PROJECT_DIR$/_50.6OopsPolymorphismObjectClass/_50.6OopsPolymorphismObjectClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.7JavaExceptions/_50.7JavaExceptions.iml" filepath="$PROJECT_DIR$/_50.7JavaExceptions/_50.7JavaExceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.8Java GenericsWrapperClassAutoboxingUnboxing/_50.8Java GenericsWrapperClassAutoboxingUnboxing.iml" filepath="$PROJECT_DIR$/_50.8Java GenericsWrapperClassAutoboxingUnboxing/_50.8Java GenericsWrapperClassAutoboxingUnboxing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50.9CollectionsFrameworkVectorClassEnums/_50.9CollectionsFrameworkVectorClassEnums.iml" filepath="$PROJECT_DIR$/_50.9CollectionsFrameworkVectorClassEnums/_50.9CollectionsFrameworkVectorClassEnums.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_50JavaOOPs/_50JavaOOPs.iml" filepath="$PROJECT_DIR$/_50JavaOOPs/_50JavaOOPs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_51LinkedList/_51LinkedList.iml" filepath="$PROJECT_DIR$/_51LinkedList/_51LinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_52LinkedList2/_52LinkedList2.iml" filepath="$PROJECT_DIR$/_52LinkedList2/_52LinkedList2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_53DoublyLinkedList/_53DoublyLinkedList.iml" filepath="$PROJECT_DIR$/_53DoublyLinkedList/_53DoublyLinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_54Stacks/_54Stacks.iml" filepath="$PROJECT_DIR$/_54Stacks/_54Stacks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_55Stacks/_55Stacks.iml" filepath="$PROJECT_DIR$/_55Stacks/_55Stacks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_56Stacks/_56Stacks.iml" filepath="$PROJECT_DIR$/_56Stacks/_56Stacks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_57Queues/_57Queues.iml" filepath="$PROJECT_DIR$/_57Queues/_57Queues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_58Queues/_58Queues.iml" filepath="$PROJECT_DIR$/_58Queues/_58Queues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_59JavaCollectionFramework/_59JavaCollectionFramework.iml" filepath="$PROJECT_DIR$/_59JavaCollectionFramework/_59JavaCollectionFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_5Operator/_5Operator.iml" filepath="$PROJECT_DIR$/_5Operator/_5Operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_60Hashmap/_60Hashmap.iml" filepath="$PROJECT_DIR$/_60Hashmap/_60Hashmap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_61Hashmap/_61Hashmap.iml" filepath="$PROJECT_DIR$/_61Hashmap/_61Hashmap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_62HashSet/_62HashSet.iml" filepath="$PROJECT_DIR$/_62HashSet/_62HashSet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_63SlidingWindow/_63SlidingWindow.iml" filepath="$PROJECT_DIR$/_63SlidingWindow/_63SlidingWindow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_64Backtraking/_64Backtraking.iml" filepath="$PROJECT_DIR$/_64Backtraking/_64Backtraking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_6IfElseStatement/_6IfElseStatement.iml" filepath="$PROJECT_DIR$/_6IfElseStatement/_6IfElseStatement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_7Loops/_7Loops.iml" filepath="$PROJECT_DIR$/_7Loops/_7Loops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_8LoopsProblems/_8LoopsProblems.iml" filepath="$PROJECT_DIR$/_8LoopsProblems/_8LoopsProblems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_9LoopsProblem2/_9LoopsProblem2.iml" filepath="$PROJECT_DIR$/_9LoopsProblem2/_9LoopsProblem2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/code.iml" filepath="$PROJECT_DIR$/.idea/code.iml" />
+    </modules>
+  </component>
+</project>

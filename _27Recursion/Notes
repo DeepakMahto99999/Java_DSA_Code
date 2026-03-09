@@ -1,0 +1,31 @@
+Recursion
+A function calling itself.
+
+PMI :- principle of Mathematical Induction
+
+* A function calling itself with different parameters & a base case to
+terminate the infinite loop.
+
+* In recursion , we solve a bigger problem by solving smaller sub-problems.
+
+
+The Recursion spell
+1. Identify the smaller problem  -> let recursion solve PI(n-1)
+2. self work - Do your work System.out.println(n);
+3. identify the  base case -> smallest problem for which the answer
+                               is obvious
+* Note:
+identify : which come first ->  Recursive work / self work
+
+
+methodName(N parameters)
+{
+   if(halfCondition){          // base case
+    return result
+   }
+   return methodName(N parameters)   // Recursive work
+}
+
+
+Why do we need recursion
+code into smaller part

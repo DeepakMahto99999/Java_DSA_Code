@@ -1,0 +1,145 @@
+1. What is HashMap?
+Hashmap is data structure that work on key <---> value mapping
+
+2. When & Why do we use it?
+ we need mapping type data structure
+for example any object map with some data
+ex:- prices of different object
+ex:- frequency mapping of object
+
+3. Usage through collections framework and Examples.
+Map Interface have  Hashmap class
+
+4. Working with HashMaps/Important Methods
+1.Syntax
+2.Adding Element
+get ---> Value, if key exist
+    ---> null , if Key doesn't exit
+
+put  ---> Intersection , if Key doesn't exits
+     ---> update  , if key already exits
+
+remove ---> Value , if key exits
+        ---> null , if key doesn't exits
+
+contains ---> true , if key exits
+         ---> false , if key not exits
+
+==> Important feature of HashMap Class
+1. To access a value one must know its key.
+2. HashMap doesn't allow duplicate keys but allow duplicate values.This means
+   a single key can't have more than one value, but multiple keys can have
+   the same value..
+3. HashMap allows null key also but only once and multiple null values
+4. Java HashMaps maintains no order
+
+===> Applications of HashMaps
+1. Problems related to frequency of an item
+2. Mapping problems
+3. Storage optimization
+4. Dictionary
+5. Phonebook
+
+5.How/Internal working - Hashing/Hash function / collisions
+Hashing - arbitrary(random) sized key convert into smaller size key(Hashed key)
+by passing Hashed Function
+
+What are Hash Functions?
+The function which are use for hashing that is knows as Hash Functions
+
+The hash function should give the same output for the same input
+  H(ip1)  = op1
+  H(ip1)  = op1
+
+  A perfect hash function always produces unique for unique input
+
+  A non-perfect hash function can give the same output for different inputs.
+  This is known as a collision.
+
+What is Hashing?
+
+Key  --> hash f(x) --> hash value(index) --> put in HashTable
+
+Generally used Hash Functions
+1. Division method
+h(k) = k mod M
+
+2. Mid square Method
+h(k) = h(k*k)
+
+3. Digit Folding Method
+k = k1,k2,k3,k4 ... , kn  -- Divide into segments to equal size
+s =k1+k2+k3+k4+...+kn     -- Take sum  --> s
+h(k)=s                    -- S % M
+
+4. Multiplication Method
+h(k) = floor(M(K*A mod 1))
+
+Collisions
+Sometimes , Hash function can result in same hash value for different
+keys.
+
+k % M  M =9
+ k = 20 % 9 = 2
+ k = 29 % 9 = 2
+ k = 38 % 9 = 2
+
+so how we can put this in key - value in same index of table this is problem
+
+this is solved by LinkedList implementation
+
+put --> Insert (key insert)
+        Update(key exits)
+
+Hash function  --> bucketIndex(bi)
+buckets[bi]   ---> Traverse this LL & See if key already exits.
+                    if Yes: update the value in nodes
+                    else : Add a New Node.
+
+but this is also problem because longest length of linked list
+so time complexity will increase
+
+solution -> Good Hash Functions
+            More brackets / capacity (Usually double)
+            * Load Factor -> Measure the decides when
+                             to double array size
+             Default LF --> 75% of capacity
+
+             lembda --> LF / size
+
+   Threshold value = Load Factor * Capacity
+                   =   0.75 * 100
+                   =  75
+
+Conclusion: when the number of entries in the map crosses the threshold value
+
+      A new bucket array of double the size of previous bucket array
+      is created all the entries are copied from old array to new array
+
+Summary:- 1) Array of LinkedList <Node>
+          2) Put , Get , Remove
+          3) Load Factor: 0.75 (l)
+          4) Threshold value: l * N(capacity)
+          5) Rehashing
+
+
+Q. Given a hash table T with 25 slots that stores 2000 elements ,
+   What is the load factor @ for T?
+
+   T =  n / N  where n = elements , N = Slots
+
+Open Addressing [ Closed hashing ].
+Linear probing
+where i is prob number --> No of Attempts
+(H(k) + i ) % M   ---> where i is the index which check linearly is index
+                       empty or not
+
+
+Quadratic
+(H(k) + i^2 ) % M    ----> i will be quadratic
+
+Double Hashing
+
+
+5. Own Implementation
+

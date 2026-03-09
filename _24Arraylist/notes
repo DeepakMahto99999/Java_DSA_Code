@@ -1,0 +1,75 @@
+Wrapper Classes
+
+* a class whose object contains or wraps primitive dataType
+  (int ,float , char).
+
+
+* object of a wrapper class contains a field which stores primitive dataType
+
+PDT                 Wrapper class
+int                  Integer
+float                Float
+char                 Character
+boolean              Booleans
+long                 Long
+
+*-> Why we need this wrapper class
+Java is object oriented programming .
+When we declare ->  int in = 4;
+
+this is  not a object , it is a normal variable  so this Violate the
+oops principle.
+
+
+java.util package's methods or classes work on object not primitive dataType
+
+java collection framework we have some data-Structure like Arraylist ,
+stack , queue they also store object not primitive datatype ,
+so wraps the primitive data type into object and pass.
+
+
+* Arraylist
+
+ARRAYLIST — WHAT YOU ACTUALLY NEED TO KNOW
+1. What it is
+ArrayList<E> is a resizable array in Java.
+Not fixed length like normal arrays
+Keeps elements contiguous in memory (good for cache, good for iteration)
+Allows random access in O(1) time
+
+2. Internal storage
+Backed by a dynamic array:
+Object[] elementData;
+
+
+If capacity runs out → grows automatically.
+3. Time Complexity (Don’t skip this)
+
+Operations:
+
+Operation	Time
+get(i)	O(1)
+set(i)	O(1)
+add() at end	Amortized O(1)
+add(i, x) at index	O(n) (shift right)
+remove(i)	O(n) (shift left)
+contains(x)	O(n)
+iteration	O(n)
+
+If this table isn’t in your head, you’ll fail algorithm questions that ask “which data structure is optimal?”.
+
+4. Capacity Growth (Critical Detail)
+Default initial capacity = 10
+newCapacity = oldCapacity + (oldCapacity >> 1)  // approx 1.5x
+
+
+This prevents stupid growth strategies like doubling or tiny increments.
+
+5. Autoboxing
+Since primitives aren’t allowed, Java autoboxes:
+
+ArrayList<Integer> list = new ArrayList<>();
+list.add(5); // auto: Integer.valueOf(5)
+
+
+This introduces overhead — don’t pretend it's free.

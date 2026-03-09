@@ -1,0 +1,15 @@
+Take one element , iterate though the sorted and find the correct
+position of this element
+
+Time complexity
+
+Best Case (O(n)):
+This occurs when the array is already sorted.
+Only one comparison is needed for each element
+to verify it is in the correct position.
+
+Average Case (O(n²)) and Worst Case (O(n²))
+
+O(1): Insertion Sort is an in-place sorting algorithm
+
+Insertion Sort is a stable sorting algorithm

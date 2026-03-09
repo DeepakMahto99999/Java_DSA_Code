@@ -1,0 +1,36 @@
+* What Is Bubble Sort?
+
+Bubble Sort is a comparison-based sorting algorithm where
+adjacent elements are compared, and if they are in the wrong order, they are swapped.
+
+ Think of bubbles rising to the top —
+in each pass, the largest element “bubbles up” to its correct position.
+
+
+
+1. We do a Certain no (n-1) of passes and and every pass ,
+   We compare adjacent Element & swap them if they are not
+   in correct order.
+
+2. In every iteration , the largest number in part of array to
+   be processed gets its correct position
+
+3.         5 4 3 2 3*
+stable->   2 3 3* 4 5
+unstable-> 2 3* 3 4 5
+
+stable :- A sorting algorithm is said to be stable if two objects with equal keys appear in the same order in sorted output
+          as they appeared in the input unsorted array.
+
+Bubble sort is stable algorithm
+
+Bubble sort an in-place algorithm means no need of extra space
+
+Total number of maximum swaps = (n-1) + (n-2) + (n-3) + ... + 1 = (n*(n-1))/2
+
+Time Complexity
+In the worst and average case n^2
+In the best case n --> 	Already sorted array (minimal passes).
+
+Space Complexity: O(1)
+

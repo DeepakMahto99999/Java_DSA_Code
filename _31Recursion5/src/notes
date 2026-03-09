@@ -1,0 +1,4 @@
+Euclid's Algo
+
+gcd(x,y) = gcd(y,x%y)
+gcd(x,0)  = x

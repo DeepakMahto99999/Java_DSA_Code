@@ -1,0 +1,1019 @@
+Arrays - ArrayList
+Limitations
+* Linked list is a linear data structure. Many may think we have already   learnt about arrays, so why do we
+  need to learn about another linear data structure? The answer to this is simple, when we were learning
+  about arrays, you might have noticed certain things-
+
+1) Fixed size
+ The size of an array needs to be defined at the time of declaration and it cannot be updated. So, in cases
+ where we don’t know how much data we are going to store, we may end up doing one of the 2 things
+
+Defining an array which is too long.For example, let’s say we are trying to make an array in which we
+decide to store the names of all the students that are currently following the PW coding series. Initially we
+didn't know the exact number of students so we decided to give the array a size of 250k. However, when
+the entries were made, it was found out that there were only 200k students present i.e. we created an
+array with 50k additional memory blocks that remains unused. In other words, a lot of memory is wasted
+
+Defining an array which is too short. To understand this let’s take the same example again. This time let’s
+say there was a sudden spike in the number of students following the series that led to additional 100k
+followers, giving a total of 300k. This time we realize that the size of the array given wasn’t enough to store
+all the names, again which is a problem
+
+
+2) continuous Memory location
+
+if array is located then memory is fill in continuous manner there
+is no space in between .
+
+if we want to make array of **bigger size** "so want to continuous memory location" but memory have less space remaining than
+it can be generate some problem .
+
+In arrays, we can directly access elements like arr[10] or arr[11] without going step by step because arrays use contiguous
+memory locations, allowing direct access in constant time, i.e., O(1). This is possible due to the formula used to calculate
+the memory address of any element: .
+Address of arr[i] = Base address + (i * size of each element)
+For example, if arr[0] is stored at address 5000 and arr is an integer array (assuming each integer takes 4 bytes), then:
+
+  arr[1] will be stored at address 5004,
+
+  arr[2] at 5008,
+
+  arr[3] at 5012, and so on.
+
+  This contiguous allocation allows the system to calculate the address directly using the index i, making access time constant, i.e., O(1).
+
+3) Insert in between
+ Addition or deletion of elements at any position in a dynamic array is an O(n) operation
+
+ arr = [1, 2, 3, 4, 5]
+We need to insert 6 into the array at index 2.
+Step 1: shift all the elements starting from the index 2 to the right by  one place.
+arr = [1, 2, _, 3, 4, 5]
+Step 2: place the new element at index 2.
+arr = [1, 2, 6, 3, 4, 5]
+b. arr = [1, 2, 6, 3, 4, 5]
+
+We need to delete 3 from the array.
+Step 1: delete 3 from the array.
+arr = [1, 2, 6, _, 4, 5]
+Step 2: shift all the remaining elements one place to the left to fill up the gap.
+arr = [1, 2, 6, 4, 5]
+At this point many may say that how are we changing the size of the array when we know that it is fixed. The
+answer to this is that we are not. While implementing such an array, we define a large array and fill the unused
+indexes with bogus values. For example,
+
+arr = [1, 2, 3, 4, 5] may actually be an array of size 8, arr = [1, 2, 3, 4, 5, -1, -1, -1] or more.
+3. Array requires contiguous memory location. And for arrays as big as 200k, we would require such a big
+contiguous space in memory which might not always be available.
+
+** Solve this problem arraylist are make because it grow Dynamic.
+
+ When an ArrayList exceeds its size, it creates a new array with double the capacity and copies all elements  which causes
+ space wastage (due to unused slots) and a time complexity of O(n).
+
+ ***To solve this problem we need a new linear data structure
+that is name is linkedList***
+
+
+
+
+
+
+
+
+
+
+
+##  Topic 2: What is a linked list?
+A linked list is a linear data structure that stores data in the form of
+nodes that are connected to each other with the help of pointers.
+
+Unlike arrays, these nodes are "not present at contiguous memory locations".
+It is quite possible that the first node of a linked list is located at a
+memory address of 100, second one is at 500 and the third one is at 200.
+In other words, there is no relation between the memory addresses at which
+each node will be stored. They are stored at random locations
+
+Each node, along with data, has a pointer. This pointer points to the address
+of the next node in the sequence. That is, the pointer of the first node
+will point to the address of the second node. The pointer of the second
+node will point to the third node. And so on. This helps us traverse through the list
+
+In a linked list, each node is defined independently and then added to the
+list. Consequently, we can add or remove nodes from a linked list as
+required, without interfering with the positions of the other nodes.
+
+
+Topic 3: Advantages of a linked list over an array
+In this section, let’s see how a linked list helps us overcome
+the challenges that we faced in the case of arrays
+
+1. Dynamic size
+In a linked list, a node can be added or removed in constant time.
+In other words, the size of a linked list is not fixed.
+
+2. Easy insertion and deletion of nodes
+In a linked list, each node is connected to another node with the help of
+pointers. So if we want to add or remove a node from a list, we just have
+to update the pointers of the nodes adjacent to the place where a node
+needs to be inserted or deleted from.
+
+3. Efficient memory utilization
+Since in a linked list we can dynamically add and remove elements, we don’t
+have to pre-allocate any memory. So there is no memory wastage
+
+
+Topic 4: ListNode
+A listNode or a node is a basic unit of a linked list.
+A node contains 2 parts - the data and the pointer to the successive node
+it is connected to.
+
+The "first node" of the list is referred to as the "head node" of the list
+and it helps us to access the elements of the list. Similarly we refer to
+the last node of the list as the "tail node" of the list. Being the last
+node of the list, it points to NULL. It just means that it points to
+nothing.
+
+
+## Topic 5: Types of linked lists
+
+There are 3 types of linked lists-
+1. Singly linked list:
+In general when we say linked list, we mean singly linked list. In this,
+each node is connected to its successive node, thus forming a chain-like
+structure.
+
+2. Doubly linked list:
+It is the type of linked list where each node is connected to both its
+previous node and next node in the list.
+
+3. Circular linked list:
+It is the type of linked list where in addition to normal connections, we
+connect the tail with the head of the list, thus forming a circle.
+
+
+Topic 6: Implementation of a node in a singly linkedList
+A node of a singly linked list consists of 2 parts- the data and the pointer
+to the succeeding node.
+
+class Node{
+   int val; // data to be stored in the linked list
+   Node next; // pointer to the next node
+};
+
+The stored data of a linked list can be of any data type and can have any
+number of data variables.
+1. A node that stores the name of a person will look like-
+class Node{
+   String name;
+   Node next;
+};
+
+2. A node that stores the name and age of a person will look like-
+class Node{
+   String name;
+   int age;
+   Node next;
+};
+
+
+
+##  Topic 7: Display a Singly linked list
+1. Make a new node pointer for the traversal and make it point to the head of the linked list.
+2. At each node, process the data and update the value of the pointer using the next pointer of the
+current node such that we start pointing to the next node.
+
+public class Basic {
+
+    public static void display(Node head) {
+        Node curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + "->"); // process the node
+            curr = curr.next;
+        }
+        System.out.println("null");
+    }
+
+    // recursive display
+    public static void displayR(Node head){
+     if(head == null) return ;
+     System.out.print(Node.data+" ");
+     displayR(Node.next);
+     }
+
+    public static class Node {
+        int data; // value
+        Node next; // address of next node
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+
+        a.next = b;
+        b.next = c;
+
+        display(a); // Call the static method
+    }
+}
+
+Output
+1->2->3->null
+
+Explanation
+The curr node here represents the node we are currently processing._
+Loop till curr node isn’t equal to NULL i.e. -> we have not reached the end of the list. NULL node is the node to
+which the tail node of the linked list points to. It simply marks the end of the list
+At each iteration, process the data in the curr node and update the curr to move on to the next node in the
+sequence.
+
+Note: The reason we create a new node for the traversal is that if we use
+the head node for the same, then once the traversal is over, we will lose
+the track of the head of the linked list. As a result we won’t be able to
+access any of the elements of the list ever again.
+
+
+# IMPNode:- Inside the function you lose the value ,because pass by value
+If the function needs to traverse but also keep the original start, use a
+temp pointer.
+If the function only needs the result, like returning count or returning
+boolean, then mutating the traversal pointer is fine.
+
+
+## Implement a method to find out the length of a Linked List (Iterative and Recursive)
+1. Iterative approach
+a. Loop till head doesn’t point to null._
+b. At each iteration, increment the count of nodes and move to the next node.
+
+public class Basic {
+   public static int length(Node head) {
+        int count = 0;
+        while (head != null) {
+            count++;
+           head = head.next;
+        }
+        return count;
+   }
+
+    public static class Node {
+        int data; // value
+        Node next; // address of next node
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+
+        a.next = b;
+        b.next = c;
+
+    System.out.println(length(head));
+    }
+}
+
+output:-
+3
+
+# 2. Recursive approach
+  a. Base case: the current node is null. In that case return 0
+  b. At each recursive iteration return the 1 + the length of the remaining list.
+
+  public class Basic {
+
+      public static int lengthR(Node head){
+          if(head == null) return 0 ;
+          return 1 + lengthR(head.next);
+       }
+
+      public static class Node {
+          int data; // value
+          Node next; // address of next node
+
+          Node(int data) {
+              this.data = data;
+          }
+      }
+
+      public static void main(String[] args) {
+          Node a = new Node(1);
+          Node b = new Node(2);
+          Node c = new Node(3);
+
+          a.next = b;
+          b.next = c;
+
+          System.out.println(length(head));
+     }
+  }
+
+Output:-
+3
+
+
+### Topic 8: Insertion at kth position in a singly linked list
+
+ There are 3 major ways to add a node to a linked list
+ Add a node at the end
+ Add a node at the start·
+ Add a node at an arbitrary position
+
+=> Add a node at the end
+Steps-
+1. Make a new node to insert in the list and assign it to a variable to it.
+2. Find the tail node and make the tail node point to this node
+3. Update the value of the tail node
+4. Return the new head of the list.
+
+public class Main {
+
+    public static void display(Node head) {
+        Node curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + "->"); // process the node
+            curr = curr.next;
+        }
+        System.out.println("null");
+    }
+
+    public Node insertAtEnd(Node head , int val){
+
+    Node temp = new Node(val);
+      Node tail = head;
+      while(tail.next !=null){
+         tail = tail.next;
+      }
+      tail.next = temp;
+
+    }
+
+    public static class Node {
+        int data; // value
+        Node next; // address of next node
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+
+        a.next = b;
+        b.next = c;
+
+
+        display(a);
+        insertAtEnd(a,4);
+        display(a);
+    }
+}
+
+Time complexity- O(n)
+Note: In some cases you may be provided with the tail node. In those you don’t have to traverse the entire list to
+reach the tail node. The time complexity for this type of insertion will be O(1).
+
+
+## ==> Add a node at the start
+This is the simplest way of inserting an element in a linked list.
+Steps_
+ Make a new node to insert in the list and assign it to a variable to it
+ Make this new node point to the head of the linked list
+ Return the new head of the list.
+
+
+public class Main{
+
+ public static void display(Node head){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+"->");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+
+  public static void insertAtEnd(Node head , int val){
+     Node temp = new Node(val);
+     Node tail = head;
+     while (tail.next != null){
+         tail = tail.next;
+     }
+      tail .next = temp;
+  }
+
+  public static Node insertAtStart(Node head , int val){
+     Node temp = new Node(val);
+     Node tail = null;
+     temp.next = head;
+     if(head == null){
+         head = tail = temp;
+     } else{
+         temp.next = head;
+         head = temp;
+     }
+     return head;
+  }
+
+    public static class Node {
+        int data;
+        Node next;
+
+        Node(int data){
+            this.data = data;
+        }
+    }
+
+    public static void main(String[] args){
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+
+        a.next = b;
+        b.next = c;
+
+        display(a);
+        insertAtEnd(a,10);
+        display(a);
+        a =  insertAtStart(a,5);
+        display(a);
+    }
+
+}
+
+output:-
+1->2->3->
+1->2->3->10->
+5->1->2->3->10->
+
+The reason we need insertAtStart to return a Node instead of void is because when we insert at the start of a linked list, the head of the list changes. In Java, arguments are passed by value, meaning we cannot modify the original reference (head) inside the method unless we return the new reference.
+
+Why void doesn't work:
+The head inside the method is just a copy of the reference passed from main.
+
+Changing head = temp only affects the local copy, not the original a in main. Thus, the original list remains unchanged.
+
+Time complexity- O(1)
+
+
+
+
+### ==> Add a node at an arbitrary(idx th index) position
+One of the disadvantages with linked lists, as we can already see, is that there is no way for us to directly jump to the respective node. We need to traverse the list for that.
+
+Steps_
+1. Make a new node to insert in the list and assign it to a variable
+2. Traverse the linked list till you reach the position after which the new node has to be inserted
+3. Make the new node point to the node after the prevNode, and then make the prevNode point to the new node
+4. Return the new head of the list.
+
+public class Main {
+
+    public static void display(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static int length(Node head) {
+        Node temp = head;
+        int count = 0;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
+
+
+    public static Node insertAtEnd(Node head, int val) {
+        Node temp = new Node(val);
+        if (head == null) return temp;
+
+        Node tail = head;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        tail.next = temp;
+        return head;
+    }
+
+    public static Node insertAtStart(Node head, int val) {
+        Node temp = new Node(val);
+        temp.next = head;
+        return temp;
+    }
+
+    public static Node insertAt(Node head, int idx, int val) {
+    
+        if (idx < 0 || idx > length(head)) {
+            System.out.println("Invalid index");
+            return head;
+        }
+
+        Node newNode = new Node(val);
+
+        // If inserting at the start
+        if (idx == 0) {
+            newNode.next = head;
+            return newNode;
+        }
+
+        // If inserting at the end
+        if (idx == length(head)) {
+            return insertAtEnd(head, val);
+        }
+
+        Node prevNode = head;
+        int currentIndex = 0;
+        while (currentIndex != idx - 1) {
+            prevNode = prevNode.next;
+            currentIndex++;
+        }
+
+        newNode.next = prevNode.next;
+        prevNode.next = newNode;
+        return head;
+    }
+
+    public static int lengthR(Node head) {
+        if (head == null) return 0;
+        return 1 + lengthR(head.next);
+    }
+
+    public static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+
+        a.next = b;
+        b.next = c;
+
+        display(a);
+        System.out.println("Length: " + length(a));
+
+        a = insertAtEnd(a, 10);
+        display(a);
+
+        a = insertAtStart(a, 5);
+        display(a);
+        System.out.println(a.data);
+
+
+        a = insertAt(a, 2, 100);  // Insert at index 2
+        display(a);
+
+        a = insertAt(a, length(a), 50);  // Insert at the last index (same as append)
+        display(a);
+
+
+    }
+}
+
+
+
+##   Topic 9: Retrieving element at kth position in a singly linked list
+1. Make a new node to traverse the list
+2. Traverse the list till you reach the required node
+3. Return the value of the required node
+
+public static int getAt(Node head, int idx) {
+    if (idx < 0 || idx >= length(head)) {
+        System.out.println("Wrong index");
+        return -1;
+    }
+
+    Node temp = head;
+    for (int i = 0; i < idx; i++) {
+        temp = temp.next;
+    }
+    return temp.data;
+}
+
+
+Time complexity- O(n)
+
+## Topic 10: Deletion at kth index in a singly linked list
+
+public static Node deleteAt(Node head, int idx) {
+    if (head == null) return null;
+
+    if (idx < 0 || idx >= length(head)) {
+        System.out.println("Invalid index");
+        return head;
+    }
+
+    // Deleting at head
+    if (idx == 0) {
+        return head.next;
+    }
+
+    Node temp = head;
+    for (int i = 0; i < idx - 1; i++) {
+        temp = temp.next;
+    }
+
+    if (temp.next == tail) {
+      tail = temp;
+    }
+
+    // Skip the node at idx
+    temp.next = temp.next.next;
+
+
+    return head;
+}
+
+
+## ==> There are two type of method for create and performed operation in
+linkedList
+1. Static helper method approach
+2. Object-Oriented Linked List
+
+
+1. Static helper method approach
+
+public class Main {
+
+    public static class Node {
+        int data; // value
+        Node next; // address of next node
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    // Insert at end (returns new head)
+    public static Node insertAtEnd(Node head, int val) {
+        Node temp = new Node(val);
+
+        if (head == null) {
+            return temp; // List was empty, new node becomes head
+        }
+
+        Node t = head;
+        while (t.next != null) {
+            t = t.next;
+        }
+        t.next = temp;
+        return head;
+    }
+
+    // Insert at start (returns new head)
+    public static Node insertAtStart(Node head, int val) {
+        Node temp = new Node(val);
+        if(head == null){
+            return temp;
+        }
+        temp.next = head;
+        return temp;
+    }
+
+    // Insert at given index
+    public static Node insertAt(Node head, int idx, int val) {
+        if (idx < 0 || idx > length(head)) {
+            System.out.println("Invalid index");
+            return head;
+        }
+
+        if (idx == 0) {
+            return insertAtStart(head, val);
+        }
+
+        Node newNode = new Node(val);
+        Node temp = head;
+        for (int i = 0; i < idx - 1; i++) {
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+
+        return head;
+    }
+
+    // Delete at index
+    public static Node deleteAt(Node head, int idx) {
+        if (head == null || idx < 0 || idx >= length(head)) {
+            System.out.println("Invalid index");
+            return head;
+        }
+
+        if (idx == 0) {
+            return head.next;
+        }
+
+        Node temp = head;
+        for (int i = 0; i < idx - 1; i++) {
+            temp = temp.next;
+        }
+
+        temp.next = temp.next.next;
+        return head;
+    }
+
+    // Get value at index
+    public static int getAt(Node head, int idx) {
+        if (idx < 0 || idx >= length(head)) {
+            System.out.println("Invalid index");
+            return -1;
+        }
+
+        Node temp = head;
+        for (int i = 0; i < idx; i++) {
+            temp = temp.next;
+        }
+        return temp.data;
+    }
+
+    // Display linked list (iterative)
+    public static void display(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    // Display recursively
+    public static void displayr(Node head) {
+        if (head == null) return;
+        System.out.print(head.data + " ");
+        displayr(head.next);
+    }
+
+    // Display reverse recursively
+    public static void displayReverse(Node head) {
+        if (head == null) return;
+        displayReverse(head.next);
+        System.out.print(head.data + " ");
+    }
+
+    // Length (iterative)
+    public static int length(Node head) {
+        Node temp = head;
+        int count = 0;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
+
+    // Length (recursive)
+    public static int lengthRecursion(Node head) {
+        if (head == null) return 0;
+        return 1 + lengthRecursion(head.next);
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(5);  // head node
+        Node b = new Node(3);
+        Node c = new Node(9);
+
+        a.next = b;
+        b.next = c;
+
+        display(a);
+        System.out.println();
+        displayr(a);
+        System.out.println();
+        displayReverse(a);
+        System.out.println();
+
+        System.out.println("Length (iterative): " + length(a));
+        System.out.println("Length (recursive): " + lengthRecursion(a));
+
+        a = deleteAt(a, 2);
+        System.out.print("After deleting at index 2: ");
+        display(a);
+        System.out.println();
+
+        a = deleteAt(a, 1);
+        System.out.print("After deleting at index 1: ");
+        display(a);
+        System.out.println();
+
+        a = deleteAt(a, 0);
+        System.out.print("After deleting at index 0: ");
+        display(a);
+        System.out.println();
+
+        a = insertAtEnd(a, 87);
+        System.out.print("After inserting at end: ");
+        display(a);
+        System.out.println();
+
+        System.out.println("After insertAtEnd on empty list:");
+        System.out.println("Head data: " + a.data);
+
+        Node tail = a;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        System.out.println("Tail data: " + tail.data);
+
+        a = deleteAt(a, 0);
+        System.out.print("After deleting last node: ");
+        display(a);
+        System.out.println();
+
+        a = insertAtStart(a, 100);
+        System.out.print("After inserting at start: ");
+        display(a);
+        System.out.println();
+
+        // Since it's the only node, head and tail both point to this node
+        System.out.println("After insertion into empty list:");
+        System.out.println("Head data: " + a.data);
+
+        // Find tail
+        tail = a;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        System.out.println("Tail data: " + tail.data);
+
+        a = insertAt(a, 1, 77);
+        System.out.print("After inserting 77 at index 1: ");
+        display(a);
+        System.out.println();
+
+        System.out.println("Value at index 1: " + getAt(a, 1));
+    }
+
+}
+
+
+2. Object-Oriented Linked List
+package LinkedList;
+
+public class Q1 {
+
+    public static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public static class linkedList {
+        Node head = null;
+        Node tail = null;
+
+        void insertAtEnd(int val) {
+            Node temp = new Node(val);
+            if (head == null) {
+                head = tail = temp;
+            } else {
+                tail.next = temp;
+                tail = temp;
+            }
+        }
+
+        void display() {
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.data + " -> ");
+                temp = temp.next;
+            }
+            System.out.println("null");
+        }
+
+        int length(Node head) {
+            Node temp = head;
+            int count = 0;
+            while (temp != null) {
+                count++;
+                temp = temp.next;
+            }
+            return count;
+        }
+
+        void insertAtStart(int val) {
+            Node temp = new Node(val);
+            if (head == null) {
+                head = tail = temp;
+            } else {
+                temp.next = head;
+                head = temp;
+            }
+        }
+
+        void insertAt(int idx, int val) {
+            if (idx < 0 || idx > length(head)) {
+                System.out.println("Invalid input");
+                return;
+            }
+
+            if (idx == 0) {
+                insertAtStart(val);
+                return;
+            }
+
+            if (idx == length(head)) {
+                insertAtEnd(val);
+                return;
+            }
+
+            Node temp = new Node(val);
+            Node current = head;
+
+            for (int i = 0; i < idx - 1; i++) {
+                current = current.next;
+            }
+
+            temp.next = current.next;
+            current.next = temp;
+        }
+
+        int getAt(int idx) {
+            if (idx < 0 || idx >= length(head)) {
+                System.out.println("Wrong index");
+                return -1;
+            }
+            Node temp = head;
+            for (int i = 0; i < idx; i++) {
+                temp = temp.next;
+            }
+            return temp.data;
+        }
+
+        void deleteAt(int idx) {
+            if (idx < 0 || idx >= length(head)) {
+                System.out.println("Invalid input");
+                return;
+            }
+
+            if (idx == 0) {
+                head = head.next;
+                if (head == null) {
+                    tail = null; // List became empty
+                }
+                return;
+            }
+
+            Node temp = head;
+            for (int i = 0; i < idx - 1; i++) {
+                temp = temp.next;
+            }
+
+            temp.next = temp.next.next;
+
+            // If deleted node was the tail
+            if (temp.next == null) {
+                tail = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        linkedList l = new linkedList();
+        l.insertAtEnd(4);  // 4
+        l.display();
+        l.insertAtEnd(5);  // 4 -> 5
+        l.display();
+        l.insertAtEnd(6);  // 4 -> 5 -> 6
+        l.display();
+        l.insertAtStart(1); // 1 -> 4 -> 5 -> 6
+        l.display();
+        l.insertAt(4, 10); // 1 -> 4 -> 5 -> 6 -> 10
+        l.display();
+        System.out.println("Tail: " + l.tail.data); // Should be 10
+        l.insertAt(0, 100); // 100 -> 1 -> ...
+        l.display();
+        l.deleteAt(5);  // Deleting 10 (tail)
+        l.display();
+        System.out.println("Tail after deletion: " + l.tail.data); // Should be 6
+    }
+}
+
+
+
+

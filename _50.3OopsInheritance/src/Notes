@@ -1,0 +1,190 @@
+# Java Inheritance
+Inheritance is one of the key features of OOP that allows us to create a new class from a existing class.
+
+THe new class that is created is known as sub-class(child or derived class) and the existing class from where the child class is derived is known as superclass(parent or base class).
+
+Class A(Parent)   <----- Class B(child)
+
+we use extends keyword relation between A & B
+
+## Method Overriding
+If a subclass provides the specific implementation of the method that has been declared by one of its parent class, it is known as method overriding .
+. Method overriding is also known as runtime polymorphism . Hence we can achieve Polymorphism in java with help of Inheritance.
+
+
+## super  keyword in Java
+
+super is a special keyword in java that is used to refer to the instance of the immediate parent class.
+Used of super Keyword in java
+=> Uses of super Keyword in java
+* It is use to refer to an instance variable if the immediate parent
+  class.
+* It is used to invoke a method of the immediate parent class.
+* It is used to invoke a constructor of immediate parent class.
+
+# this vs super
+
+1. this is an implicit reference variable keyword used to represent the current class.
+
+super is am implicit reference variable keyword used to represent the immediate parent class.
+
+2. this is to invoke methods of the current class
+
+super is used to invoke methods of the immediate parent class.
+
+3. this is used to invoke a constructor of the current class.
+
+super is used to invoke a constructor of the immediate parent class.
+
+4. this refers to the instance and static variables to the current class
+
+super refers to the instance and static variable of immediate parent class.
+
+5. this can be used to return and pass as an argument in the context of current class object.
+
+super can be used to return and pass as an argument in the context of an immediate parent class object.
+
+
+##  this in breaking() Method
+
+   Car breaking() {
+       return this;
+   }
+   this refers to the current instance of the Car class.
+
+   When breaking() is called, it returns the same Car object on which it was called.
+
+   This allows method chaining, meaning you can do:
+
+   obj.breaking().start();
+
+   Here, breaking() returns the obj itself, so you can call .start() on the returned object.
+
+   2. this in start() Method
+
+   void start() {
+       Scooter scooterobj = new Scooter();
+       scooterobj.breaking(this);  // Passing the current object
+       super.start();
+       System.out.println(this);
+       System.out.println(this.model + " Car is starting");
+   }
+   Where this is used:
+   scooterobj.breaking(this);
+
+   Here, this is passed as an argument to Scooter's breaking(Car car) method.
+
+   Since this represents the current Car object, it allows Scooter to access its properties (like model).
+   System.out.println(this);
+
+   This prints the reference of the current object.
+   If toString() is not overridden, it will print the memory address of the object.
+   System.out.println(this.model + " Car is starting");
+
+   this.model ensures that the model being accessed belongs to the current Car object.
+   This is useful when there's a naming conflict with a local variable (not in this case, but in general).
+   3. this in Constructor
+
+   Car() {
+       super(3);
+       System.out.println("Car is being created");
+   }
+   Although this is not explicitly used here, it is implicitly present.
+   When you create an object:
+
+   Car obj = new Car();
+   The constructor refers to the current instance (this) being initialized.
+
+
+   Why Use this in This Code?
+   To pass the current object (this) to another method (scooterobj.breaking(this)).
+
+   To return the current object (this in breaking() for method chaining).
+   To distinguish between instance variables and local variables (though not used here).
+
+Final Summary
+Usage of this	Purpose
+
+ scooterobj.breaking(this);	Passes the current object (Car) to Scooter's method
+   return this;	Returns the current object for method chaining
+   System.out.println(this);	Prints the reference of the current object
+   this.model	Ensures model belongs to the current object
+   Hope this clears your doubts!
+
+
+ The statement you are asking about means that if you need to call one constructor from another constructor of the same class, or invoke a method from another method, you use the this keyword. Let's break it down.
+
+1. Invoking a Constructor from Another Constructor
+In Java, you can use this() to call a different constructor from within the same class.
+
+Example: Calling One Constructor from Another
+
+class Car {
+    String model;
+    int wheels;
+
+    // First constructor
+    Car() {
+        this("Default Model", 4);  // Calls the second constructor
+        System.out.println("Default Car Constructor");
+    }
+
+    // Second constructor
+    Car(String model, int wheels) {
+        this.model = model;
+        this.wheels = wheels;
+        System.out.println("Car with model: " + model + " and wheels: " + wheels);
+    }
+
+    public static void main(String[] args) {
+        Car obj = new Car();
+    }
+}
+
+Car with model: Default Model and wheels: 4
+Default Car Constructor
+
+How this() Works Here?
+In the default constructor (Car()), we call this("Default Model", 4);
+This calls the parameterized constructor (Car(String model, int wheels)) before executing the rest of Car().
+This helps avoid code duplication.
+
+
+2. Calling a Method from Another Method using this
+You can also use this to call another method of the same class.
+
+Example: Calling a Method Using this
+class Bike {
+    void start() {
+        System.out.println("Bike is starting...");
+        this.accelerate();  // Calls the accelerate() method
+    }
+
+    void accelerate() {
+        System.out.println("Bike is accelerating...");
+    }
+
+    public static void main(String[] args) {
+        Bike obj = new Bike();
+        obj.start();
+    }
+}
+
+Bike is starting...
+Bike is accelerating...
+
+How this Works Here?
+this.accelerate(); calls the accelerate() method from within start().
+We could just write accelerate();, but using this explicitly clarifies that the method belongs to the current object.
+
+final Keyword in java
+In java, the final keyword is a non-access modifier tht is used to define entities that cannot be changed or modified
+
+Final Variable
+Variable with final keyword cannot be assigned again
+
+Final Method
+Method with final keyword cannot be overridden by its subClasses
+
+Final Class
+Class with final keyword cannot be extended or inherited from other classes

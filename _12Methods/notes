@@ -1,0 +1,98 @@
+# Java Methods
+-> block of code performing some action which runs only when it
+is called.
+
+function -> bark()
+Methods -> obj.bark()
+
+-> write once reuse many times , times save
+-> Duplicate code reduces.
+
+=> Types of method
+   1. user-defined Methods
+   2. Standard library Methods
+
+=> How to declare Methods:
+   public class Main {
+      public int sum(int a , int b){
+      // code to be executed
+      }
+   }
+
+   Access          return    Method   ( parameter
+   Modifiers        type     Name        list)
+
+
+1. Method Signature
+   Sum(int a , int b)
+   ^
+   |
+  Method Name   + parameter list
+
+2. Access specifier
+    a. public   a.private  3.protected  4.Default
+
+3.Method Body
+
+4.return type
+ 1. The return keyword is used to send a value back to
+    the place where the method was called.
+
+Call a Method:
+   welcome();
+
+Example 1
+ public class Main {
+ static void welcome() {
+ System.out.println("Welcome to Physics Wallah");
+  }
+ public static void main(String[] args) {
+   welcome();
+ }
+ }
+
+output:  Welcome to Physics Wallah
+
+# static variable
+static int b;
+Single copy for whole class
+here static keyword is use to call the method without making a object
+
+
+
+# instance variable
+int a ;
+all object will make their own class
+
+* Standard library methods - build in method in java library
+   print()
+   sqrt()
+   floor()
+
+
+# Packages
+  it is collection of similar classes, subpackages , interfaces
+  Example: java.util
+           java.io
+           java.net
+
+
+public accessibility -> WithinClass , OutsideClass , OutsidePackageChild
+                        , OutsidePackageNon-Child
+
+protected  accessibility ->WithinClass , OutsideClass ,OutsidePackageChild
+default accessibility -> WithinClass , OutsideClass
+private accessibility -> WithinClass
+
+
+# Constructor
+  special method used to initialize objects
+  constructor name = class name
+  no return type
+
+
+Static methods (no object needed to call) are sometimes informally
+referred to as "functions" because they behave like independent utilities.
+Instance methods (require an object to call) are strictly referred to
+as methods.
+

@@ -1,0 +1,6 @@
+HashSet
+such type of bag don't allow repitation of element
+when we need unique element to store in data structure
+
+key value --> hashFunction  --> hashValue --> store in some indices of table
+109,2  ---> 109 % M(size of table) --> 1 --> in 1 index store 109

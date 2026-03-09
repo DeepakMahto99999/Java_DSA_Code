@@ -1,0 +1,32 @@
+Sliding Window
+
+Expansion - Adding into the window
+Shrinking - Deleting from the window
+
+Time complexity - O(n-k)
+
+sliding window - Fixed sized
+                 Variable size  k is not given
+
+
+variable size -- two phase
+Expansion : Adding into the window
+Shrinking : Deleting from the window
+
+steps:
+ Initialize the window (k =3)
+ solve for other element
+ calculate ans
+
+
+## Max Sum Sub-array of size k
+## First negative number in every window of size k
+## chocolate distribution problem
+## smallest sub-array with sum greater then x
+## Longest substring k unique elements
+## longest substring without repeating characters
+## count occurrences of anagrams
+## minimum window substring
+## sliding window  maximum
+
+

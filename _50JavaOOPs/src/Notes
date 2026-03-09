@@ -1,0 +1,458 @@
+# User defined data type
+
+In a class, there are students, and all students have some common
+ attributes like roll number, percentage, name, and height.
+
+Every student is an object of the class, and each object has these
+common properties.
+
+The blueprint that defines these common properties and behavior
+is known as a class.
+
+
+
+For example, in a class, there are 50 students, and we need to store
+their data.
+
+We can create a String array to store their names, an int array
+for roll numbers, and a double array for percentages. However,
+these separate arrays are not linked together, making it difficult
+to manage student data as a single unit.
+
+This is why we use Classes in Object-Oriented Programming (OOP).
+
+A class allows us to group related data (name, roll number, percentage)
+into a single entity, making it easier to manage and work with student
+records.
+
+
+
+##  Why OOP is Better Than Normal (Procedural) Approach
+Without OOP: Data is stored in separate arrays , making it hard to
+             keep track.
+
+With OOP: All student details (name , rno , percent ) are stored
+          inside a single object.
+
+Example (Without OOP - Separate Arrays)
+
+String[] names = {"Deepak", "Rahul", "Anjali"};
+int[] rnos = {26, 14, 32};
+double[] percents = {56.68, 78.9, 85.5};
+
+Problem: If you delete one student's name, you must also delete their
+         roll number and percentage manually from other arrays.
+
+Example (With OOP - Objects)
+Student s1 = new Student("Deepak", 26, 56.68);
+Student s2 = new Student("Rahul", 14, 78.9);
+Student s3 = new Student("Anjali", 32, 85.5);
+
+Solution: Data stays together, making it easier to manage.
+
+Code Reusability 🔄
+Without OOP: If we want to print student details, we write the same
+              logic multiple times.
+With OOP: We can use methods inside the class, avoiding duplicate code.
+
+Example (Without OOP - Repeating Code)
+System.out.println(names[0] + " " + rnos[0] + " " + percents[0]);
+System.out.println(names[1] + " " + rnos[1] + " " + percents[1]);
+System.out.println(names[2] + " " + rnos[2] + " " + percents[2]);
+
+Example (With OOP - Using a Method)
+class Student {
+    String name;
+    int rno;
+    double percent;
+
+  void printDetails() {
+    System.out.println("Name: " + name + ", Roll No: " + rno + ", Percentage: " + percent);
+  }
+}
+✅ Solution: One method works for all students, reducing code duplication.
+
+3️⃣ Scalability & Maintainability 🏗️
+Without OOP: Adding a new student field (e.g., address) means adding
+             a new array.
+With OOP: We just add a new variable inside the Student class.
+
+Example (Adding Address - Without OOP)
+
+String[] addresses = {"Delhi", "Mumbai", "Pune"}; // More arrays 😞
+
+
+Example (Adding Address - With OOP)
+
+class Student {
+    String name, address;
+    int rno;
+    double percent;
+}
+✅ Solution: Easier to extend without breaking existing code.
+
+4️⃣ Encapsulation (Data Security & Control) 🔒
+Without OOP: Anyone can modify the student data directly.
+With OOP: We can control access using private variables and
+getters/setters.
+
+✅ Final Verdict
+Feature	             Without OOP (Procedural)	With OOP (Objects)
+Data Organization	 Uses multiple arrays 📂	Uses a single class 🎯
+Code Reusability	 Repeated code ❌	        Uses methods 🔄
+Scalability	         Hard to extend 😞	        Easy to extend 🚀
+Data Security	     No control ❌	            Encapsulation 🔒
+Real-World Modeling	 Not intuitive 📉	        Realistic 🎯
+
+✅ Use OOP when dealing with structured data like students,
+    employees, products, etc.
+✅ Use procedural programming for small, simple scripts.
+
+
+object - creation
+
+className  objectName  =  new className();
+* Objects are real life entities also called instance of class.
+* classes are blueprints
+
+A class defines the structure and behavior but does not exist physically.
+It is like a blueprint for a house—describing how the house should be
+built (rooms, doors, windows) but not an actual house itself.
+
+# dynamically object creation
+
+syntax:
+Test obj = (Test) Class.forName("com.p1.Test").newInstance();
+
+🔹 Class.forName("com.p1.Test")
+This loads the class Test from package com.p1.
+The class must be present in your project.
+It returns a Class object representing Test.
+
+🔹 .newInstance()
+This creates a new object of Test using the default constructor (without parameters).
+It is similar to new Test(), but done dynamically.
+
+🔹 (Test)
+newInstance() returns an Object type.
+So, we typecast it to Test to use it properly.
+
+Scenario:
+Imagine you're creating a game where users can choose different characters:
+"Warrior"
+"Mage"
+"Archer"
+
+Warrior obj = new Warrior(); // Fixed class
+
+We can dynamically create an object based on user input:
+String className = "Warrior"; // This can change based on user choice
+Character obj = (Character) Class.forName(className).newInstance();
+
+Conclusion
+Dynamically = "At runtime, not hardcoded"
+Instead of new Test(), we load the class and create an object during execution.
+Useful for flexible and modular programs.
+
+
+import java.util.Scanner;
+
+class Warrior {
+    void attack() {
+        System.out.println("Warrior swings a sword!");
+    }
+}
+
+class Mage {
+    void attack() {
+        System.out.println("Mage casts a fireball!");
+    }
+}
+
+class Archer {
+    void attack() {
+        System.out.println("Archer shoots an arrow!");
+    }
+}
+
+public class SimpleDynamicClass {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter character (Warrior, Mage, Archer):");
+        String className = scanner.nextLine(); // Get user input
+
+        try {
+            // Load class dynamically
+            Object obj = Class.forName(className).newInstance();
+
+            // Call attack() method
+            obj.getClass().getMethod("attack").invoke(obj);
+        } catch (Exception e) {
+            System.out.println("Error: Invalid class name");
+        }
+
+        scanner.close();
+    }
+}
+
+ How This Works
+User enters a class name (Warrior, Mage, or Archer).
+Program loads the class dynamically at runtime.
+It creates an object of the selected class.
+Calls the attack() method using reflection.
+
+Enter character (Warrior, Mage, Archer):
+Warrior
+Warrior swings a sword!
+....
+
+
+# Using clone() method: clone() method is present in Object class. It
+creates and returns a copy of the object.
+ Test t1 = new Test();
+ Test t2 = (Test)t1.clone();
+
+# Deserialization: It is a technique of reading an object from the saved state in a file.
+# Array v/s Class
+Array --> when we store multiple type of  similar datatypes.
+Class --> when we need to create same type of objects for
+          multiple attributes(property) , user defined dataType
+
+
+
+# Passing Class to function:
+* We have to declare the class outside main function.
+* Classes are passed by reference
+
+
+## Key Points About Instance Variables:-
+
+Declared inside a class but outside any method, constructor, or block.
+Each object of the class gets its own copy of instance variables.
+They belong to an instance (object), not the class itself.
+Access modifiers (private, public, etc.) control visibility.
+
+class Student {
+    private int rno;  // Instance variable (Each object will have its own rno)
+
+    public void setRno(int rno) {
+        this.rno = rno;  // 'this.rno' refers to the instance variable
+    }
+
+    public int getRno() {
+        return rno;  // Returns the instance variable
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.setRno(101);
+
+        Student s2 = new Student();
+        s2.setRno(102);
+
+        System.out.println(s1.getRno()); // Output: 101 ✅
+        System.out.println(s2.getRno()); // Output: 102 ✅ (Different object, different value)
+    }
+}
+
+
+
+##  Class in a Different File but Same Package
+
+If two classes are in the same package but in different files,
+you can access the properties and methods without an import statement
+(as long as they are not private).
+You can directly create an object of one class in another class.
+
+.The behavior of class in diff Package
+Must use import packageName.ClassName; before using the class.
+
+
+# Some Default values
+public class Student{
+    String name;
+    int rno;
+    double percent;
+}
+
+u declare this class and create object name s1 without assigning values,
+u want to printed
+        Student s1 = new Student(); // declaration
+        System.out.println(s1.name);
+        System.out.println(s1.rno);
+        System.out.println(s1.percent);
+then output will be
+null
+0
+0.0
+
+
+## Access Modifiers
+1) Public - all package
+2) Private - same class
+3) Default - same package (also known as package-private)
+4) protected - same class , subclass, even outside the package
+
+Correct Accessibility Order (from most to least accessible):
+public > protected > default (package-private) > private
+
+
+## Getters and Setters
+This are basically function of a class
+
+Usually we can't change the private attributes and we can't access ,,,
+
+In Java, getters and setters are methods used to access and modify
+private attributes of a class while maintaining encapsulation.
+
+Getters (Accessors) → Used to retrieve (read) the value of a private attribute.
+Setters (Mutators) → Used to update (write) the value of a private
+                     attribute, usually with validation.
+
+public class Vehicle {
+  private String color;
+
+   public String getColor() {
+    return color;
+   }
+
+  public void setColor(String c) {
+   this.color = c;
+  }
+}
+
+The getter method returns the value of the attribute. The setter method takes a
+parameter and assigns it to the attribute.
+
+
+What is a keyword ?
+Keyword is a word which is reserved by the programming language. That is,
+a keyword has a special meaning  so it can’t be used as the name of some
+variable/class/function. A keyword has a special meaning which
+defines specific parameters of the program.
+
+
+## 'this'  Keyword
+
+ private int rno;
+
+ public void setRno(int rno) {  // Setter
+    rno = rno;  // ❌ WRONG: Local variable 'rno' is assigned to itself
+ }
+
+ Here, rno = rno; means the method parameter (rno) is assigned
+ to itself instead of modifying the instance variable.
+ The instance variable remains unchanged, and it does not update
+ the object's data.
+
+What Actually Happens Here?
+The instance variable rno starts with 0 (default value).
+Inside setRno(int rno), Java sees rno = rno;
+Left rno → Java thinks this is the method parameter.
+Right rno → Java also thinks this is the method parameter.
+So, you're just assigning the parameter to itself! (No effect on the instance variable)
+The instance variable remains unchanged (0).
+getRno() returns 0, so the output is 0.
+
+
+   public void setRno(int rno){  //setter
+         this.rno = rno;
+     }
+
+
+this.rno = rno; → this.rno refers to instance variable, and rno refers
+to method parameter.
+Without this, Java assumes you're referring to the method parameter only,
+so it doesn't modify the actual object.
+
+
+
+## What is Constructor
+
+ A constructor has the same name as the class and does not have a
+ return type (not even void).
+
+ To provide a single entry point for object setup.
+
+ Key Points About Constructors:
+ The constructor name must match the class name.
+ It does not have an explicit return type.
+ It is automatically called when an object is created.
+ It is used to initialize object properties
+
+
+## What is final keyword
+When a variable is declared final, its value cannot be changed after initialization.
+If it is a primitive type, the value is constant.
+If it is a reference type (object), the reference cannot be changed,
+but the object's internal data can still be modified.
+
+
+## What is static Keyword
+
+Class Student{
+  String name;
+  int rno;
+  double percent;
+  int numberOfStudents;
+}
+
+ public  Student(String name, int rno , double percent){
+        this.name = name;
+        this.rno = rno;
+        this.percent = percent;
+        numberOfStudents++;
+    }
+
+ Student s1= new Student("Rahul" , 67 , 98.3);
+ System.out.println(s1.numberOfStudents);
+
+ Student s2= new Student("R" , 7 , 8.3);
+ System.out.println(s2.numberOfStudents);
+
+ output will be :
+ 1
+ 1
+
+ so actually what happen here that is when initialization of object
+ so memory will make space for each attributes ,for every object it
+ will make one extra occupies space that is for numberOfStudents ,
+ increment it will become 0 to 1 so that's  why we got 1 value for each
+ object also  numberOfStudents object depended.
+
+ To avoid this extra space we need to make one space and also
+ numberOfStudents class depended and use everywhere.
+ so make this space when creation of class so we use static keyword
+
+ Class Student{
+   String name;
+   int rno;
+   double percent;
+   static int numberOfStudents;
+ }
+
+ write all code then output will be:
+ 1
+ 2
+
+  Student s1= new Student("Rahul" , 67 , 98.3);
+  Student s2= new Student("R" , 7 , 8.3);
+  System.out.println(s2.numberOfStudents);
+  System.out.println(s1.numberOfStudents);
+
+  the output will be
+  2
+  2
+
+
+
+  ## static functions
+  Used if we want to access a function(set and get) in the class through just
+  ClassName.function
+
+
+fraction arraylist
+
+

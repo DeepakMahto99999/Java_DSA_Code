@@ -1,0 +1,163 @@
+Simplified Explanation of Packages in Java
+
+What are Packages?
+Packages are like folders that group related Java classes together. They help organize code and prevent name conflicts.
+
+Example:
+If you create a class named List, putting it in a package ensures it won’t clash with another List class elsewhere.
+
+How are Packages Stored?
+
+Packages are saved in directories with the same name as the package.
+Example: A package MyPackage should be inside a folder named MyPackage.
+Java is case-sensitive, so folder names must match exactly.
+Package Hierarchy:
+
+If a package is package java.awt.image;, its files must be in java\awt\image (Windows).
+Changing a package name requires renaming the folder.
+How Java Finds Packages:
+
+Java looks in the current working directory.
+You can set the CLASSPATH environment variable to tell Java where to find packages.
+You can also use the -classpath option with java or javac.
+Package Access Control:
+
+Only public classes and methods in a package can be accessed from outside.
+Other members remain private to the package.
+
+
+##  static Keyword
+
+When a method is declared static, it can be used without creating an object of the class. Both methods and variables can be static. The most common example is the `main()` method, which is static because it runs before any objects are created. A static method in Java belongs to the class, not to an object.
+
+A method that depends on the class rather than an object is called a static method.
+
+A static method can access only static data. It cannot access non-static data (instance variables)
+A non-static member belongs to an instance. It's meaningless without somehow resolving which instance of a class you
+are talking about. In a static context, you don't have an instance, that's why you can't access a non-static member
+without explicitly mentioning an object reference.
+
+In fact, you can access a non-static member in a static context by specifying the object reference explicitly :
+public class Human {
+
+    String message = "Hello World";
+
+    public static void display(Human human){
+        System.out.println(human.message);
+    }
+
+    public static void main(String[] args) {
+        Human kunal = new Human();
+        kunal.message = "Kunal's message";
+        Human.display(kunal);
+    }
+
+}
+
+A static method can call only other static methods and cannot call a non-static method from it.
+A static method can be accessed directly by the class name and doesn’t need any object
+A static method cannot refer to "this" or "super" keywords in anyway
+
+We use static in the main method because the Java Virtual Machine (JVM) calls the main method before any objects of the class are created. If main were not static, the JVM would need to create an object of the class first—but since main is the entry point of execution, there is no way to create an object before main runs
+
+
+package com.kunal.staticExample;
+
+class Test {
+    static String name;  // Static variable
+
+    public Test(String name) {
+        this.name = name; // Assigning to static variable
+    }
+}
+
+
+public class InnerClasses {
+
+    public static void main(String[] args) {
+       Test a = new Test("kunal");
+       Test b = new Test("deepak");
+
+
+        System.out.println(a.name);
+        System.out.println(b.name);
+    }
+}
+
+In your code, the reason "deepak" is always printed instead of "kunal" is because you have declared the name variable as static in the Test class.
+
+Key Concept: Static Variables Are Shared Among All Instances
+A static variable belongs to the class, not the instance.
+This means all instances of the class share the same static variable.
+When you update name in any object, it changes the value for all objects.
+
+package com.kunal.staticExample;
+
+public class InnerClasses {
+    // If the Test class was not static, it would be an inner (non-static)
+    // class, which means it would be associated with an instance of the
+    // outer class (InnerClasses).
+    // In that case, you would not be able to create an object of Test
+    // directly using new Test("kunal") in main()
+
+  static class Test {
+    String name;
+
+  public Test(String name){
+        this.name = name;
+  }
+}
+
+    public static void main(String[] args) {
+       Test a = new Test("kunal");
+       Test b = new Test("deepak");
+        System.out.println(a.name);
+        System.out.println(b.name);
+    }
+}
+
+here kunal and deepak print individually  because of static keyword use before class . to avoid creating object basically means class test not depend on the InnerClasses so only nested classes named as classes
+
+In the statement:
+
+Arrays.toString(new int[]{3, 4, 5});
+
+Arrays is a class → It belongs to the java.util package.
+toString is a static method → It is a method inside the Arrays class.
+new int[]{3, 4, 5} is an array object → It is an anonymous integer array.
+
+Since toString is a static method in the Arrays class, it is accessed using Arrays.toString(), without needing an object of Arrays.
+The method converts the array into a readable string format, e.g., "[3, 4, 5]".
+
+toString is a method, not an object.
+It is a static method of the Arrays class, so you access it using the class name Arrays.toString(...).
+You cannot access any properties of toString because it is not an object, but a method.
+
+  System.out.println(a);
+output:- com.kunal.staticExample.InnerClasses$Test@6acbcfc0
+
+when u pass object java internally call valueOf --> calling obj.toString() method ---> if class does not contain toString() then go to hashCode-> print
+
+Actually a.toString()  it will check does a means particular class contain toString() if not contain then print
+com.kunal.staticExample.InnerClasses$Test@6acbcfc0
+
+
+This is the default implementation of toString() from the Object class.
+
+Breaking it down:
+com.kunal.staticExample.InnerClasses$Test
+
+This is the fully qualified class name (package + class name).
+InnerClasses$Test means Test is a nested class inside InnerClasses. The $ indicates that Test is an inner class of InnerClasses.
+@6acbcfc0
+
+This is the hashcode of the object, represented in hexadecimal format (base 16).
+It is generated by the hashCode() method of Object, which typically represents the object's memory address (though it's not guaranteed).
+
+if class contain toString() method
+  @Override
+    public String toString() {
+        return name;
+    }
+
+    output: kunal

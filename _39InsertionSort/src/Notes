@@ -1,0 +1,23 @@
+Insertion Sort works like how you sort playing cards in your hand:
+✔ Take one card (element)
+✔ Compare it with left side (sorted part)
+✔ Insert it at correct position
+✔ Shift elements as needed
+That’s why it's called INSERTION sort.
+
+
+📌 Concept in One Line
+👉 Take one element, move left until you find its correct position.
+Time complexity
+
+
+Best Case (O(n)):
+This occurs when the array is already sorted.
+Only one comparison is needed for each element
+to verify it is in the correct position.
+
+Average Case (O(n²)) and Worst Case (O(n²))
+
+O(1): Insertion Sort is an in-place sorting algorithm
+
+Insertion Sort is a stable sorting algorithm

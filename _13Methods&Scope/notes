@@ -1,0 +1,39 @@
+# Scope of variables in java
+  region from where a variable can be accessed.
+
+# Method level Scope of variables
+These are the variables that are declared the method and cannot be
+outside the method.
+
+# Block Level Scope of variables
+These are the variables that are declared inside the pair of
+brackets "{" and "}".
+A block of code may exit on its own {   } . and it can belong to an "if"
+statement
+
+# Formal Parameters and Actual Parameters
+Formal Parameters -> defined during function definition
+Actual Parameters -> defined when we are calling the function
+
+Pass by Value and Pass by Reference
+Pass by Value -> copies the value of actual parameter.
+                 called function create it own copies
+
+Pass by Reference -> Passes the parameter as reference(address).
+                     Called function does not create own copy.
+
+Pass by Value example
+
+Static int sum(int a , int b){
+
+}
+
+int x = 10;
+int y =20;
+sum(x,y)
+x ,y are made own copies to pass the value in method
+if they are modify in the function then x and y original value
+does not change.
+
+
+

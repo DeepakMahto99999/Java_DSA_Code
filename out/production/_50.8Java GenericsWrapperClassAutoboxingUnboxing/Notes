@@ -1,0 +1,55 @@
+Wrapper Classes
+
+A Wrapper class in java is a class whose wraps or contains primitive data
+types.When we create an object to a wrapper class , it contains a field and in this field , we can store primitive data types.
+
+Need of Wrapper Classes
+
+1.The classes in java.util package handles only objects and hence wrapper
+  classes help in this case also.
+2.Data structures in the Collection framework,such as ArrayList and Vector,store only objects(reference types) and not primitive types.
+3.An object is needed to support synchronization in multithreading
+
+
+Autoboxing and Unboxing
+
+The automatic conversion of primitive types of the object of their corresponding wrapper classes is known as autoboxing.For example - conversion of int to Integer, long to Long , double to Double , etc.
+
+It is just the reverse process of autoboxing. Automatically converting an object of a wrapper class to its corresponding primitive type is known as unboxing.For example - conversion of Integer to int , Long to long , Double to double, etc.
+
+
+Generics
+
+Generics means parameterized types. Using Generics , it is possible to create classes that work with different data types. An entity such as class, Interface , or method that operates on a parameterized type is a generic entity.
+
+
+// crate a generics class
+
+class GenericsClass<T> {
+
+// variable of T type
+ private T data;
+
+ public GenericsClass(T data) {
+  this.data = data;
+  }
+
+  // method that return T type variable
+  public T getData() {
+    return this.data;
+ }
+
+
+ Java Generics Method
+
+Similar to the generics class, we can also create a method that can be used with any type of data. Such a method is known as Generis Method.
+
+public <T> void genericMethod(T data) {...}
+
+Here, the type parameter <T> is inserted after the modifier public and before the return type void.
+We can call the generics method by placing the actual type <String> and <Integer> inside the bracket before the method name.
+
+demo.<String>genericMethod("Java Programming");
+demo.<Integer>genericMethod(25);
+
+

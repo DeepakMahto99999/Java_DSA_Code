@@ -1,0 +1,124 @@
+1. Java Collection Framework
+2. Java Collection Interface
+3. Java List Interface
+4. Java ArrayList
+5. Java LinkedList
+6. Java Vector
+7. Java Stack
+
+
+Java Collection Framework
+The java collection framework provides a set of interface and classes to implementation various data structures and algorithm. These interface include several methods to perform different operations on collections.
+
+          collection                Map             Iterator
+
+List     set          queue        sortedMap         ListIterator
+
+         sortedSet     Deque
+
+
+Java Collection Interface
+
+          collection
+
+List     set          queue
+
+         sortedSet     Deque
+
+
+
+##  Vector
+
+ A Vector in Java is a dynamic array that is part of the java.util package. It is similar to ArrayList but with one key difference: it is synchronized, meaning it is thread-safe and can be used in a multi-threaded environment without additional synchronization.
+
+Difference between Vector and ArrayList
+
+Synchronization
+In a Vector  Synchronized (Thread-safe)
+In a ArrayList Not synchronized (Not thread-safe)
+
+Performance
+In Vector Slower due to synchronization
+In ArrayList Faster as it is not synchronized
+
+
+Growth Rate
+In Vector Doubles its size when resized
+In ArrayList Increases by 50% when resized
+
+Usage
+In Vector Used when multiple threads access the list
+In ArrayList Used in single-threaded applications for better performance
+
+
+
+
+Vector Synchronization
+
+Since Vector methods like add(), remove(), and get() are synchronized, they are safe to use in a multi-threaded environment. However, due to this synchronization overhead, ArrayList is preferred for performance reasons in single-threaded applications.
+
+
+
+If you need synchronization with ArrayList, you can use:
+
+List<String> list = Collections.synchronizedList(new ArrayList<>());
+
+
+
+Java Code Example: Vector Usage
+Here’s a simple example demonstrating the use of a Vector:
+
+import java.util.Vector;
+
+public class VectorExample {
+    public static void main(String[] args) {
+        // Creating a Vector
+        Vector<String> vector = new Vector<>();
+
+        // Adding elements
+        vector.add("Apple");
+        vector.add("Banana");
+        vector.add("Cherry");
+
+        // Accessing elements
+        System.out.println("First Element: " + vector.get(0));
+
+        // Removing an element
+        vector.remove("Banana");
+
+        // Iterating through the Vector
+        System.out.println("Vector elements:");
+        for (String fruit : vector) {
+            System.out.println(fruit);
+        }
+    }
+}
+Output:
+
+First Element: Apple
+Vector elements:
+Apple
+Cherry
+
+
+What is Enum in Java?
+In Java, enum (short for enumeration) is a special data type used to define a collection of constants. Enums are useful when you have a fixed set of known values, such as days of the week, months, directions, etc.
+
+✅ Enum constants are implicitly public static final.
+✅ Enums can implement interfaces but cannot extend a class.
+✅ Enum constructors are private or default (not public or protected).
+✅ valueOf() method returns an enum constant based on its name.
+✅ ordinal() gives the position of the constant in the enum.
+✅ values() returns an array of all enum constants.
+
+Enums in Java are useful when working with predefined sets of constants. They provide better type safety, prevent invalid values, and can have methods, constructors, and interfaces implemented for added functionality.
+
+
+
+
+
+
+
+
+
+

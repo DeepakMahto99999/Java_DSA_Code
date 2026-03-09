@@ -1,0 +1,15 @@
+if we have n =3 , m=4
+
+row wise sorted element
+
+   0     1     2     3
+0  0m+0  0m+1  0m+2  0m+3
+
+1  m    m+1    m+2    m+3
+
+2  2m   2m+1   2m+2   2m+3
+
+r = (rm + c)/m
+c = (rm + c) % m
+
+

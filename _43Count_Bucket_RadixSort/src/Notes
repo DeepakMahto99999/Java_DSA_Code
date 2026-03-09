@@ -1,0 +1,56 @@
+==> CountSort
+1. non-comparison algorithm
+2. Range of number define (1-100) -->k
+3.If range is not given then maximum number is range
+4. No In-place algorithm
+steps
+
+1.find the maximum value from the arr and make a count array with max + 1 len.
+2. In the count  the frequency of array
+3. make this count array to  prefix sum if you want sorted in increasing order.
+4. this prefix sum help you to find the last index of any number
+5.traverse the array from back store value in output array
+6.All output array to original arr.
+
+Worst case: The largest element is much larger than the other elements.
+O(n+k)
+SPACE COMPLEXITY:
+O(k)
+
+==> RadixSort
+1. non-comparison algorithm
+2. digit by digit sorting , place value / position of digit in a number
+in this algorithm we use the countSort method for each unit , tenth , hundred places
+
+n = number of digits in the largest element
+Best case: When all elements have the same number of digits.
+O(a(n+b))
+
+Average case: There are 'p' passes, and each digit can have up
+to 'd' different values. O(p*(n+d))
+
+Worst case: When all elements have the same number of digits except
+one, which has a significantly larger
+number of digits.
+O(n2)
+
+SPACE COMPLEXITY:
+O(n+k)
+
+
+===> BucketSort
+this is use when the numbers are uniformly distributed
+1. put all element in b no. of buckets.
+2. Sort each bucket individually.
+3.Take out all element and join them and merge them
+
+TIME COMPLEXITY:
+n = number of elements, k = number of buckets
+Best case: When the elements are distributed in a balanced manner across the buckets.
+O(n+k)
+Average case: When the elements are distributed randomly in the list.
+O(n)
+Worst case: When every element is stored in the same bucket
+O(n2)
+SPACE COMPLEXITY:
+O(n+k)

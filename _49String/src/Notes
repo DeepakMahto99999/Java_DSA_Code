@@ -1,0 +1,771 @@
+✅ 1. Declaration & Initialization
+String str = "Deepak";     // stored in String Pool (interned)
+String s  = new String("Deepak"); // stored in Heap (not interned)
+
+
+ ✅ String Pool & Interning in Java — Simple Explanation
+ In Java, String is a special class, and Java optimizes memory for Strings using something called:
+ ⭐ String Constant Pool (SCP)
+ This is a special area inside the Heap memory where Java stores unique string objects.
+
+ 🟦 Case 1: String str = "Deepak";
+ ✔ Stored in String Constant Pool (SCP)
+ ✔ Java checks in SCP:
+ "Is the string "Deepak" already present?"
+ If YES → reuse the same object
+ If NO → create a new object in SCP
+ ✔ No new object is created if it already exists
+ ✔ This string is interned (added to the pool)
+
+
+ 🟩 Meaning:
+ All references with the same literal "Deepak" will point to the SAME object.
+ Example:
+ String a = "Deepak";
+ String b = "Deepak";
+ 👉 Both a and b point to same memory object in SCP.
+
+ 🟧 Case 2: String s = new String("Deepak");
+ ❌ NOT stored in String Pool
+ ✔ Stored in Heap Memory
+ ✔ A new object is created every time, even if "Deepak" is already in the pool.
+ Example:
+ String x = new String("Deepak");
+ String y = new String("Deepak");
+ 👉 Here, two different objects are created in the heap.
+ Even though both have the same value "Deepak", they are stored separately.
+
+
+ 🔥 Key Difference (VERY IMPORTANT)
+ Code	                         Stored In	        Interned?	 Same ObjectReused?
+ String s = "Deepak";	         String Pool(SCP)    YES	         YES
+ String s =new String("Deepak");	Heap	          NO	          NO
+
+ 👉 Why does Java use String Pool?
+ Because Strings are used a LOT (names, messages, file paths, etc.)
+ If Java created new objects every time, memory would explode.
+ So Java keeps only one copy of each unique literal.
+ This is String Interning.
+
+ ⭐ What is Interning?
+ Interning means:
+ Storing only one copy of a string in the String Pool and reusing it.
+
+ You can manually intern a string too:
+ String a = new String("Deepak");
+ String b = a.intern();
+
+ Now:
+ b → points to String Pool object "Deepak"
+ a → still points to heap object
+
+ ✔ Final Example to Understand Clearly
+ String p = "Deepak";
+ String q = "Deepak";
+ String r = new String("Deepak");
+
+
+ Memory:
+ SCP:
+ "Deepak" ← used by p and q
+ Heap:
+ New "Deepak" object (for r)
+
+ 🔥 Comparisons
+ p == q   // true (same object)
+ p == r   // false (different objects)
+ p.equals(r) // true (same content)
+
+
+
+📝  new String() and Interning
+1. Two Objects Created
+
+When you write:
+String c = new String("Deepak");
+JVM creates two objects:
+One in String Constant Pool (SCP) → "Deepak"
+One in Heap (because of new)
+c always points to the heap object.
+
+2. Pool Object Not Used Automatically
+The SCP object created here is NOT used by c.
+It stays in memory unused unless needed later.
+
+3. When Is the Pool Object Used?
+The pool object is used only when:
+✔ You call .intern()
+String e = c.intern();
+e will now point to the SCP object.
+
+✔ You create a literal
+String x = "Deepak";
+x will also point to the same SCP object.
+
+4. Why Use .intern()?
+To force a heap string to use the shared SCP object, improving memory reuse.
+
+5. Why Avoid new String()?
+Because it creates:
+One heap object
+One unused pool object
+→ Wastes memory
+
+
+
+✅ 1.2   Immutability of Strings
+⭐ Definition
+
+A String in Java cannot be changed once created.
+Any modification results in a new String object.
+
+Example
+String s = "Hello";
+s.charAt(0) = 'Y';   // ❌ Not allowed — Strings are immutable
+s = "Yellow";        // ✔ Allowed — new String object created
+
+⭐ Why are Strings Immutable? (Very Important for Interviews)
+✅ 1. Security
+
+| Area                  | Why String Immutability is Important    |
+| --------------------- | --------------------------------------- |
+| File paths            | Prevents unauthorized file access       |
+| Class loading         | Ensures JVM loads correct classes       |
+| Network URLs          | Prevents redirection to malicious sites |
+| Database URLs         | Protects DB credentials and connections |
+| Environment variables | Prevents system manipulation            |
+
+
+Example
+String password = "12345";
+// If mutable → someone could modify password in memory 😱
+→ Huge security risk!
+Immutability protects against this.
+
+
+✅ 2. String Pool Optimization (Memory Saving)
+Java stores common strings in String Constant Pool (SCP).
+String s = "Hello";
+String x = "Hello";
+Both refer to the same object.
+📌 If Strings were mutable:
+If x modified the shared object → s would also change
+Entire JVM behaviour becomes unpredictable
+Example (if mutable):
+x.charAt(0) = 'M';
+Then both become "Mello" → ❌ WRONG!
+
+Immutability makes sharing safe.
+
+
+
+✅ 3. Thread-Safety (No Locks Required)
+Since a String cannot change:
+multiple threads can use the same string safely
+no need for synchronization
+faster performance
+fewer bugs
+
+✅ 4. Better Hashing Performance (HashMap, HashSet)
+HashMap stores keys based on:
+hashCode()
+equals()
+Since String never changes:
+hashCode remains constant
+so HashMap lookup remains accurate
+
+❌ If String were mutable:
+Example:
+Map<String, Integer> map = new HashMap<>();
+map.put("abc", 100);
+// Suppose "abc" is modified to "xyz" in memory
+
+What happens?
+HashMap stored "abc" under bucket hash for "abc"
+After mutation, hashCode changes!
+But it's still in the old bucket…
+👉 You can never find the key again
+👉 Retrieval fails
+👉 Map becomes corrupted
+
+This is why Strings MUST be immutable.
+
+
+
+✅ 2. Taking Input in Java
+next()
+* Reads only one word (stops at space)
+String s = sc.next();
+
+Input: Hello Deepak
+Output: Hello
+
+nextLine()
+Reads entire line including spaces
+String s = sc.nextLine();
+
+Input: Hello Deepak
+Output: Hello Deepak
+
+
+
+
+✅ 3. charAt() & length()
+charAt(index) → gives character at index
+length() → gives total characters
+String str = "Deepak";
+str.charAt(3); // p
+str.length();  // 6
+
+
+✅ 4. indexOf()
+Finds first occurrence of a character or string.
+String str = "Deepak";
+str.indexOf('e');    // 1
+str.indexOf("pak");  // 3
+str.indexOf('z');    // -1 (not found)
+
+
+
+✅ 5. compareTo()
+compares two strings lexicographically and returns a signed integer based
+on the difference of the first unequal character.
+
+It belongs to the Comparable interface, implemented by the String class.
+
+🔥 Syntax
+int result = string1.compareTo(string2);
+
+🔥 Return Values (Interpretation)
+| Return Value       | Meaning                                 | Explanation                                                           |
+| ------------------ | --------------------------------------- | ----------------------------------------------------------------------|
+|        0           | Strings are equal                       | All characters match and lengths are same                             |
+|     > 0 (positive) | `string1` is greater than `string2`     | First non-matching character in `string1` has a  higher Unicode value |
+|     < 0 (negative) | `string1` is smaller than `string2`     | First non-matching character in `string1` has a  lower Unicode value  |
+
+
+🔥 How It Works Internally
+Compares characters from left to right.
+If characters are equal → move to next character.
+If characters differ:
+Return string1.char - string2.char
+If one string ends but characters match so far:
+Longer string is considered greater.
+
+🔥 Examples
+1. Equal Strings
+"abc".compareTo("abc");   // 0
+
+✔ All characters match → result is 0
+2. First String Greater
+"bbc".compareTo("abc");  // +1
+'b' (98) - 'a' (97) = +1   --->ascii value
+✔ "bbc" comes after "abc" in dictionary order.
+
+3. First String Smaller
+"abc".compareTo("zbc");  // -25
+'a' (97) - 'z' (122) = -25
+✔ "abc" comes before "zbc".
+
+4. Strings of Different Lengths
+    String s = "Deepak";
+    String d = "Deep";
+    System.out.println(d.compareTo(s));
+    System.out.println(s.compareTo(d));
+👉 "Deep" is shorter
+👉 "Deepak" is longer
+
+📌 Java rule:
+If one string ends, but all compared characters match,
+then shorter string is considered smaller.
+
+d.length() - s.length() = 4 - 6 = -2
+s.length() - d.length() = 6 - 4 = +2
+
+When strings match until one ends → shorter string is smaller.
+"Deep" is shorter → so d.compareTo(s) = negative
+"Deepak" is longer → so s.compareTo(d) = positive
+
+
+🔥Key Notes
+Comparison is case-sensitive
+'A' < 'a' because 65 < 97
+Uses Unicode values, not ASCII technically, but logic is same.
+Useful for:
+Sorting strings
+Custom ordering
+
+
+
+✅ 6. contains(), startsWith(), endsWith()
+
+🔥6.1 contains()
+Checks if the string contains a given substring anywhere.
+Syntax
+str.contains("substring");
+
+Notes
+Case-sensitive
+Returns true if the substring exists anywhere in the string
+Returns false otherwise
+
+Example
+"Deepak".contains("epa");   // true
+"Deepak".contains("PAK");   // false
+
+🔥 6.2. startsWith()
+Checks if the string begins with the given prefix.
+Syntax
+str.startsWith("prefix");
+
+Notes
+Case-sensitive
+Matching always starts from index 0
+Example
+"Deepak".startsWith("De");   // true
+"Deepak".startsWith("ee");   // false
+
+🔥 6.3. endsWith()
+Checks if the string ends with the given suffix.
+Syntax
+str.endsWith("suffix");
+Notes
+Case-sensitive
+
+Compares characters at the end of the string
+Correct Examples
+"Deepak".endsWith("pak");   // true   (last 3 letters = p a k)
+"Deepak".endsWith("ak");    // true   (last 2 letters = a k)
+"Deepak".endsWith("eep");   // false
+
+
+
+✅ 7. Case Conversions
+s.toLowerCase();
+s.toUpperCase();
+
+
+❗ Why String is Slow (Poor Performance)?
+
+Because every modification creates a new object.
+
+String str = "";
+for(int i=0; i<10; i++){
+    str = str + i;   // every time new string created
+}
+
+Time Complexity → O(n²)
+Memory → wasted
+
+
+✅ 8. concat()
+String s3 = s1.concat(s2);
+Same as:
+String s3 = s1 + s2;
+
+
+
+✅ 9. substring(i, j) & substring(i)
+| Syntax          | Meaning       |
+| --------------- | ------------- |
+| substring(i, j) | from i to j-1 |
+| substring(i)    | from i to end |
+
+
+String s = "abcd";
+s.substring(0,3); // "abc"
+s.substring(2);   // "cd"
+
+
+
+
+✅ 10. Interning and new
+String str = "Hello";
+String gtr = "Hello";
+Internally they are pointing to the same memory location because
+both have same content , that  is known as Interning . str and grt
+have same address.
+
+why ? we have to save space
+
+String x = new String("Hello");
+To avoid interning we using new keyword in java
+
+String s = "Hello";
+String x = "Hello";
+ x = "cello";
+Initially there are pointing to same address but when we write the
+x = "cello" then are pointing to different address because string
+are immutable.
+
+
+
+
+# Performance of Strings
+
+poor Performance  --> immutability
+String str = "a"
+str += 'b';
+str += 'c';
+when we make this changes in every step it will take some memory space
+
+str  ----> "a";
+str  ----> "ab"
+str  ----> "abc"
+
+it's waste of memory it will increase timeComplexity
+if n number of operation occur in the string then the total number of
+operation is (n*(n+1))/2;
+
+
+✅ 12. equals() vs ==
+== --> this is a comparator operator this will work on int , char , double
+       but this will not work in String
+
+| Operator    | What it checks               |
+| ----------- | ---------------------------- |
+| `==`        | Checks address (reference)   |
+| `.equals()` | Checks actual content        |
+
+
+String s1 = "hello";
+String s2 = "hello";
+String s3 = new String("hello");
+
+s1 == s2  → true   (same address)
+s1 == s3  → false  (different object)
+s1.equals(s3) → true (same content)
+
+
+s1.equals(s3) --> first will check the address if address is same then it
+                  will return true if address is not same then it will
+                  compare character by character then if all character of
+                  string is same then it will return true
+
+
+
+✅ 13. Java StringBuilder Class
+
+StringBuilder is a mutable (changeable) string class used to build or modify strings efficiently.
+
+⭐ 1) Why StringBuilder?
+🔹 Problem With String -->  Strings are immutable
+
+Every modification (+=) creates a new String object
+This causes poor performance in loops or repeated operations
+
+Example:
+
+String str = "abc";
+str += "xyz";
+❌ Wrong understanding:
+It does NOT “add after abc in the same memory”.
+
+✔ Correct:
+"abc" → stays in String Pool
+"abcxyz" → new object created in Heap
+str now points to new object
+
+So every change = new object → slow.
+
+⭐ 2) StringBuilder: Mutable (Changeable)
+StringBuilder modifies the same object without creating new ones.
+
+⭐ 3) charAt() vs setCharAt()
+✔ String has:
+char ch = str.charAt(0);   // allowed (read only)
+
+❌ Not allowed:
+str.charAt(0) = 'D';       // NOT allowed (String immutable)
+
+
+✔ StringBuilder allows modification:
+StringBuilder sb = new StringBuilder("hello");
+sb.setCharAt(0, 'D');   // modifies in place
+
+Result:
+"hello" → "Dello"
+Because StringBuilder is mutable.
+
+
+
+| Feature        | String           | StringBuilder                   |
+| -------------- | ---------------- | ------------------------------- |
+| Mutable?       | ❌ No            | ✔ Yes                           |
+| charAt()       | ✔ Yes            | ✔ Yes                           |
+| setCharAt()    | ❌ No            | ✔ Yes                           |
+| Performance    | Slow for updates | Fast                            |
+| Stored in SCP? | Yes (literals)   | No                              |
+| Best Used For  | Fixed text       | Loops, appending, modifications |
+
+
+
+🔥 14. StringBuilder Important Functions
+
+->  Declaration of StringBuilder
+ StringBuilder str = new StringBuilder();
+ () inside we can give the capacity of str but when we declare not  the
+ capacity of string then default capacity will be 16.
+
+
+✔ setCharAt(index, char)  and ✔ append()
+ str.setCharAt(0,'m');
+ System.out.println(str);
+
+append(int) , append(str)
+sb.append("world");
+sb.append(10);
+sb.append('c');
+
+
+✔ insert(index, char/string)  and ✔ deleteCharAt(index)
+       01234
+str = "hello";  --> str.insert(0,m)  --> mhello
+str.deleteCharAt(0) --> hello
+
+✔ delete(start, end)  and ✔ reverse()
+Removes chars from start → end-1
+0123456
+physics
+sb.delete(2,4); //  2 to 3 delete
+System.out.println(sb); // phics
+
+
+
+
+
+
+✅ Internal Working of StringBuilder
+StringBuilder works using a mutable (changeable) char array inside it.
+It keeps an internal buffer like this:
+char[] value;
+int count;   // number of characters currently used
+
+
+⭐ 1. When you create StringBuilder
+StringBuilder sb = new StringBuilder("hello");
+Internal buffer looks like:
+value = ['h','e','l','l','o', _, _, _, _]   // extra empty space
+count = 5
+✔ StringBuilder allocates extra capacity so it can grow without creating new objects every time.
+
+
+⭐ 2. When you append
+sb.append("world");
+StringBuilder does not create a new object.
+It simply fills the same char[]:
+value = ['h','e','l','l','o','w','o','r','l','d', _, _, _]
+count = 10
+✔ No new String created
+✔ Same buffer reused → FAST
+
+
+⭐ 3. If buffer becomes full → capacity expands
+StringBuilder uses this formula:
+newCapacity = oldCapacity * 2 + 2
+This avoids frequent resizing.
+
+Example:
+Old capacity = 16
+New capacity = 16*2 + 2 = 34
+So, StringBuilder grows automatically.
+
+
+⭐ 4. setCharAt() modifies directly
+sb.setCharAt(0, 'D');
+Internally:
+value[0] = 'D';
+✔ Direct update
+✔ No new object
+✔ This is why StringBuilder is FAST
+✔ Cannot do this with String (because String is immutable)
+
+⭐ 5. toString() creates final String
+String finalString = sb.toString();
+Now Java creates a brand-new String using the current char array.
+This returns an immutable string.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✅ Java StringBuffer Class (Complete Notes)
+⭐ What is StringBuffer?
+StringBuffer is a mutable string class like StringBuilder, but it is thread-safe.
+This means multiple threads can safely use the same buffer.
+⭐ WHY StringBuffer exists?
+Because:
+String is immutable ❌ (slow in modifications)
+StringBuilder is mutable but not thread-safe ❌
+StringBuffer is mutable and thread-safe ✔ (synchronized)
+
+
+⭐ Key Features
+✔ 1. Mutable
+You can modify the content without creating new objects.
+StringBuffer sb = new StringBuffer("hello");
+sb.append("world");  // modifies same object
+✔ 2. Thread-Safe (Synchronized)
+Every method in StringBuffer is synchronized.
+Meaning:
+Only one thread can modify it at a time
+Safe to use in multithreaded applications
+
+Because of this:
+StringBuffer is slower than StringBuilder
+✔ 3. Stores characters in a mutable char[] buffer
+Internal structure is like:
+
+char[] value;   // buffer
+int count;      // number of characters used
+
+✔ 4. Capacity grows automatically
+Default capacity = 16
+If needed, new capacity = oldCapacity * 2 + 2
+
+⭐ Common Methods
+append()
+insert()
+delete()
+deleteCharAt()
+replace()
+reverse()
+setCharAt()
+length()
+capacity()
+
+⭐ Example Usage (Simple)
+StringBuffer sb = new StringBuffer("Hello");
+sb.append(" Java");
+System.out.println(sb);  // Hello Java
+
+Example:
+StringBuffer sb = new StringBuffer("Deep");
+  // 🔹 Create StringBuffer
+        StringBuffer sb = new StringBuffer("Deep");
+        System.out.println("Original: " + sb);
+
+        // ⭐ 1. append()
+        sb.append("ak");
+        System.out.println("append(): " + sb);  // Deepak
+
+        // ⭐ 2. insert()
+        sb.insert(0, "Mr ");
+        System.out.println("insert(): " + sb);  // Mr Deepak
+
+        // ⭐ 3. delete(start, end)
+        sb.delete(0, 3);
+        System.out.println("delete(): " + sb);  // Deepak
+
+        // ⭐ 4. deleteCharAt(index)
+        sb.deleteCharAt(0);
+        System.out.println("deleteCharAt(): " + sb);  // eepak
+
+        // ⭐ 5. replace(start, end, string)
+        sb.replace(0, 2, "De");
+        System.out.println("replace(): " + sb);  // Deepak
+
+        // ⭐ 6. setCharAt(index, char)
+        sb.setCharAt(0, 'K');
+        System.out.println("setCharAt(): " + sb); // Keepak
+
+        // ⭐ 7. reverse()
+        sb.reverse();
+        System.out.println("reverse(): " + sb);  // kapeeK
+
+        // ⭐ 8. length()
+        System.out.println("length(): " + sb.length());
+
+        // ⭐ 9. capacity()
+        System.out.println("capacity(): " + sb.capacity());
+
+
+
+
+
+
+✅ 2. What is Thread-Safety?
+If multiple threads use the ``same object`` at the ``same time``,
+and the program still works correctly → it is thread-safe.
+Meaning:
+No data corruption
+No race conditions
+No inconsistent data
+
+
+❌ Problem Without Thread Safety
+Imagine two threads modifying the same string:
+Thread A:
+sb.append("Hello ");
+Thread B:
+sb.append("World");
+If they run at the same time → data may mix like:
+HeWollrldo
+This is called race condition.
+
+
+⭐ Thread Safety prevents this.
+✅ 3. How to make a class thread-safe?
+By using synchronization.
+That means:
+Only ONE thread can modify the object at one time.
+Others must wait.
+It’s like a toilet lock:
+Thread A locks → uses → unlocks
+Thread B waits until free
+
+
+⭐ StringBuffer is synchronized → thread-safe
+StringBuffer sb = new StringBuffer("A");
+Every method (append(), delete(), insert(), etc.) is synchronized.
+So:
+If two threads try to modify sb
+Only one will enter
+No corruption
+Output is correct
+
+
+
+❗ Why StringBuilder is faster?
+Because StringBuilder does NOT lock methods.
+✔ Fast
+❌ Not safe in multithreading
+❓ So why do we need this in String classes?
+Because strings get modified a lot in programs.
+If multiple threads change the same string at the same time:
+Data can corrupt
+Output becomes wrong
+Application can crash
+So we use:
+StringBuilder → fast, but not thread-safe, use in normal apps
+StringBuffer → safe for multi-threaded code
+
+
+
+
+| Feature           | **String**  | **StringBuilder**  | **StringBuffer**                 |
+| ----------------- | ----------- | ------------------ | -------------------------------- |
+| **Mutability**    | ❌ Immutable | ✔ Mutable          | ✔ Mutable                        |
+| **Thread Safety** | ✔ Safe      | ❌ Not Safe         | ✔ Safe (Synchronized)            |
+| **Performance**   | ❌ Slow      | 🟢 Fastest         | 🟡 Medium (because synchronized) |
+| **Best Use**      | Fixed text  | Many modifications | Multi-thread modifications       |
+
+
+
+
+
+
+
+
+
+
+

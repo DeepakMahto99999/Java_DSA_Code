@@ -1,0 +1,186 @@
+Java Abstract Class
+
+The abstract class in java cannot be instantiated(we cannot create objects of abstract classes). We use the abstract keyword to declare an abstact class.
+* An abstract class can have both regular methods and abstract methods.
+* A method that doesn't have its body is known as an abstract method.
+* Though abstract classes cannot be instantiated, we can create subclasses from it. We can then access members of the abstract class using the object of the subclass.
+* if the subclass included any abstract method , then all the child classes inherited from the abstract superclass must provide the implementation the abstract method.
+
+
+So, the main reason for abstract classes is:
+✔ To set rules for related things.
+✔ To avoid creating something incomplete that doesn’t make sense.
+✔ To ensure subclasses follow a common pattern while still having their
+  own unique details.
+
+It’s like having a house blueprint—you know it must have rooms, doors, and windows, but the exact design of each house depends on the builder. 🚀
+
+Java Abstraction
+
+Abstraction is an important concept of oops that allow us to hide unnecessary details and only show the needed information.
+This allows us to manage complexity by omitting or hiding details with a simpler , higher-level idea.
+
+## Java Interfaces
+An interface is a fully abstract class. It includes a group of abstract methods (methods without a body).
+We use the interface keyword to create an interface in Java.
+
+Like abstract classes , we cannot objects of interfaces.
+To use an interface, other classes must implement it.We use the implements keyword to implement an interface.
+
+## WHY multiple inheritance is not allow in java
+The main reason multiple inheritance is not allowed in Java is to avoid ambiguity(confusion) when two parent classes have methods with the same name. This problem is called the Diamond Problem.
+
+Understanding the Diamond Problem
+Imagine Java allowed multiple inheritance with classes. Consider this scenario:
+
+class A {
+    void fun() {
+        System.out.println("A's fun()");
+    }
+}
+
+class B {
+    void fun() {
+        System.out.println("B's fun()");
+    }
+}
+
+// Hypothetical Multiple Inheritance (Not Allowed in Java)
+class C extends A, B { // ❌ Compilation Error in Java
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.fun();  // ❓ Which fun() will be called? A's or B's?
+    }
+}
+
+Problem: Ambiguity in Method Resolution
+Both A and B have a method named fun().
+Class C extends both A and B.
+When we call obj.fun(), Java gets confused (which version should it call?)
+Should it call A's fun() or B's fun()? 🤔
+There is no way to decide this automatically!
+
+
+Java’s Alternative: Interfaces
+Instead of multiple inheritance with classes, Java uses interfaces because:
+
+Interfaces don’t store method implementations, only method declarations.
+No ambiguity arises, as the implementing class must define the method itself.
+
+Example:
+
+interface A {
+    void fun();  // Method declaration
+}
+
+interface B {
+    void fun();
+}
+
+class C implements A, B {
+    @Override
+    public void fun() {  // Must define fun() to resolve ambiguity
+        System.out.println("C's fun()");
+    }
+
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.fun();  // No ambiguity, calls C's fun()
+    }
+}
+
+This is why Java allows multiple interfaces but not multiple class inheritance!
+
+
+
+Advantages of Java Interfaces
+
+* Similar to abstract classes , interfaces help us to achieve abstraction in Java.
+*  Interfaces are also used to achieve multiple inheritance in Java.
+* Note: All the methods inside an interface are implicitly public and all fields are implicit public static final.
+
+interface Line {
+...
+}
+interface Polygon {
+...
+}
+class Rectangle implements Line , Polygon {
+..
+}
+
+Java have default method in interface
+
+Why Are Default Methods Needed?
+In Java 8, interfaces originally could only have abstract methods, meaning:
+
+If we added a new method to an interface, all implementing classes had to override it.
+This would break existing code.
+To solve this, Java introduced default methods in interfaces. Now:
+
+We can define a method with a default implementation.
+Subclasses can override it if needed, but it’s not mandatory.
+
+
+
+## Inner classes and nested static  class in java
+
+
+A non-static nested class in a class within another class. It has access to members of the enclosing class(outer class). It is commonly known as inner class.
+Since the inner class exists within the outer class , you must instantiate the outer class first , in order to instantiate the inner class.
+
+Unlike inner class a static nested class cannot access the member variables of the outer class. It is because the static nested class doesn't require you to create an instance of the outer class.
+
+Using the nested class makes your code more readable and provide better encapsulation.
+
+
+
+## Anonymous Classes in Java
+in java , a class can contain another class known as nested class. It's possible to create a nested class without giving any name.
+A nested class that doesn't have any name is known as an anonymous class.
+
+Anonymous classes usually extend subclasses or implement interfaces.
+Here , Type can be
+1. a superclass that an anonymous class extends
+2. an interface that an anonymous class implements
+
+they use in make to comparator
+
+
+
+### Functional Interface
+
+An Interface that contains exactly one abstract method is known as a functional interface.
+
+Functional interfaces introduced in java 8 allow us to use a lambda expression to initiate the interface's method and avoid using lengthy codes for the anonymous class implementation
+
+// interface
+@FunctionalInterface
+interface Sample {
+    // abstract method
+    int calculate(int val);
+}
+
+
+## Lambda Expression
+
+(int x) -> x+1           // Single declared-type argument
+(int x) -> {return x+1;}   // same as above
+(x) -> x+1     // Single inferred-type argument, same as below
+x -> x+1       // Parenthesis optional for single inferred-type case
+
+(String s) -> s.length()       // Single declared-type argument
+(Thread t)  -> { t.start();}   //  Single declared-type argument
+s-> s.length()                 //  Single inferred-type argument
+t -> {t.start();}              //  Single inferred-type argument
+
+(int x , int y) -> x+y  //  multiple declared-type argument
+(x,y) -> x+y       //  multiple declared-type argument
+
+
+
+
+
+
+
+

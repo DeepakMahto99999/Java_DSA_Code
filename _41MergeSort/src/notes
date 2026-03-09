@@ -1,0 +1,11 @@
+Divide and Conquer approach
+
+Divide → split array into 2 halves
+Conquer → sort each half recursively
+Merge → combine 2 sorted halves into one sorted array
+
+merge sort is a stable sorting algorithm.
+Time complexity
+best . average , worst : O(n.logn);
+Space Complexity:
+𝑂(𝑛)
