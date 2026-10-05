@@ -7,10 +7,23 @@
 // push the element in stack every time
 
 
+
+
+//Biggest Mental Shift
+//        In method 1:
+//        current element searches for its answer
+//        In method 2:
+//        current element gives answers to previous elements
+//        This difference is HUGE.
+
+// Intuition :-
+// Your stack stores:
+// INDEXES of elements whose answer is NOT found yet
+// 1.Not random indexes. 2.Not all elements. 3.Only unresolved elements.
 // approach:- 2 ----> ans , pop , push
 // traversal the array from left to right
 // push the index 0
-// if current element of array is bigger than st.peek() than put in ans array
+// // if current element is greater than value at stack top index than put in ans array
 // and pop that element
 // push the index of current element
 

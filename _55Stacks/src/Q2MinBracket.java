@@ -1,3 +1,5 @@
+// Find how many brackets are unmatched after removing all valid pairs.
+
 import java.util.Scanner;
 import java.util.Stack;
 

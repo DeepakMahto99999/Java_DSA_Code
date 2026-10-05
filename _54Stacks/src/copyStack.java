@@ -22,6 +22,21 @@ public class copyStack {
 
     }
 
+    public static void copyStack2(Stack<Integer> original ,Stack<Integer> copy){
+        if (original.isEmpty()) return;
+
+        int val = original.pop();
+
+//        copyStack2(original,copy);
+//
+//        original.push(val);
+//        copy.push(val);
+
+        copy.push(val);
+        copyStack2(original, copy);
+        original.push(val);
+    }
+
     public static void main(String[] args) {
 
         Stack<Integer> st = new Stack<>();
@@ -31,7 +46,12 @@ public class copyStack {
         st.push(4);
         System.out.println("Original Stack: " + st);
 
-        Stack<Integer> copiedStack = copyStack(st);
-        System.out.println("Copied Stack:   " + copiedStack);
+        Stack<Integer> copy = new Stack<>();
+        copyStack2(st , copy);
+        System.out.println("Copied Stack:   " + copy);
+
+
+//        Stack<Integer> copiedStack = copyStack(st);
+//        System.out.println("Copied Stack:   " + copiedStack);
     }
 }

@@ -1,0 +1,38 @@
+About Main2.java
+
+Imagine 100 Animal Types
+
+Without polymorphism
+
+
+playDogSound(Dog dog)
+playCatSound(Cat cat)
+playLionSound(Lion lion)
+playTigerSound(Tiger tiger)
+playCowSound(Cow cow)
+playGoatSound(Goat goat)
+...
+
+100 methods.
+
+With polymorphism
+
+Only one method
+
+public static void playSound(Animal animal){
+
+    animal.sound();
+
+}
+
+Works for
+
+Dog
+Cat
+Lion
+Tiger
+
+
+....
+
+No changes.

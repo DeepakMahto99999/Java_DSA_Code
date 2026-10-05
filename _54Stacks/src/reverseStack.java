@@ -32,7 +32,6 @@ public class reverseStack {
         s.push(top);
     }
 
-
     public static void reverseStackRec(Stack<Integer> s){
         if(s.isEmpty()) return;
         int top = s.pop();
@@ -51,9 +50,9 @@ public class reverseStack {
         System.out.println("Original stack: " + st);
 
 
-       // reverse(st);
-        reverseStackRec(st);
-        System.out.println(st);
+        reverse(st);
+//        reverseStackRec(st);
+//        System.out.println(st);
 
     }
 }

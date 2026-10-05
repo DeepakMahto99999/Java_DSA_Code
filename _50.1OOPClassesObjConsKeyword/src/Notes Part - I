@@ -1,0 +1,3234 @@
+
+### 1. `Java OOP Basics`
+[x] Programming Paradigm
+[x] Procedural Programming
+[x] Problems with Procedural Programming
+[x] Object-Oriented Programming (OOP)
+[x] Advantages and Need of OOP
+
+
+## 1.1 Programming Paradigm
+
+Definition
+
+A Programming Paradigm is a style or approach of writing and organizing code
+to solve a problem.
+
+Different paradigms solve the same problem in different ways.
+
+Real-Life Example
+
+Suppose you want to travel from Mumbai to Delhi.
+You can travel by:
+✈️ Flight
+🚆 Train
+🚌 Bus
+
+The destination is the same.
+Only the method of traveling is different.
+
+Similarly, in programming, different ways of solving a problem are called
+Programming Paradigms.
+
+1.1 Types of Programming Paradigms
+   Some common programming paradigms are:
+   1. Procedural Programming
+   2. Object-Oriented Programming (OOP)
+   1. Functional Programming
+   2. Logic Programming
+
+For learning Java OOP, we will focus primarily on procedural programming
+and object-oriented programming.
+
+
+------------------------------------------------
+
+`#### 2. Procedural Programming `
+
+`Definition`
+Procedural programming is a programming paradigm in which a program is organized into procedures (functions or methods) that execute instructions step by step.
+Simple explanation
+
+In procedural programming:
+- A program is divided into functions.
+- Each function performs a specific task.
+- Functions are executed in a particular sequence.
+- Data and functions are generally managed separately.
+
+Example
+public class Main {
+
+    static void startCar() {
+        System.out.println("Car Started");
+    }
+
+    static void stopCar() {
+        System.out.println("Car Stopped");
+    }
+
+    public static void main(String[] args) {
+        startCar();
+        stopCar();
+    }
+}
+
+Here,
+
+Output:
+Car Started
+Car Stopped
+
+
+Explanation
+- startCar() starts the car.
+- stopCar() stops the car.
+- main() calls these methods in sequence.
+- The program executes one instruction after another.
+
+
+Real-Life Example:    Making tea
+1.Boil water.
+2.Add tea leaves.
+3.Add sugar.
+4.Add milk.
+5.Serve tea.
+
+Each step is performed one after another.
+
+
+Characteristics of procedural programming
+- Divides a program into functions.
+- Follows a step-by-step execution approach.
+- Separates data from the functions that operate on it.
+- Is relatively simple to understand for small programs.
+- Focuses on procedures and operations.
+
+Advantages
+- Easy to learn.
+- Simple to understand.
+- Suitable for small programs.
+- Often requires less structural overhead for simple tasks.
+--------------------------------------------------------------
+
+#### 1.3 `Problems with Procedural Programming`
+
+Procedural programming works well for small applications. However, as
+applications grow, managing data and functions becomes more complicated.
+
+Let's understand its limitations.
+
+1. Data and functions are separate
+In procedural programming, data and the functions that operate on it are generally managed separately.
+Example:
+
+
+String name;
+int rollNo;
+double marks;
+
+static void addStudent() {
+    // Add student
+}
+
+static void updateStudent() {
+    // Update student
+}
+
+static void deleteStudent() {
+    // Delete student
+}
+
+
+Problem:
+The student data and related operations are not grouped together as one logical
+unit. As the application grows, it becomes harder to organize them.
+
+
+2. Less control over data access
+In a procedural design, data may be directly accessible to different parts of the program.
+Example:
+double balance = 5000;
+
+balance = -10000;
+
+
+Problem:
+The program can assign an invalid balance without any validation.
+This is a design and data protection issue that OOP can help address through encapsulation and access control.
+
+3. Code duplication
+The same logic may be repeated in multiple places.
+Example:
+System.out.println("Student: Deepak");
+System.out.println("Student: Rahul");
+System.out.println("Student: Aman");
+
+
+Problem:
+If the output format changes, the same modification may need to be made in several places.
+Functions can reduce this duplication, even without OOP, so code reusability is not exclusive to OOP.
+
+
+4. Difficult to maintain
+As the application grows:
+- More functions are added.
+- More data is managed.
+- Dependencies between functions become harder to track.
+- Changes can affect several parts of the program.
+This increases maintenance complexity.
+
+
+5. Difficult to scale and organize large applications
+Consider a Hospital Management System containing:
+- Patients
+- Doctors
+- Reception
+- Billing
+- Pharmacy
+- Reports
+
+If all the functionality is implemented in a large collection of functions
+and separate data structures, the system can become difficult to organize and extend.
+
+The issue is not that procedural programming cannot build large systems.
+It is that organizing complex systems with many related entities can
+become harder without additional design techniques.
+
+Summary of procedural programming limitations
+Problem	                             Explanation
+Data and functions separation	Related data and operations may be spread across the program.
+Data access control	            Direct modifications can lead to invalid data.
+Code duplication	            Repeated logic increases maintenance effort.
+Maintenance complexity	        Changes can affect multiple functions.
+Organization at scale	        Large systems can become difficult to structure.
+
+----------------------------------------------------------------------------------
+
+1.4 `Object-Oriented Programming (OOP)`
+
+`Definition`
+Object-Oriented Programming (OOP) is a programming paradigm that organizes
+programs around objects rather than only functions and procedures.
+
+An object combines related data (state) and behavior (methods) into a single unit.
+
+Why was OOP introduced?
+OOP helps address several limitations of procedural programming, especially
+when developing large and complex applications.
+
+Instead of keeping related data and operations separate, OOP groups them
+using classes and objects.
+
+Real-life example
+
+Consider a student.
+
+A student has certain properties:
+- Name
+- Roll number
+- Marks
+
+A student can also perform certain actions:
+- Display details
+- Calculate percentage
+- Update information
+
+In OOP, we can represent a student using a class.
+
+Example
+
+class Student {
+    String name;
+    int rollNo;
+    double marks;
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Marks: " + marks);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+
+        s1.name = "Deepak";
+        s1.rollNo = 101;
+        s1.marks = 85.5;
+
+        s1.display();
+    }
+}
+
+
+Output:
+Name: Deepak
+Roll No: 101
+Marks: 85.5
+
+
+Explanation
+- Student is a class.
+- name, rollNo, and marks are instance variables.
+- display() is an instance method.
+- s1 is a reference variable.
+- new Student() creates an object, which is an instance of the Student class.
+- The object contains its own student data and can use the methods defined by the class.
+
+Core idea of OOP
+                                  Class: Student
+
+                                   Data / State
+                                 name, rollNo, marks
+
+                                    Behavior
+                              display(), updateDetails()
+                                         |
+                                         V
+                                  Creates objects
+                 Object 1                            Object 2
+                Name: Deepak                        Name: Rahul
+                 Roll: 101                          Roll: 102
+
+
+
+Remember:
+Class = Blueprint
+Object = Instance created from the class
+Objects of the same class can have different data but share the methods defined by the class.
+
+
+
+
+
+1.5 Advantages and Need of OOP
+OOP is useful for organizing complex programs and managing related data and behavior together.
+
+Let's understand its main advantages.
+
+1. Better data organization
+Without OOP:
+Suppose we store student details in separate arrays.
+
+String[] names = {"Deepak", "Rahul", "Anjali"};
+int[] rollNos = {101, 102, 103};
+double[] marks = {85.5, 90.0, 78.5};
+
+Problem:
+- Each student's information is stored in separate arrays.
+- We must use matching indexes to connect the data.
+- If one array is updated incorrectly, the data can become inconsistent.
+
+
+With OOP:
+class Student {
+    String name;
+    int rollNo;
+    double marks;
+}
+
+Now, we can create individual student objects.
+
+Student s1 = new Student();
+s1.name = "Deepak";
+s1.rollNo = 101;
+s1.marks = 85.5;
+
+
+All the data related to one student is grouped inside one object.
+Benefit: Better organization and easier data management.
+
+
+2. Code reusability
+Code reusability means writing code once and using it multiple times
+instead of duplicating the same logic.
+
+class Student {
+    String name;
+    int rollNo;
+
+    void display() {
+        System.out.println(name + " " + rollNo);
+    }
+}
+
+We can create multiple objects and call the same method.
+
+Student s1 = new Student();
+s1.name = "Deepak";
+s1.rollNo = 101;
+
+Student s2 = new Student();
+s2.name = "Rahul";
+s2.rollNo = 102;
+
+s1.display();
+s2.display();
+
+Output:
+Deepak 101
+Rahul 102
+
+
+The display() method is written once and reused by both objects.
+
+Benefit: Less duplicated code and easier maintenance.
+
+Note that methods and functions can also be reused in procedural programming.
+OOP provides an additional way to organize reusable behavior with related data.
+
+
+3. Scalability and maintainability
+Scalability means the ability to extend an application as requirements grow.
+
+Maintainability means how easily an application can be understood,
+modified, debugged, and updated.
+
+Without OOP:
+When a student record requires a new address field, we may need to introduce
+another array and ensure that it stays synchronized with the existing arrays.
+
+With OOP:
+
+
+With OOP:
+class Student {
+    String name;
+    int rollNo;
+    double marks;
+    String address;
+}
+
+
+We add a new field to the class that represents a student.
+
+
+Benefits:
+- Related data remains together.
+- New features can be organized into appropriate classes.
+- Changes are often easier to manage.
+- The design can support growing requirements.
+
+OOP does not automatically make every program scalable or maintainable.
+Good class design still matters.
+
+
+
+4. Encapsulation and data protection
+Encapsulation means bundling data and methods into a class and controlling
+access to the internal data.
+
+For example:
+
+class BankAccount {
+    private double balance;
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+Here:
+- private prevents direct access to balance from outside the class.
+- deposit() controls how money is added.
+- getBalance() allows controlled access to the balance.
+
+Benefit:
+Encapsulation helps prevent invalid modifications and makes it easier to enforce rules.
+
+It is important to understand that encapsulation provides access control
+and data integrity mechanisms. It is not a complete security solution on its own.
+
+
+
+
+5. Real-world modeling
+OOP makes it possible to represent real-world entities as objects.
+
+
+Real-world entity	          Possible class	Example data
+Student	                         Student	  Name, roll number, marks
+Employee	                     Employee	  ID, name, salary
+Car	                                Car	      Model, color, speed
+Bank account	                BankAccount	  Account number, balance
+Product	                         Product	  Name, price, quantity
+Doctor	                         Doctor	       Name, specialization
+
+Benefit: Programs can be organized around entities and their relationships,
+making complex systems easier to understand.
+
+
+6. Modularity
+
+Modularity means dividing a program into smaller, independent, manageable parts.
+
+In OOP, we can create different classes for different responsibilities.
+
+For example, in a hospital management application:
+- Patient handles patient-related information.
+- Doctor handles doctor-related information.
+- Billing handles billing operations.
+- Appointment handles appointment-related information.
+
+Benefit:
+- Easier debugging.
+- Better organization.
+- Easier testing.
+- Different parts of the application can be developed and modified separately.
+
+
+Final comparison: Procedural programming vs OOP
+Feature	Procedural   programming	              Object-oriented programming
+Main focus	         Functions and procedures	  Objects and their interactions
+Organization	   Functions and data are generally separate	Related data and behavior are grouped
+Data management	    Often uses separate data structures	Objects hold related data
+Reusability	Functions can be reused	Classes, methods, inheritance, and composition support reuse
+Data access control	  Depends on language and design	Encapsulation provides access control
+Modularity	         Functions and modules	         Classes, objects, and modules
+Large applications	Can become harder to organize	Can provide structured organization
+Real-world modeling	  Possible, but often less direct	Directly models entities and relationships
+
+When should you use OOP?
+
+OOP is particularly useful when:
+- The application contains many related entities.
+- Data and operations need to be organized together.
+- The application has complex behavior and relationships.
+- You expect the application to grow and evolve.
+- You need clear boundaries between different components.
+
+Procedural programming is also appropriate for:
+- Small scripts.
+- Simple calculations.
+- Small utilities.
+- Straightforward programs with limited complexity.
+
+Neither paradigm is universally better. The right choice depends on the problem, its complexity, and the design requirements.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 2. `Class and Object`
+1. Class
+2. Object
+3. Class vs Object
+4. State, Identity and Behavior
+5. Instance Variables
+6. Instance Methods
+7. Creating Objects
+8. Accessing Members Using the Dot Operator
+9. Multiple Objects of a Class
+10. Reference Variables
+11. Object References vs Actual Memory Addresses
+12. Stack vs Heap Memory
+13. The new Keyword
+14. Object Creation Process
+15. Compiler vs JVM During Object Creation
+16. Reference Assignment
+17. Multiple References to the Same Object
+18. Object Copy vs Reference Copy
+19. null Reference
+20. Garbage Collection Basics
+
+
+
+
+** class  **
+
+A class is a template for an object, and an object is an instance of a class.
+A class creates a new data type that can be used to create objects.
+
+When you declare an object of a class, you are creating an instance of that class.
+Thus, a class is a logical construct. An object has physical reality.
+(That is, an object occupies space in memory.)
+
+
+# 6. Class Naming Conventions in Java
+
+Following proper naming conventions improves readability and follows Java
+standards.
+Naming Convention for Class and Object
+
+✅ 1. Class Name Should Start with an Uppercase Letter
+Correct: Student, Bank
+Incorrect: student, bank
+
+✅ 2. Use Upper Camel Case (Pascal Case) for Multi-Word Class Names
+Correct: BankController, StudentDetails
+Incorrect: bankcontroller, studentdetails, student_details
+
+✅ 3. The Class Name Should Be Descriptive
+It should give an idea of what the class does.
+Correct: CustomerAccount, OrderManager
+Incorrect: Xyz, Temp
+
+✅ 4. The Class Name Should Be a Noun
+Since a class represents an entity or object, it should be a noun.
+Correct: Car, Employee, Invoice
+
+These are actions (verbs) and should be used as method names.
+
+---
+
+
+
+
+# 7. Example of a Class
+
+```java
+class Student {
+    String name;
+    int rollNo;
+}
+```
+
+Another example:
+
+```java
+class BankController {
+
+}
+```
+
+---
+
+# 8. Ways to Create a Class in Java
+---
+## Method 1: Main Method Inside the Same Class
+```java
+public class DefaultValues {
+
+    int intVar;
+    double doubleVar;
+    char charVar;
+    boolean boolVar;
+    String strVar;
+
+    public static void main(String[] args) {
+
+        DefaultValues obj = new DefaultValues();
+
+        System.out.println(obj.intVar);
+        System.out.println(obj.doubleVar);
+        System.out.println(obj.charVar);
+        System.out.println(obj.boolVar);
+        System.out.println(obj.strVar);
+
+    }
+}
+```
+
+### Characteristics
+
+* Easy for beginners
+* Everything is inside one class
+* Mostly used for learning
+* Not commonly used in real projects
+
+---
+
+## Method 2: Main Method in Another Class
+
+```
+class Student {
+    int rollNumber;
+    String name;
+}
+```
+
+```
+public class TestStudent {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        System.out.println(s1.rollNumber);
+        System.out.println(s1.name);
+    }
+}
+```
+
+### Advantages
+* Better code organization
+* Class can be reused
+* Follows real-world development
+* Used in almost every Java project
+
+---
+
+
+### Class vs Object
+- **Class** → Blueprint or template
+- **Object** → Actual instance created from the class
+- **Object** → Occupies memory when created
+- One class can be used to create multiple objects.
+
+Example:
+```
+Student s1 = new Student();
+Student s2 = new Student();
+Student s3 = new Student();
+```
+
+
+Here, one `Student` class creates three separate `Student` objects.
+
+2.2 Object
+
+`Definition`
+
+An object is an instance of a class , that has its own identity, state, and behavior.
+
+An object is created at runtime and can be used to access instance
+members of its class.
+
+class Student {
+    String name;
+    int rollNo;
+
+    void study() {
+        System.out.println(name + " is studying");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+
+        s1.name = "Deepak";
+        s1.rollNo = 101;
+
+        s1.study();
+    }
+}
+
+Output:
+Deepak is studying
+
+
+Explanation:
+- new Student() creates a new Student object.
+- s1 is a reference variable that refers to the object.
+- name and rollNo store the object's state.
+- study() defines its behavior.
+
+
+
+
+**  Object = State + Identity + Behavior  **
+Objects are characterized by three essential properties: state, identity,
+and behavior.
+
+`State` is the data stored inside the object.
+For example
+Color = Red
+Speed = 80 km/h
+Model = Sedan
+
+`Identity` is what makes one object different from another object.
+Even if two cars have the same color and model, they are still two different
+objects.
+
+`Behavior` is what an object can do. For example, a car can start, stop, and
+accelerate."
+
+
+
+# 9. What Can a Java Class Contain?
+A Java class can contain the following members:
+
+---
+
+## 1. Data Members (Fields)
+Variables that store data.
+
+Instance Variables
+
+`Definition`
+
+An instance variable is a non-static variable declared inside a class but
+outside methods, constructors, and blocks.
+
+Each object has its own instance variables.
+
+Example
+class Student {
+    String name;
+    int age;
+}
+
+
+Here:
+- name is an instance variable.
+- age is an instance variable.
+
+---
+
+
+2 Instance Methods
+
+`Definition`
+An instance method is a non-static method associated with an object.
+It can access instance variables and other instance methods directly.
+
+Example
+class Student {
+    String name;
+
+    void display() {
+        System.out.println(name);
+    }
+}
+
+Here, display() is an instance method.
+
+
+Instance method vs static method
+Instance method                             Static method
+Associated with an object                   Associated with a class
+Can directly access instance variables      Cannot directly access instance variables
+Usually called using an object reference    Usually called using the class name
+Can use this                                Cannot use this
+
+Static methods will be covered in detail in the static keyword section.
+---
+
+
+# 9. Dot (`.`) Operator
+
+The dot (`.`) operator is used to **access the fields and methods of
+an object**.
+
+
+Example:
+
+```java
+Car myCar = new Car();
+myCar.color = "Red";
+myCar.start();
+```
+
+Here:
+
+```java
+myCar.color
+```
+→ Accesses the object's **field**
+
+```java
+myCar.start()
+```
+→ Calls the object's **method**
+
+### Simple Meaning
+
+> **The dot operator is used to access members of an object.**
+
+---
+
+## 3. Constructors
+Special methods used to initialize objects.
+Example
+
+```java
+Student() {
+
+}
+```
+
+---
+
+## 4. Nested Classes
+A class defined inside another class.
+Example
+
+```java
+class Outer {
+    class Inner {
+
+    }
+}
+```
+Nested classes are an advanced topic.
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Java — Object Creation, References, `new`, Copying & Dot Operator
+
+---
+
+
+
+###  1. Object Creation
+
+### What is Object Creation?
+
+**Object creation** is the process of creating an **instance of a class**.
+
+```
+ClassName objectName = new ClassName();
+```
+
+### Example
+```
+Student s1 = new Student();
+```
+
+Here:
+- `Student` → Class
+- `s1` → Reference variable
+- `new Student()` → Creates a new `Student` object
+
+### Real-Life Example
+
+Think of a house:
+
+```text
+Architectural Blueprint → Class
+Actual House             → Object
+```
+
+One blueprint can be used to build many houses.
+
+Similarly:
+
+```
+Student Class
+     ↓
+ ┌───────┬───────┬
+ ↓       ↓       ↓
+s1      s2      s3
+Object  Object  Object
+```
+---
+
+
+
+
+
+
+
+# 2. What Does `new` Do?
+
+The `new` keyword is used to **create an object**.
+It:
+1. Creates an object at runtime.
+2. Allocates memory for the object.
+3. Calls the constructor.
+4. Returns a reference to the object.
+
+Example:
+```java
+Student s1 = new Student();
+```
+
+### What happens?
+
+```text
+Step 1 → new Student() creates the object
+Step 2 → Memory is allocated for the object
+Step 3 → Constructor is called
+Step 4 → A reference to the object is returned
+Step 5 → The reference is stored in s1
+```
+
+Conceptually:
+```text
+Stack                  Heap
+
+s1 ─────────────────> Student Object
+       reference
+```
+
+### Simple Meaning
+> **`new` creates an object and returns a reference to it.**
+---
+
+
+
+
+
+
+# 3. Object vs Reference vs Memory Address
+
+These three terms are different.
+
+Student s1 = new Student();
+
+## 3.1 Object
+The actual instance created in memory.
+
+Here, new Student() creates a Student object.
+```
+Student Class
+     │
+     │ new
+     ↓
+Student Object
+```
+
+## 3.2 Reference
+A value used by Java to access an object.
+```
+Student s1;
+```
+Here, `s1` is a **reference variable**.
+
+
+## 3.3 Memory Address
+The actual location of data in memory.
+Java does **not** expose raw memory addresses to programmers.
+Therefore, avoid saying:
+> `s1` stores the memory address.
+
+Prefer:
+> **`s1` stores a reference to the `Student` object.**
+
+Conceptually:
+
+```text
+s1 ───────────> Student Object
+     reference
+```
+---
+
+# 4. Understanding `Bus bus = new Bus();`
+
+Consider:
+
+```java
+Bus bus = new Bus();
+```
+
+Break it into three parts:
+
+```text
+Bus bus = new Bus();
+│   │       │
+│   │       └── Object is created at runtime
+│   └────────── Reference variable
+└────────────── Type
+```
+
+### LHS — `Bus bus`
+
+The compiler checks:
+
+- `Bus` is a valid type/class.
+- `bus` is a valid variable.
+- The declaration and assignment are type-compatible.
+
+No `Bus` object is created merely by:
+
+```java
+Bus bus;
+```
+
+This only declares a reference variable.
+
+### RHS — `new Bus()`
+
+At runtime:
+
+- `new` creates the `Bus` object.
+- Memory is allocated for the object.
+- The `Bus()` constructor is called.
+- A reference to the newly created object is produced.
+
+### Assignment — `=`
+
+The reference produced by `new Bus()` is stored in `bus`.
+
+Conceptually:
+
+```text
+bus ───────────> Bus Object
+       reference
+```
+
+### Simple Rule
+
+> **LHS → Reference + Type → Compiler checks**
+> **RHS → Object creation → Happens at runtime**
+> **`=` → Reference is stored in the variable**
+
+---
+
+
+
+
+3.3 Stack vs Heap Memory
+
+Java uses different memory areas for different purposes. The stack and
+heap are two important memory areas to understand when learning object
+creation and references.
+
+Stack memory
+
+The Java stack is used for method execution. Each thread has its own JVM
+stack, which contains stack frames for method calls.
+
+A stack frame generally contains:
+- Local variables, including local reference variables.
+- Intermediate computation results.
+- Method call information.
+
+Heap memory
+The heap is the runtime memory area from which objects and arrays are allocated.
+It is shared among threads and is managed by the garbage collector.
+
+Example
+
+class Student {
+    String name;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.name = "Deepak";
+    }
+}
+
+
+Conceptual diagram:
+
+Stack                                 Heap
+main() frame                       Student object
+
+s1                                  name
+Reference variable                  "Deepak"
+
+
+This diagram is conceptual. The JVM specification does not require every
+local variable or reference to be physically stored in a particular memory
+location. JVM implementations can optimize memory usage.
+
+
+Stack vs heap comparison
+
+Stack                             Heap
+Stores method execution frames  Allocates objects and arrays
+Each thread has its own stack   Shared among threads
+Frames are created and removed
+as methods are called and return Objects remain allocated while needed
+Manages method execution         Managed by the garbage collector
+Typically has a smaller memory  Typically has a larger memory capacity
+capacity
+
+
+Remember:
+- Stack: Method execution.
+- Heap: Objects and arrays.
+- Reference variables: Their storage depends on where and how they are declared.
+
+
+
+
+
+# 5. Why Java Hides Memory Addresses
+
+Java does not allow programmers to directly manipulate raw memory addresses.
+In languages such as C/C++, pointers can be used to work with memory addresses.
+Java instead uses **references**, which are managed by the JVM.
+
+For example, Java does not allow:
+
+```java
+address = 1000;
+```
+
+You work with references:
+
+```java
+Student s1 = new Student();
+```
+
+This helps Java manage memory safely and prevents direct manipulation of
+arbitrary memory locations.
+
+---
+
+
+
+
+
+
+
+
+
+# 6. Reference Copy
+
+Consider:
+
+```java
+Box b1 = new Box();
+Box b2 = b1;
+```
+
+Here, `b2 = b1` **does not create a new object**.
+
+It copies the **reference**.
+
+Therefore, both variables refer to the same object.
+
+```text
+b1 ────┐
+       ↓
+    Box Object
+       ↑
+b2 ────┘
+```
+
+### Important Points
+
+- One object
+- Two reference variables
+- Both refer to the same object
+- No new object is created by `b2 = b1`
+
+### Example
+
+```java
+class Box {
+    int value;
+}
+
+Box b1 = new Box();
+b1.value = 10;
+
+Box b2 = b1;
+b2.value = 50;
+
+System.out.println(b1.value);
+```
+
+Output:
+50
+
+### Why?
+Because `b1` and `b2` refer to the **same object**.
+> **Reference Copy → Same Object**
+---
+
+
+# 7. Object Copy
+
+An object copy means **creating a new object and copying data into it**.
+
+Example:
+
+```java
+class Box {
+    int value;
+}
+
+Box b1 = new Box();
+b1.value = 10;
+
+Box b2 = new Box();
+b2.value = b1.value;
+```
+
+Now there are two separate objects:
+
+```text
+b1 ────> Box Object 1
+          value = 10
+
+b2 ────> Box Object 2
+          value = 10
+```
+
+If:
+
+```java
+b2.value = 20;
+
+System.out.println(b1.value);
+System.out.println(b2.value);
+```
+
+Output:
+10
+20
+```
+
+### Why?
+
+Because `b1` and `b2` refer to **different objects**.
+
+> **Object Copy → Separate Objects**
+
+---
+
+# 8. Reference Copy vs Object Copy
+
+| Reference Copy      |    Object Copy |
+| Reference is copied | Data is copied |
+| No new object is created | New object is created |
+| Both references refer to the same object | References refer to different objects |
+| Changes affect the same object | Changes are independent |
+
+
+
+
+
+null Reference
+
+`Definition`
+
+null is a special literal in Java that represents the absence of an object
+reference.
+
+A reference variable assigned null does not currently refer to an object.
+
+class Student {
+    String name;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = null;
+
+        System.out.println(s1);
+    }
+}
+
+output:- null
+
+
+
+Accessing a null reference
+
+
+Student s1 = null;
+System.out.println(s1.name);
+
+
+This throws a NullPointerException at runtime because s1 does not refer
+to an object.
+
+
+
+Student s1 = null;
+System.out.println(s1.name);
+
+
+This throws a NullPointerException at runtime because s1 does not refer
+to an object.
+
+Assigning an object later
+
+
+Student s1 = null;
+
+s1 = new Student();
+s1.name = "Deepak";
+
+System.out.println(s1.name);
+
+
+Output:  Deepak
+
+
+Now s1 refers to an actual object.
+
+Important points
+- null is not an object.
+- null is not the same as zero.
+- null is not an empty string.
+- Reference variables can be assigned null.
+- Dereferencing null causes a NullPointerException.
+
+Difference between null, 0, and ""
+Value      Meaning
+null       No object reference
+0          Integer value zero
+""        An empty String object
+
+
+---
+
+
+3.11 Garbage Collection Basics
+
+`Definition`
+Garbage collection (GC) is the JVM's automatic memory management process
+that reclaims heap memory occupied by objects that are no longer reachable.
+
+
+Example
+
+class Student {
+    String name;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+
+        s1.name = "Deepak";
+
+        s1 = null;
+    }
+}
+
+What happens?
+
+Initially:
+s1 ─────> Student Object
+          name = "Deepak"
+
+
+After:
+s1 = null;
+
+The reference variable no longer refers to the object.
+
+If there are no other reachable references to that object, it becomes
+eligible for garbage collection.
+
+
+How does garbage collection work?
+1. Java checks which objects are still being used.
+2. It finds objects that are no longer reachable.
+3. The garbage collector removes those unused objects when needed.
+4. The memory is made available for new objects.
+
+
+Important Points
+- Garbage collection works automatically in Java.
+- We do not need to delete objects manually.
+- null does not immediately delete an object.
+- An unused object can be collected, but not necessarily immediately.
+- System.gc() requests garbage collection, but it does not guarantee it.
+- Garbage collection cleans memory, not files or database connections.
+  These resources must be handled separately.
+
+
+Example: Two References
+
+class Box {
+    int value;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box b1 = new Box();
+        Box b2 = new Box();
+
+        b1 = b2;
+    }
+}
+
+
+What happens?
+Initially:
+b1 ─────> Box Object 1
+
+b2 ─────> Box Object 2
+
+
+After b1 = b2;:
+         Box Object 1 (unused)
+
+b1 ─────> Box Object 2
+b2 ─────> Box Object 2
+
+
+Now, b1 and b2 both refer to Box Object 2.
+Box Object 1 has no reference pointing to it, so it becomes eligible for
+garbage collection.
+
+Remember: Garbage collection removes unused objects automatically and
+helps Java manage memory.
+
+
+
+
+# Final Flow to Remember
+
+```text
+Class
+  ↓
+Object Creation
+  ↓
+new
+  ↓
+Object is created
+  ↓
+Reference is returned
+  ↓
+Reference stored in variable
+  ↓
+Reference can access object using .
+```
+
+Example:
+
+```java
+Student s1 = new Student();
+
+s1.name = "Deepak";
+s1.study();
+```
+
+```text
+Student       → Class
+new Student() → Creates Object
+s1            → Reference variable
+s1.name       → Accesses field
+s1.study()    → Calls method
+```
+
+### One-Line Summary
+
+> **A class defines the structure, `new` creates the object, the reference
+variable refers to the object, and the dot (`.`) operator accesses its
+fields and methods.**
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+3. Methods and Constructors in Java
+1. Methods
+2. Method Declaration and Method Calling
+3. Parameters and Arguments
+4. Return Types
+5. Constructors
+6. Default Constructor
+7. No-Argument Constructor
+8. Parameterized Constructor
+9. Constructor Overloading
+10. Constructor Chaining
+11. `this` Keyword
+12 `this()` Constructor Call
+
+
+4.1 Methods
+
+`Definition`
+
+A method is a block of code that performs a specific task. It executes
+when called.
+Methods help us:
+- Reuse code and avoid duplication.
+- Divide large programs into smaller tasks.
+- Improve readability and maintainability.
+
+Example
+class Student {
+    void study() {
+        System.out.println("Student is studying");
+    }
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.study();
+    }
+}
+
+Output
+Student is studying
+
+Explanation
+- void study() defines a method.
+- System.out.println() performs the task.
+- Student s1 = new Student(); creates an object.
+- s1.study(); calls the method using the object.
+
+A method does not execute just because it is declared. It must be called
+or invoked by another mechanism.
+
+
+---------------------------------------------------------------
+4.2 Method Declaration and Method Calling
+Method declaration
+
+A method declaration defines its name, return type, parameters, and body.
+Syntax
+returnType methodName(parameters) {
+    // Method body
+}
+
+
+Example
+int add(int a, int b) {
+    return a + b;
+}
+
+
+Part	                    Meaning
+int	                      Return type
+add	                      Method name
+int a, int b	          Parameters
+return a + b	          Returns the result
+
+
+Method  calling
+
+Calling a method means executing it.
+
+Example
+class Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        Calculator c = new Calculator();
+
+        int result = c.add(10, 20);
+        System.out.println(result);
+    }
+}
+
+
+Output
+30
+
+
+Execution flow
+1. The main() method starts.
+2. An object c is created.
+3. c.add(10, 20) calls the add() method.
+4. a = 10 and b = 20.
+5. a + b calculates 30.
+6. return sends 30 back to the caller.
+7. The result is stored in result and printed.
+
+Important:
+- Instance methods are normally called using an object.
+- Static methods can be called using the class name.
+
+------------------------------------------------------------------------
+
+3.3 Parameters and Arguments
+int square(int i){
+    return i * i;
+}
+
+Parameter
+A parameter is a variable declared in a method's definition. It receives a value when the method is called.
+int square(int i)
+
+Here, i is a parameter.
+
+Argument
+An argument is the actual value passed to a method when it is called.
+
+square(100);
+
+
+
+3.4 Return Types
+
+The return type specifies the type of value a method returns to its caller.
+
+Common return types:
+- int
+- double
+- String
+- boolean
+- void
+
+
+A. Method with a return value
+class Calculator {
+
+    int square(int number) {
+        return number * number;
+    }
+
+    public static void main(String[] args) {
+        Calculator c = new Calculator();
+        int result = c.square(5);
+
+        System.out.println(result);
+    }
+}
+
+
+Output
+25
+
+
+Here, int is the return type, and return sends the calculated value back
+to the caller.
+
+B. Method with void
+
+A void method does not return a value.
+class Student {
+
+    void display() {
+        System.out.println("Hello Deepak");
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.display();
+    }
+}
+
+
+Output
+Hello Deepak
+
+Here, void means the method does not return a value.
+
+
+C. Method returning a String
+class Student {
+
+    String getName() {
+        return "Deepak";
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        String name = s.getName();
+
+        System.out.println(name);
+    }
+}
+
+
+Output
+Deepak
+
+
+Important Rules
+- A non-void method must return a compatible value on every possible
+  normal execution path.
+- A void method can use return; to exit early but cannot return a value.
+- A method's return type alone cannot distinguish overloaded methods.
+
+----------------------------------------------------------------------------
+
+--- ### Passing Objects to Methods in Java  ----
+
+Objects can be passed as arguments to methods.
+
+Example
+```
+class Student {
+    String name;
+}
+
+public class Main {
+    static void changeName(Student s) {
+        s.name = "Rahul";
+    }
+
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.name = "Deepak";
+
+        changeName(student);
+
+        System.out.println(student.name);
+    }
+}
+```
+
+Output
+Rahul
+---
+
+## What Happens?
+
+First:
+```
+Student student = new Student();
+student.name = "Deepak";
+```
+
+Think:
+```
+student ───────────> Student Object
+                       name = "Deepak"
+```
+
+Then we call:
+```
+changeName(student);
+```
+
+Java **passes a copy of the reference** to the method.
+
+So now:
+```text
+student ───────────> Student Object
+                       name = "Deepak"
+                          ↑
+                          │
+s ────────────────────────┘
+```
+
+Both `student` and `s` refer to the **same Student object**.
+
+Therefore:
+```java
+s.name = "Rahul";
+```
+
+changes the same object:
+
+```text
+student ───────────> Student Object
+                       name = "Rahul"
+                          ↑
+                          │
+s ────────────────────────┘
+```
+
+So:
+```java
+System.out.println(student.name);
+```
+
+prints:  Rahul
+
+---
+
+# The Most Important Point
+
+### Java is ALWAYS pass-by-value.
+When an object is passed to a method:
+> **Java copies the reference value, not the object itself.**
+
+So:
+```text
+Object → NOT copied
+Reference → COPIED
+```
+
+---
+# Why Can the Method Change the Object?
+
+Because both references point to the **same object**.
+```text
+student ──┐
+          ↓
+      [Student Object]
+          ↑
+s ────────┘
+```
+Therefore:
+```java
+s.name = "Rahul";
+```
+
+changes the object that `student` also refers to.
+
+---
+
+# Very Important Difference
+
+### Changing the object's field
+```java
+s.name = "Rahul";
+```
+✅ Changes the original object.
+
+
+### Changing the reference
+```java
+s = new Student();
+```
+❌ Does NOT change `student`.
+
+Why?
+Because `s` is only a **local copy of the reference**.
+
+```text
+Before:
+student ──→ Object 1
+             ↑
+s ───────────┘
+
+After: s = new Student();
+
+student ──→ Object 1
+s ────────→ Object 2
+```
+
+`student` still points to Object 1.
+
+---
+
+# Easy Memory Trick
+
+Remember this:
+
+> **REFERENCE IS COPIED, OBJECT IS NOT COPIED.**
+
+```text
+Pass object to method
+        ↓
+Reference gets copied
+        ↓
+Both references → Same Object
+        ↓
+Change object's field
+        ↓
+Original object changes
+```
+
+But:
+
+```text
+s = new Student()
+        ↓
+Only local reference changes
+        ↓
+Original reference is unchanged
+```
+
+---
+
+# Interview Answer
+> **Java is always pass-by-value. When an object is passed to a method,
+a copy of the object's reference is passed. Therefore, the method can
+modify the object's fields, but it cannot change the caller's reference
+to point to a different object.**
+
+### One-line rule
+> **Copy the reference → same object.
+Change the reference → only local reference changes.**
+
+
+------------------------------------------------------------------------------
+
+3.5 Constructors
+`Definition`
+A constructor is a special member of a class used to initialize an object
+when it is created.
+A constructor has the same name as its class and has no return type, not
+even void.
+
+Syntax
+class Student {
+    Student() {
+        // Initialization code
+    }
+}
+
+Example
+class Student {
+
+    String name;
+    int age;
+
+    Student() {
+        name = "Deepak";
+        age = 22;
+    }
+
+    void display() {
+        System.out.println(name);
+        System.out.println(age);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.display();
+    }
+}
+
+
+Output
+Deepak
+22
+
+
+Explanation
+- Student() is the constructor.
+- new Student() creates a new object and invokes the constructor.
+- The constructor initializes name and age.
+- s1.display() prints the initialized values.
+
+
+Why do we need constructors?
+Imagine creating 100 student objects. Without constructors, you might need to initialize the fields manually for every object.
+Constructors allow initialization to happen when each object is created.
+
+
+Remember:
+Constructor	                         Method
+Same name as the class	            Can have any valid method name
+Has no return type	                Has a return type, including void
+Invoked during object creation  	Called explicitly or by another mechanism
+Initializes objects	                Performs a task or returns a value
+Cannot be inherited or overridden	Instance methods can be inherited and overridden
+
+
+-------------------------------------------------------------------------------
+
+Types of constructor
+
+4.6 Default Constructor
+`Definition`
+A default constructor is the no-argument constructor automatically provided
+by the Java compiler when a class declares no constructors.
+
+Example
+class Student {
+    String name;
+    int age;
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        System.out.println(s1.name);
+        System.out.println(s1.age);
+    }
+}
+
+
+Output
+null
+0
+
+
+Explanation
+Since no constructor is declared, the compiler provides a default constructor.
+- name gets the default value null.
+- age gets the default value 0.
+
+
+The compiler-provided constructor does not assign custom values.
+
+Important: If you declare any constructor yourself, the compiler does not
+provide a default constructor.
+
+class Student {
+    Student(String name) {
+        System.out.println(name);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student("Deepak");
+
+        // Student s2 = new Student(); // Compilation error
+    }
+}
+
+
+Here, only a parameterized constructor is declared, so a no-argument constructor is not automatically generated.
+
+
+-----------------------------------------------------------------------------
+
+4.7 No-Argument Constructor
+
+Definition
+A no-argument constructor is a constructor that accepts no parameters.
+
+It can be:
+- Compiler-provided when no constructors are declared.
+- Explicitly written by the programmer.
+
+Example
+class Student {
+    String name;
+    int age;
+
+    Student() {
+        name = "Deepak";
+        age = 22;
+    }
+
+    void display() {
+        System.out.println(name);
+        System.out.println(age);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.display();
+    }
+}
+
+
+Output
+Deepak
+22
+
+
+Here, Student() is an explicitly written no-argument constructor that
+initializes the fields with custom values.
+
+Default Constructor vs No-Argument Constructor
+
+Default Constructor	            No-Argument Constructor
+Specifically refers to the  	Any constructor that takes no arguments.
+compiler-provided constructor.
+
+Automatically provided only if 	Can be written by the programmer or provided
+no constructor is declared.     by the compiler.
+
+Does not contain programmer-written Can contain custom initialization logic.
+custom initialization logic.
+
+
+----------------------------------------------------------------------------
+
+
+4.8 Parameterized Constructor
+`Definition`
+A parameterized constructor accepts parameters to initialize an object
+with specific values.
+
+Example
+class Student {
+    String name;
+    int age;
+
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student("Deepak", 22);
+        Student s2 = new Student("Rahul", 21);
+
+        s1.display();
+        s2.display();
+    }
+}
+
+
+Output
+Name: Deepak
+Age: 22
+Name: Rahul
+Age: 21
+
+
+Explanation
+In Student s1 = new Student("Deepak", 22);:
+- "Deepak" is passed to parameter n.
+- 22 is passed to parameter a.
+- The constructor assigns these values to the object's fields.
+
+The second object receives different values. Each object has its own
+instance variable values.
+
+Using `this` in a Parameterized Constructor
+
+Instead of using different parameter names, we can use the same names
+as the fields.
+
+
+class Student {
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println(name + " " + age);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student("Deepak", 22);
+        s1.display();
+    }
+}
+
+
+Output
+Deepak 22
+
+
+Explanation
+- this.name refers to the current object's instance variable.
+- name refers to the constructor parameter.
+- this.age refers to the current object's instance variable.
+- age refers to the constructor parameter.
+
+Using this is a common and clear way to initialize instance variables.
+
+--------------------------------------------------------------------
+
+
+4.9 Constructor Overloading
+
+`Definition`
+Constructor overloading means defining multiple constructors in the same
+class with different parameter lists.
+
+The constructors can differ by:
+- Number of parameters.
+- Types of parameters.
+- Order of parameter types.
+
+
+class Student {
+
+    String name;
+    int age;
+
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+
+    Student(String name) {
+        this.name = name;
+        age = 18;
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println(name + " " + age);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        Student s2 = new Student("Deepak");
+        Student s3 = new Student("Rahul", 21);
+
+        s1.display();
+        s2.display();
+        s3.display();
+    }
+}
+
+Unknown 0
+Deepak 18
+Rahul 21
+
+
+
+Explanation
+Constructor call	    Constructor invoked
+new Student()	            Student()
+new Student("Deepak")	    Student(String name)
+new Student("Rahul", 21)	Student(String name, int age)
+
+Java selects the constructor based on the arguments and applicable
+overload resolution rules.
+
+Important: You cannot overload constructors by changing only their
+parameter names or return type. Constructors do not have return types.
+
+
+-----------------------------------------------------------------------
+
+4.10 Constructor Chaining
+`Definition`
+Constructor chaining means calling one constructor from another constructor
+to reuse initialization logic.
+
+It can happen:
+- Within the same class using this().
+- In a subclass using super() to invoke a superclass constructor.
+
+1. Imagine you are creating a student record system.
+Every student has:
+- Name
+- Age
+- City
+Suppose most students are from Ahmedabad, so if someone doesn't provide a city, you want to set it to "Ahmedabad" automatically.
+You want to create students in three ways:
+
+Student s1 = new Student();
+Student s2 = new Student("Deepak");
+Student s3 = new Student("Rahul", 22);
+
+
+The expected  result:
+
+Student	 Name	   Age	     City
+s1	    Unknown	       0	Ahmedabad
+s2	    Deepak	       0	Ahmedabad
+s3	    Rahul	       22	Ahmedabad
+
+
+Without constructor chaining
+class Student {
+
+    String name;
+    int age;
+    String city;
+
+    Student() {
+        name = "Unknown";
+        age = 0;
+        city = "Ahmedabad";
+    }
+
+    Student(String name) {
+        this.name = name;
+        age = 0;
+        city = "Ahmedabad";
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+        city = "Ahmedabad";
+    }
+}
+
+
+Look at the city variable.
+We write this line three times:
+city = "Ahmedabad";
+
+
+Why? Because all three constructors need to initialize the city.
+
+Now imagine your application has 20 constructors and you decide to change
+the default city from Ahmedabad to Mumbai.
+
+You may need to update the same line in 20 places.
+
+If you forget even one, your program might behave inconsistently.
+That's unnecessary repetition.
+
+That's unnecessary repetition.
+
+3. With constructor chaining
+Instead of repeating the same code, we create one constructor that does
+all the actual initialization.
+
+class Student {
+
+    String name;
+    int age;
+    String city;
+
+    Student() {
+        this("Unknown", 0);
+    }
+
+    Student(String name) {
+        this(name, 0);
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.city = "Ahmedabad";
+    }
+
+    void display() {
+        System.out.println("Name: " + name + " | Age: " + age + " | City: " + city);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        Student s2 = new Student("Deepak");
+        Student s3 = new Student("Rahul", 22);
+
+        System.out.println("--- Student Details ---");
+        s1.display();
+        s2.display();
+        s3.display();
+    }
+}
+
+output:-
+--- Student Details ---
+Name: Unknown | Age: 0 | City: Ahmedabad
+Name: Deepak | Age: 0 | City: Ahmedabad
+Name: Rahul | Age: 22 | City: Ahmedabad
+
+           How the shared logic works
+                 Student()
+              Passes Unknown, 0
+
+             Student(String name)
+              Passes Deepak, 0
+                   |
+                   ^
+              Common constructor
+             Student(String name, int age)
+
+             this.city = "Ahmedabad";
+
+So, why do we need constructor chaining?
+Think of it this way:
+- Without constructor chaining: each constructor does its own initialization, even if some of that work is identical.
+- With constructor chaining: one constructor performs the common work, while other constructors pass the necessary information to it.
+
+
+---------------------------------------------------------------------
+
+# 4.11 `this` Keyword
+
+## 1. Definition
+
+The `this` keyword is a reference to the **current object**.
+
+It is used inside instance methods and constructors to refer to the current
+object's instance variables, methods, or the object itself.
+
+### First, Understand `this`
+
+Imagine you create two Student objects:
+
+```java
+Student s1 = new Student("Deepak", 22);
+Student s2 = new Student("Rahul", 24);
+```
+
+Both objects belong to the same class, but each object has its own data.
+
+```text
+             Student Class
+                   |
+          -------------------
+          |                 |
+          v                 v
+        s1                  s2
+          |                 |
+          v                 v
+    Student Object    Student Object
+    name = Deepak     name = Rahul
+    age = 22           age = 24
+```
+
+When `s1` calls an instance method, `this` refers to the object referenced
+by `s1`.
+
+When `s2` calls an instance method, `this` refers to the object referenced
+by `s2`.
+
+**Remember:** `this` does not create a new object. It refers to the object
+ whose instance method or constructor is currently executing.
+
+## 2. Common Uses of `this`
+
+1. Access instance variables.
+2. Call instance methods.
+3. Pass the current object as an argument.
+4. Return the current object.
+5. Distinguish instance variables from parameters.
+
+## A. Access Instance Variables
+
+### Why Do We Need It?
+
+Suppose a constructor receives parameters with the same names as the
+instance variables.
+
+```java
+class Student {
+
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        name = name;
+        age = age;
+    }
+}
+```
+
+At first glance, this code may look correct. However, there is a problem.
+
+Both occurrences of `name` refer to the constructor parameter. The same
+applies to `age`.
+
+As a result, the instance variables are not assigned the parameter values.
+They retain their default values (`null` and `0`).
+
+### Correct Example Using `this`
+
+```java
+class Student {
+
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println(this.name);
+        System.out.println(this.age);
+    }
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student("Deepak", 22);
+
+        s1.display();
+    }
+}
+```
+
+### Output
+
+```text
+Deepak
+22
+```
+
+### Understand This Statement
+
+```java
+this.name = name;
+```
+
+- `this.name` refers to the instance variable of the current object.
+- `name` refers to the constructor parameter.
+- `=` assigns the parameter's value to the instance variable.
+
+### Execution Flow
+
+```text
+new Student("Deepak", 22)
+             |
+             v
+      Constructor called
+             |
+             v
+   Student(String name, int age)
+             |
+             v
+       this.name = name
+       this.age = age
+             |
+             v
+    Current object's data
+       name = Deepak
+       age = 22
+```
+
+**Important:** When the parameter and instance variable have different
+names, `this` is optional.
+
+For example:
+
+```java
+Student(String studentName, int studentAge) {
+    name = studentName;
+    age = studentAge;
+}
+```
+This also works correctly because there is no naming conflict.
+
+
+--------------------------------------------------------------
+
+## B. Call Instance Methods
+
+### Why Do We Need It?
+
+Sometimes you want one instance method to call another instance method
+of the same object.
+
+You can use `this` to make that explicit.
+
+### Example
+
+```java
+class Student {
+
+    void display() {
+        System.out.println("Displaying student");
+    }
+
+    void show() {
+        this.display();
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.show();
+    }
+}
+```
+
+### Output
+
+```text
+Displaying student
+```
+
+### Explanation
+
+```java
+s1.show();
+```
+
+1. The `show()` method is called on the object referenced by `s1`.
+2. Inside `show()`, `this` refers to that same Student object.
+3. `this.display()` calls the `display()` method on that object.
+4. The message is printed.
+
+### Execution Flow
+
+```text
+s1.show()
+    |
+    v
+show() method
+    |
+    v
+this.display()
+    |
+    v
+display() method
+    |
+    v
+Displaying student
+```
+
+**Important:** In this example, writing `display()` instead of
+`this.display()` produces the same result.
+
+Using `this` here is optional. It can make the code easier to understand
+by explicitly showing that the method belongs to the current object.
+
+
+--------------------------------------------------------
+
+## C. Pass the Current Object as an Argument
+
+### Why Do We Need It?
+
+Sometimes one object needs to pass itself to another method.
+The `this` keyword allows the current object to be passed as an argument.
+
+
+### Example
+
+```java
+class Student {
+
+    void display(Student s) {
+        System.out.println("Student object received");
+    }
+
+    void show() {
+        display(this);
+    }
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+        s1.show();
+    }
+}
+```
+
+### Output
+
+```text
+Student object received
+```
+
+### Explanation
+
+Look at this statement:
+
+```java
+display(this);
+```
+
+Here, `this` represents the current Student object.
+The object is passed to the `display()` method as an argument.
+The parameter `Student s` receives a reference to that same object.
+
+### Execution Flow
+
+```text
+s1.show()
+    |
+    v
+show() method
+    |
+    v
+display(this)
+    |
+    v
+Current object passed
+as an argument
+    |
+    v
+display(Student s)
+    |
+    v
+Student object received
+```
+
+**Remember:** `this` passes the current object, not a copy of the object.
+
+
+## D. Return the Current Object
+
+### Why Do We Need It?
+
+Sometimes a method needs to return the same object on which it was called.
+The `this` keyword can be used to return the current object.
+This technique is also useful when creating method-chaining APIs.
+
+
+### Example
+
+```java
+class Student {
+
+    Student getStudent() {
+        return this;
+    }
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+        Student s2 = s1.getStudent();
+        System.out.println(s1 == s2);
+    }
+}
+```
+
+### Output
+
+```text
+true
+```
+
+### Explanation
+
+```java
+return this;
+```
+
+This returns a reference to the current Student object.
+
+Now consider:
+
+```java
+Student s2 = s1.getStudent();
+```
+
+1. `s1` calls `getStudent()`.
+2. Inside `getStudent()`, `this` refers to the object referenced by `s1`.
+3. The method returns that same object's reference.
+4. `s2` receives the returned reference.
+5. Both `s1` and `s2` refer to the same object.
+
+### Object Reference Diagram
+
+```text
+       s1                 s2
+        |                  |
+        |                  |
+        v                  v
+          Student Object
+```
+
+Therefore:
+
+```java
+s1 == s2
+```
+
+returns `true` because `==` checks whether both references point to the same object.
+
+
+## 3. Important Rules for `this`
+
+1. `this` refers to the current object.
+2. It can access instance variables and call instance methods of the
+   current object.
+3. It can pass the current object as an argument.
+4. It can return the current object.
+5. It cannot be used directly inside a static method because a static
+   method does not execute on a particular object.
+6. `this` is different from `this()`.
+7. `this` does not create an object.
+
+--------------------------------------------
+
+
+
+# 4.13 Difference Between `this` and `this()`
+
+| `this`                          | `this()` |
+
+| Refers to the current object. | Calls another constructor in the same class. |
+| Used to access instance       | Used for constructor chaining. |
+  variables and methods.
+| Can pass or return the current | Passes arguments to another constructor. |
+  object.
+| Can be used in instance methods| Can only be used as an explicit constructor  |
+  and constructors.                invocation in a constructor.
+| Does not call a constructor.   | Calls a constructor. |
+| Example: `this.name`           | Example: `this("Deepak", 22)` |
+
+
+### Example
+
+```java
+class Student {
+
+    String name;
+    int age;
+
+    Student() {
+        this("Deepak", 22);
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+
+Here:
+
+- `this("Deepak", 22)` calls another constructor.
+- `this.name` refers to the current object's instance variable.
+- `this.age` refers to the current object's instance variable.
+
+----------------------------------------------------------
+
+
+
+# 4.14 Difference Between `this()` and `super()`
+
+| `this()`                        | `super()` |
+| Calls another constructor       | Calls a constructor of the immediate  |
+  in the same class.                parent class.
+
+| Used for same-class constructor | Used for superclass constructor  |
+  chaining.                          chaining.
+
+| Passes arguments to another     | Passes arguments to a parent class |
+  constructor in the current class. constructor.
+
+| Must be the first statement when | Must be the first statement when  |
+  explicitly used.                  explicitly used under traditional constructor rules.
+
+| Cannot be explicitly combined with| Cannot be explicitly combined with |
+  `super()` in the same constructor. `this()` in the same constructor.
+
+### Example of `super()`
+
+```java
+class Animal {
+
+    String name;
+
+    Animal(String name) {
+        this.name = name;
+        System.out.println("Parent constructor");
+    }
+}
+
+class Dog extends Animal {
+
+    String breed;
+
+    Dog(String name, String breed) {
+        super(name);
+        this.breed = breed;
+        System.out.println("Child constructor");
+    }
+
+    public static void main(String[] args) {
+
+        Dog d = new Dog("Tommy", "Labrador");
+    }
+}
+```
+
+### Output
+
+```text
+Parent constructor
+Child constructor
+```
+
+### Explanation
+
+1. `new Dog("Tommy", "Labrador")` calls the child constructor.
+2. `super(name)` invokes the parent constructor `Animal(String name)`.
+3. The parent constructor initializes the `name` field.
+4. After the parent constructor completes, execution continues in the child constructor.
+5. The child constructor initializes `breed`.
+
+Here, `super(name)` is used to initialize the parent class portion of the object, while `this.breed` refers to the child object's instance variable.
+
+---
+
+# Quick Revision
+
+| Concept        | Meaning         | Main Purpose |
+| `this`         | Reference to the| Access or pass the current object |
+                   current object
+
+| `this.name`    | Current object's | Resolve naming conflicts |
+                   instance variable
+
+| `this.display()`| Calls a method on | Explicitly call an instance method |
+                   the current object
+
+| `display(this)` | Passes the current | Make the current object available |
+                   object                to another method
+
+| `return this`   | Returns the current | Return the same object |
+                    object reference
+
+| `this()`        | Calls another constructor| Reuse initialization logic |
+                     in the same class
+
+| `super()`       | Calls a parent class | Initialize the parent class portion |
+                    constructor
+
+## Interview-Ready Answers
+
+**What is `this` in Java?**
+`this` is a reference to the current object. It is commonly used to access
+ instance variables, call instance methods, pass the current object as
+ an argument, return the current object, and distinguish instance variables
+ from parameters.
+
+
+**What is `this()` in Java?**
+`this()` is a special constructor invocation that calls another
+ constructor in the same class. It is used for constructor chaining
+ and helps reduce repeated initialization logic.
+
+**What is the difference between `this` and `this()`?**
+`this` refers to the current object, whereas `this()` calls another
+ constructor in the same class. They have different purposes and are
+ not interchangeable.
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+## Access Modifiers
+
+Access modifiers are keywords in Java that control the visibility (accessibility)
+of classes, methods, variables, and constructors.
+
+1) Public - all package
+2) Private - same class
+3) Default - same package (also known as package-private)
+4) protected - same class , subclass (even outside the package )
+
+Correct Accessibility Order (from most to least accessible):
+public > protected > default (package-private) > private
+
+| Modifier  | Same Class | Same Package | Subclass Same Package | Subclass Different Package | Other Class Different Package |
+| --------- | :--------: | :----------: | :-------------------: | :------------------------: | :---------------------------: |
+| Public    |      ✅     |       ✅      |           ✅           |              ✅             |               ✅         |
+| Protected |      ✅     |       ✅      |           ✅           |              ✅             |               ❌         |
+| Default   |      ✅     |       ✅      |           ✅           |              ❌             |               ❌         |
+| Private   |      ✅     |       ❌      |           ❌           |              ❌             |               ❌         |
+
+Access-modifiers    --> module
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 1. final Keyword in Java
+The final keyword in Java is used to restrict modifications in different contexts:
+
+Final variables (constant values)
+Final methods (prevents method overriding)
+Final classes (prevents inheritance)
+
+
+Final Variables
+A final variable must be initialized once and cannot be changed after initialization.
+
+Example 1: Final variable with a primitive type
+
+class Example {
+    final int MAX_LIMIT = 100; // Must be initialized
+    void display() {
+        // MAX_LIMIT = 200; // ❌ Compilation error (cannot modify final variable)
+        System.out.println("Max Limit: " + MAX_LIMIT);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example obj = new Example();
+        obj.display();
+    }
+}
+
+Output:
+Max Limit: 100
+
+ Explanation: The MAX_LIMIT variable is declared as final, so its value cannot be modified after assignment.
+
+
+####  Final Reference Variables (Objects)
+  A final reference variable must always refer to the same object, but the object's contents can still be modified.
+
+  Example 2: Final reference type
+
+  class Student {
+      int age = 18;
+  }
+
+  class Example {
+      final Student student = new Student(); // Final reference variable
+
+      void changeValues() {
+          student.age = 20; // ✅ Allowed (modifying object content)
+          // student = new Student(); // ❌ Compilation error (cannot reassign reference)
+      }
+  }
+
+  public class Main {
+      public static void main(String[] args) {
+          Example obj = new Example();
+          obj.changeValues();
+          System.out.println("Student age: " + obj.student.age);
+      }
+  }
+
+Output:
+Student age: 20
+
+Explanation: The final reference cannot point to another object, but the internal properties of the object can still change.
+
+
+
+
+# Final Methods
+  A final method cannot be overridden by a subclass.
+
+  Example 3: Final method
+
+class Parent {
+    final void show() {
+        System.out.println("This is a final method.");
+    }
+}
+
+class Child extends Parent {
+    // void show() { // ❌ Compilation error (Cannot override final method)
+    //     System.out.println("Trying to override final method");
+    // }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child obj = new Child();
+        obj.show(); // Calls the method from Parent class
+    }
+}
+
+
+Output:
+This is a final method.
+🔹 Explanation: The show() method in Parent is final, so it cannot be overridden in Child
+
+
+# Final Classes
+  A final class cannot be extended (inherited) by another class.
+
+
+final class Vehicle {
+    void run() {
+        System.out.println("Vehicle is running.");
+    }
+}
+
+// class Car extends Vehicle { // ❌ Compilation error (Cannot inherit from final class)
+// }
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle v = new Vehicle();
+        v.run();
+    }
+}
+
+Output:
+Vehicle is running.
+
+🔹 Explanation: The Vehicle class is marked as final, so no other class can extend it.
+
+Do not use finalize() for cleanup. Instead, use try-with-resources and AutoCloseable for resource management
+
+
+## . Why We Don't Use new Keyword for Creating Primitive Data Types?
+
+The new keyword is used to allocate memory dynamically for objects, but
+primitive data types (int, char, double, etc.) are stored in stack memory, making them more efficient.
+
+Reasons:
+
+Efficiency – Creating primitives with new would be slower.
+Memory Optimization – Primitive variables take less memory compared to objects.
+Direct Storage – Primitive types are directly stored in stack memory instead of heap.
+
+
+int a = 10; // Efficient (stored in stack memory)
+
+// Not recommended:
+Integer b = new Integer(10); // Uses heap memory (wrapper class)
+
+
+
+
+
+
+4. Memory Allocation of new Keyword
+When we use new, memory is allocated in the heap, and the reference is stored in the stack.
+
+Example:
+class Person {
+    String name;
+    Person(String name) {
+        this.name = name;
+    }
+}
+
+
+Person p1 = new Person("John"); // "John" stored in heap, reference in stack.
+
+Memory Areas in Java:
+
+Heap – Stores objects created using new.
+Stack – Stores method calls and local primitive variables.
+Method Area – Stores class metadata, static variables, and method code.
+PC Register & Native Stack – Stores program counters and native method info
+
+
+
+
+
+5. Wrapper Classes
+Wrapper classes convert primitive data types into objects (Boxing) and vice versa (Unboxing).
+Primitive Type                        Wrapper Class
+byte	                               Byte
+short	                              Short
+int	                                  Integer
+long	                                Long
+float	                             Float
+double	                               Double
+char	                            Character
+boolean	                           Boolean
+
+Integer num = 10; // Auto-boxing (int → Integer)
+int n = num; // Auto-unboxing (Integer → int)
+
+Why Use Wrapper Classes?
+
+Collections (like ArrayList) require objects, not primitives.
+Supports features like null values, synchronization, and utility methods.
+
+
+
+
+# 7. Garbage Collection in Java
+Garbage Collection (GC) is an automatic memory management feature in Java that removes unused objects to free memory.
+
+How It Works?
+
+Objects without references are eligible for GC.
+JVM runs GC automatically, but we can request it using System.gc().
+GC uses algorithms like Mark and Sweep, Reference Counting, and Generational GC.
+Example:
+
+class Test {
+    protected void finalize() {
+        System.out.println("Object is being garbage collected");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Test obj1 = new Test();
+        obj1 = null; // Eligible for GC
+        System.gc(); // Request GC (Not guaranteed to run immediately)
+    }
+}
+Advantages:
+
+Prevents memory leaks.
+Improves application performance by reclaiming memory.
+This should help you with your unit test! Let me know if you need more explanations.

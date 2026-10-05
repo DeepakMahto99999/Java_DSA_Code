@@ -44,6 +44,10 @@ public class displayStack {
         st.push(4);
         st.push(5);
 
+
+        removeFromIndex(st , 3);
+        System.out.println(st);
+
 //        System.out.println(st);
 
 //        Stack<Integer> rt = new Stack<>();
@@ -74,8 +78,6 @@ public class displayStack {
 
 
 
-        removeFromIndex(st , 2);
-        System.out.println(st);
 
     }
 }

@@ -1,15 +1,22 @@
 # Java Inheritance
-Inheritance is one of the key features of OOP that allows us to create a new class from a existing class.
 
-THe new class that is created is known as sub-class(child or derived class) and the existing class from where the child class is derived is known as superclass(parent or base class).
+Inheritance is one of the key features of OOP that allows us to create a
+new class from a existing class.
+
+THe new class that is created is known as sub-class(child or derived class)
+and the existing class from where the child class is derived is known as
+superclass(parent or base class).
 
 Class A(Parent)   <----- Class B(child)
 
 we use extends keyword relation between A & B
 
 ## Method Overriding
-If a subclass provides the specific implementation of the method that has been declared by one of its parent class, it is known as method overriding .
-. Method overriding is also known as runtime polymorphism . Hence we can achieve Polymorphism in java with help of Inheritance.
+If a subclass provides the specific implementation of the method that has
+been declared by one of its parent class, it is known as method overriding .
+
+Method overriding is also known as runtime polymorphism . Hence we can achieve
+Polymorphism in java with help of Inheritance.
 
 
 ## super  keyword in Java
