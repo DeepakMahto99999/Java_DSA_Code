@@ -1,0 +1,560 @@
+3.1 What is Polymorphism?
+
+Definition: Polymorphism is an OOP concept in which the same method name
+or reference can represent different behaviors in different situations.
+
+The word polymorphism comes from two words:
+- Poly = Many
+- Morphism = Forms
+
+So, polymorphism means many forms.
+Real-life example
+
+Consider a person who can perform different roles:
+- At home, they are a family member.
+- At college, they are a student.
+- At work, they are an employee.
+
+The same person has different roles in different situations.
+In Java, polymorphism allows methods or objects to exhibit different behaviors
+depending on how they are used.
+
+Java example
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+        Cat c = new Cat();
+
+        d.sound();
+        c.sound();
+    }
+}
+
+
+Output
+Dog barks
+Cat meows
+
+
+Both classes have a sound() method, but each provides different behavior.
+
+
+
+
+
+3.2 Types of Polymorphism
+Java commonly teaches two main types of polymorphism.
+
+1. Compile-time polymorphism
+Method overloading
+The compiler determines which overloaded method to call based on the method
+arguments and applicable overload-resolution rules.
+
+
+2. Runtime polymorphism
+Method overriding
+For an overridden instance method, Java selects the implementation based on
+the actual object's class at runtime.
+
+
+
+
+
+3.3 Compile-time Polymorphism
+Compile-time polymorphism is commonly achieved through method overloading.
+
+What is method overloading?
+Method overloading means defining multiple methods with the same name in the
+same class but with different parameter lists.
+
+The parameter lists can differ by:
+- Number of parameters.
+- Types of parameters.
+- Order of parameter types.
+
+Example 1: Different number of parameters
+class Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    public static void main(String[] args) {
+
+        Calculator c = new Calculator();
+
+        System.out.println(c.add(10, 20));
+        System.out.println(c.add(10, 20, 30));
+    }
+}
+
+
+Output
+30
+60
+
+
+Explanation
+- add(int a, int b) accepts two arguments.
+- add(int a, int b, int c) accepts three arguments.
+- Java selects the applicable method based on the arguments.
+
+
+Example 2: Different parameter types
+
+class Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+
+        Calculator c = new Calculator();
+
+        System.out.println(c.add(10, 20));
+        System.out.println(c.add(10.5, 20.5));
+    }
+}
+
+
+Output
+30
+31.0
+
+
+The first call uses the int version, while the second uses the double version.
+
+Example 3: Different order of parameter types
+class Display {
+
+    void show(int a, String b) {
+        System.out.println(a + " " + b);
+    }
+
+    void show(String a, int b) {
+        System.out.println(a + " " + b);
+    }
+
+    public static void main(String[] args) {
+
+        Display d = new Display();
+
+        d.show(10, "Java");
+        d.show("Java", 20);
+    }
+}
+
+
+Output
+10 Java
+Java 20
+
+
+The parameter types are the same, but their order differs, so these are
+valid overloads.
+
+Important rules of method overloading
+Rule 1: The method name must be the same.
+Rule 2: The parameter list must be different.
+Rule 3: Changing only the return type is not enough.
+
+Invalid example:
+int calculate(int a) {
+    return a;
+}
+
+// Compilation error: same signature
+double calculate(int a) {
+    return a;
+}
+
+
+Rule 4: Overloading can happen in the same class or across inherited methods.
+Rule 5: Static methods can also be overloaded.
+Rule 6: Constructors can be overloaded, as you learned in the previous module.
+
+
+
+
+
+3.4 Runtime Polymorphism
+
+Runtime polymorphism is commonly achieved through method overriding.
+
+What is method overriding?
+
+Method overriding occurs when a subclass provides its own implementation of
+an inherited instance method with the same signature.
+
+Example
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.sound();
+    }
+}
+
+
+Output
+Dog barks
+
+
+Why does this happen?
+Look at this line:
+Animal a = new Dog();
+
+
+It has two important parts:
+- Animal is the reference type.
+- new Dog() creates a Dog object.
+When Java executes:
+a.sound();
+
+
+it checks the actual object at runtime. Since the object is a Dog and Dog
+overrides sound(), the Dog implementation runs.
+
+This is runtime polymorphism.
+
+
+Remember: The reference type determines which members can be accessed at
+compile time, while the actual object's class determines which overridden
+instance method implementation runs at runtime.
+
+
+
+
+3.5 Method Overloading           vs        Method Overriding
+
+Feature	             Overloading	          Overriding
+
+Purpose     	  Same method name  lists	Change inherited method behavior
+                  parameter with different
+
+Inheritance required?	No	                  Yes, typically
+
+Parameters	        Must differ	              Same signature
+
+Return type	  May differ if parameters differ	Same or compatible covariant
+                                                 return type
+
+Selection	Compile-time overload resolution	Runtime dispatch for overridden
+                                                instance methods
+
+Example	add(int, int) and add(double, double) Animal.sound() and Dog.sound()
+
+
+
+
+
+
+
+
+3.6 Dynamic Method Dispatch
+
+Dynamic method dispatch is the mechanism Java uses to select the overridden
+instance method implementation at runtime.
+
+Example
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animal a;
+
+        a = new Dog();
+        a.sound();   // Dynamic method dispatch → Dog's sound()
+
+        a = new Cat();
+        a.sound();   // Dynamic method dispatch → Cat's sound()
+
+        a = new Animal();
+        a.sound();  // Animal's sound()
+    }
+}
+
+
+Output
+Dog barks
+Cat meows
+Animal sound
+
+
+Execution flow
+Animal a
+Parent-type reference
+
+a = new Dog()
+Actual object: Dog
+
+a.sound()
+Dog's implementation runs
+
+
+The same reference variable can refer to different subclass objects at different times.
+
+
+
+
+
+3.7 Upcasting
+
+Upcasting means treating a child-class object as a parent-class reference.
+
+It is allowed implicitly.
+
+Example
+class Animal {
+
+    void eat() {
+        System.out.println("Animal eats");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.eat();
+        // a.bark(); // Compilation error
+    }
+}
+
+
+Output
+Animal eats
+
+
+Although the actual object is a Dog, the reference type is Animal.
+
+Therefore, you can directly call members accessible through the Animal type,
+but not Dog-specific methods through a.
+
+To call bark(), you need a suitable Dog reference.
+
+
+
+
+3.8 Down-casting
+
+Downcasting means converting a parent-class reference into a child-class reference.
+It requires an explicit cast.
+Example
+class Animal {
+
+    void eat() {
+        System.out.println("Animal eats");
+    }
+}
+
+class Dog extends Animal {
+
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animal a = new Dog();
+        Dog d = (Dog) a;
+
+        d.eat();
+        d.bark();
+    }
+}
+
+
+Output
+Animal eats
+Dog barks
+
+
+The cast works because the actual object referenced by a is a Dog.
+
+
+
+
+Special Cases
+Static Methods
+
+Static methods are hidden, not overridden. A static method call is resolved
+using the compile-time type.
+
+class Parent {
+    static void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    static void show() {
+        System.out.println("Child");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.show();
+    }
+}
+
+Output:
+
+Parent
+
+Private Methods
+Private methods cannot be overridden because they are not inherited by
+subclasses in the normal overriding sense. They do not participate in
+dynamic method dispatch through overriding.
+
+Final Methods
+A final instance method cannot be overridden. Therefore, a subclass cannot
+provide a different implementation for dynamic dispatch to select.
+
+
+
+
+
+3.10 Rules of Method Overriding
+Remember these interview rules:
+1. The subclass method must have the same signature as the inherited method.
+2. The return type must be identical or covariant.
+3. The overriding method cannot reduce the visibility of the inherited method.
+4. A final method cannot be overridden.
+5. Static methods are hidden, not overridden.
+6. Private methods are not inherited and cannot be overridden.
+7. Constructors cannot be overridden.
+8. The @Override annotation helps the compiler verify your intention.
+9. An overriding method may declare fewer or narrower checked exceptions,
+   but cannot introduce broader checked exceptions than allowed by the
+   overridden method.
+
+
+
+3.11 Real-World Example: Payment System
+
+Polymorphism is useful when different classes perform the same operation
+differently.
+
+class Payment {
+
+    void pay(double amount) {
+        System.out.println("Processing generic payment");
+    }
+}
+
+class UpiPayment extends Payment {
+
+    @Override
+    void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using UPI");
+    }
+}
+
+class CardPayment extends Payment {
+
+    @Override
+    void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using Card");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Payment p;
+
+        p = new UpiPayment();
+        p.pay(500);
+
+        p = new CardPayment();
+        p.pay(1000);
+    }
+}
+
+
+Output
+Paid ₹500.0 using UPI
+Paid ₹1000.0 using Card
+
+
+The calling code uses the same pay() method, but the actual payment object
+determines the behavior. This makes it easier to add new payment methods
+without rewriting the calling logic.
+
+
+

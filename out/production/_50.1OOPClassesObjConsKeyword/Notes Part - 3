@@ -1,0 +1,391 @@
+2.1 What is Inheritance?
+`Definition`
+
+Inheritance is a mechanism in Java through which one class acquires
+properties and behaviors of another class.
+
+The existing class is called the parent/superclass, and the new class
+is called the child/subclass.
+
+
+Example:
+
+class Animal {
+    void eat() {
+        System.out.println("Animal eats");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+Animal is the parent class and Dog is the child class.
+
+Relationship:
+Animal
+   ↑
+   |
+  Dog
+
+The child gets accessible members from the parent according to Java's
+inheritance and access-control rules.
+
+Here:
+class Dog extends Animal
+
+means:
+Dog inherits from Animal.
+
+Using it:
+class Main {
+
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();
+        d.bark();
+    }
+}
+
+Output:
+Animal eats
+Dog barks
+
+Dog can use:
+bark()
+
+because it declares it itself.
+
+It can also use:
+eat()
+because it inherits that method from Animal.
+
+
+
+2.3 extends Keyword
+
+The extends keyword is used to create class inheritance.
+
+class Parent {
+    void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        System.out.println("Child");
+    }
+}
+
+
+
+Now Child inherits from Parent.
+Child c = new Child();
+
+c.show();
+c.display();
+
+Output:
+Parent
+Child
+
+
+
+
+
+2.4 Why Do We Need Inheritance?
+
+One major reason is code reuse.
+
+Suppose:
+class Dog {
+
+    void eat() {
+        System.out.println("Eating");
+    }
+
+    void bark() {
+        System.out.println("Barking");
+    }
+}
+
+and:
+class Cat {
+
+    void eat() {
+        System.out.println("Eating");
+    }
+
+    void meow() {
+        System.out.println("Meowing");
+    }
+}
+
+The eat() method is duplicated.
+
+With inheritance:
+
+class Animal {
+
+    void eat() {
+        System.out.println("Eating");
+    }
+}
+
+class Dog extends Animal {
+
+    void bark() {
+        System.out.println("Barking");
+    }
+}
+
+class Cat extends Animal {
+
+    void meow() {
+        System.out.println("Meowing");
+    }
+}
+
+Now eat() is defined once in Animal and inherited by both Dog and Cat.
+
+
+
+
+2.4 Types of Inheritance in Java
+
+For classes, the important forms are:
+
+1. Single inheritance
+One parent → one child.
+
+Animal
+   |
+  Dog
+
+class Animal {
+}
+
+class Dog extends Animal {
+}
+
+
+
+2. Multilevel inheritance
+
+Parent → child → grandchild.
+
+Animal
+   |
+  Dog
+   |
+ Puppy
+
+class Animal {
+}
+
+class Dog extends Animal {
+}
+
+class Puppy extends Dog {
+}
+
+Puppy inherits through the chain.
+
+
+3. Hierarchical inheritance
+
+One parent → multiple children.
+       Animal
+       /    \
+     Dog    Cat
+
+
+class Animal {
+}
+
+class Dog extends Animal {
+}
+
+class Cat extends Animal {
+}
+
+
+Both Dog and Cat inherit from Animal.
+
+
+
+
+2.6 Multiple Inheritance Through Classes
+
+Java "does not support multiple" inheritance of classes.
+
+This is not allowed:
+class A {
+}
+
+class B {
+}
+
+// Not allowed
+class C extends A, B {
+}
+
+
+The problem is ambiguity.
+
+Suppose:
+class A {
+    void show() {
+        System.out.println("A");
+    }
+}
+
+class B {
+    void show() {
+        System.out.println("B");
+    }
+}
+
+If Java allowed:
+class C extends A, B {
+}
+
+then:
+C c = new C();
+
+c.show();
+
+Which show() should execute?
+A? or B?
+
+
+This kind of ambiguity is one reason Java does not allow multiple inheritance
+through classes.
+
+Java can achieve multiple inheritance of type/contract through interfaces,
+which we will cover later under Abstraction.
+
+
+
+2.7 super Keyword
+
+super is used in a child class to refer to the immediate parent class.
+It can be used to:
+
+1. Access parent class variables.
+2. Call parent class methods.
+3. Call parent class constructors.
+A. super for Parent Variable
+
+
+class Parent {
+    String name = "Parent";
+}
+class Child extends Parent {
+    String name = "Child";
+    void display() {
+        System.out.println(name);
+        System.out.println(super.name);
+    }
+}
+
+
+Using:
+Child c = new Child();
+c.display();
+
+Output:
+Child
+Parent
+
+Here:
+name
+
+refers to the child variable.
+super.name
+refers to the parent variable.
+
+
+2.8 super for Parent Method
+class Parent {
+    void display() {
+        System.out.println("Parent method");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        System.out.println("Child method");
+    }
+
+    void show() {
+        display();
+        super.display();
+    }
+}
+
+Using:
+Child c = new Child();
+
+c.show();
+
+Output:
+Child method
+Parent method
+
+
+Here:
+display();
+
+calls the child version.
+super.display();
+explicitly calls the parent version.
+
+
+
+2.9 Constructor Execution in Inheritance
+
+This is very important.
+
+When a child object is created, the parent constructor executes before the
+child constructor.
+
+Example:
+class Parent {
+    Parent() {
+        System.out.println("Parent Constructor");
+    }
+}
+
+class Child extends Parent {
+
+    Child() {
+        System.out.println("Child Constructor");
+    }
+
+    public static void main(String[] args) {
+        Child c = new Child();
+    }
+}
+
+Output:
+Parent Constructor
+Child Constructor
+
+Why?
+When:
+new Child();
+is executed, Java must initialize the inherited parent portion before
+completing child initialization.
+
+Conceptually:
+new Child()
+    ↓
+Parent constructor
+    ↓
+Child constructor
+    ↓
+Child object ready

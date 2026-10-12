@@ -1,0 +1,923 @@
+4.1 What is Abstraction?
+Definition: Abstraction is the process of hiding implementation details
+and showing only the essential functionality to the user.
+
+
+Real-life example
+Think about driving a car.
+
+When you drive a car, you use:
+- The steering wheel to control direction.
+- The accelerator to increase speed.
+- The brake to slow down or stop.
+You do not need to understand every internal detail of the engine to drive
+the car. The car provides simple controls while hiding much of its internal
+implementation. This illustrates abstraction.
+
+
+class Car {
+
+    void start() {
+        System.out.println("Car started");
+    }
+
+    void drive() {
+        System.out.println("Car is moving");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Car c = new Car();
+
+        c.start();
+        c.drive();
+    }
+}
+
+
+Output
+Car started
+Car is moving
+
+
+The user calls start() and drive() without needing to know how those
+operations are implemented internally.
+
+This example illustrates the basic idea of abstraction, although Java's
+formal abstraction mechanisms are primarily abstract classes and interfaces.
+
+
+Java's formal abstraction mechanisms are primarily abstract classes and
+interfaces.
+
+
+
+4.2 The abstract Keyword
+The abstract keyword is used to declare an abstract class or an abstract method.
+- An abstract class cannot be instantiated directly.
+- An abstract method has a declaration but no method body in the class
+  where it is declared.
+
+Example:
+abstract class Animal {
+
+    abstract void sound();
+
+    void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+}
+
+
+Here:
+- abstract class Animal declares an abstract class.
+- abstract void sound(); declares an abstract method.
+- sleep() is a concrete method because it has a body.
+
+You cannot create an object directly like this:
+
+// Animal a = new Animal(); // Compilation error
+
+But you can create a concrete subclass that implements the abstract method.
+
+
+
+
+
+
+
+4.3 Abstract Classes
+`Definition`
+An abstract class is a class declared with the abstract keyword. It can
+contain abstract methods, concrete methods, instance variables,
+constructors, and static methods.
+
+It is useful when related classes share common data or behavior but some
+operations must be implemented differently by each subclass.
+
+
+abstract class Animal {
+    String name;
+
+    Animal(String name) {
+        this.name = name;
+    }
+
+    abstract void sound();
+
+    void displayName() {
+        System.out.println("Name: " + name);
+    }
+
+}
+
+class Dog extends Animal {
+
+    Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog("Tommy");
+        d.displayName();
+        d.sound();
+    }
+}
+
+
+
+Explanation
+- Animal is an abstract class.
+- Animal(String name) is its constructor.
+- displayName() is a concrete method inherited by Dog.
+- sound() is an abstract method.
+- Dog provides the implementation of sound().
+- super(name) calls the parent constructor.
+
+Important: An abstract class can have a constructor.
+That constructor runs when a concrete subclass object is created,
+even though you cannot instantiate the abstract class directly.
+
+Rules of abstract classes
+1. An abstract class cannot be instantiated directly.
+2. It can contain both abstract and concrete methods.
+3. It can contain instance variables and constructors.
+4. A concrete subclass must implement all inherited abstract methods unless
+   it is also abstract.
+5. An abstract class can extend another class and implement interfaces.
+6. An abstract class can exist without any abstract methods, if declared
+   abstract.
+
+
+
+4.4 Abstract Methods
+
+`Definition`
+An abstract method is a method declared without an implementation body.
+Its declaration ends with a semicolon.
+
+Syntax:
+abstract returnType methodName(parameters);
+
+
+Example:
+abstract class Shape {
+    abstract double calculateArea();
+}
+
+
+The class says that every concrete shape must provide a way to calculate
+its area, but it does not define the formula.
+
+Implementing an abstract method
+
+abstract class Shape {
+    abstract double calculateArea();
+}
+
+class Circle extends Shape {
+
+    double radius;
+    Circle(double radius) {
+        this.radius = radius;
+    }
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends Shape {
+
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Shape s1 = new Circle(5);
+        Shape s2 = new Rectangle(4, 6);
+
+        System.out.println(s1.calculateArea());
+        System.out.println(s2.calculateArea());
+    }
+}
+
+
+Output
+78.53981633974483
+24.0
+
+
+Why is this abstraction?
+The Shape class defines what every shape should do: calculate its area.
+Each subclass defines how to calculate it.
+The same method call, calculateArea(), works for different shapes. This example also demonstrates runtime polymorphism.
+
+Important rules
+- An abstract method cannot have a method body in its declaration.
+- A normal, concrete class cannot declare an abstract method.
+- An abstract method cannot be private, static, or final, because it must be implementable by a subclass.
+- A concrete subclass must implement inherited abstract methods.
+- Abstract methods are implicitly overridable instance methods.
+
+
+
+ you can write calculateArea() without the abstract keyword.
+
+You use abstract not because Java cannot implement the methods without it,
+but because you want Java to enforce a common rule and provide a shared
+parent type.
+
+If you have only one or two independent classes and no such requirement,
+you may not need an abstract class at all.
+
+Remember: abstract is useful when you want to say, "Every concrete child
+class must provide this behavior, but the parent class cannot define one
+suitable implementation for all children."
+
+
+
+
+
+
+4.5 Interfaces
+`Definition`
+
+An interface in Java defines a contract that implementing classes agree to
+follow.
+
+An interface can declare abstract methods, constants, default methods,
+static methods, and—since Java 9—private helper methods.
+
+Interfaces are especially useful when classes may be unrelated by
+inheritance but should support the same operation.
+
+Example
+interface Payment {
+    void pay(double amount);
+}
+
+class UpiPayment implements Payment {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using UPI");
+    }
+}
+
+class CardPayment implements Payment {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using Card");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Payment p1 = new UpiPayment();
+        Payment p2 = new CardPayment();
+
+        p1.pay(500);
+        p2.pay(1000);
+    }
+}
+
+
+Output
+Paid ₹500.0 using UPI
+Paid ₹1000.0 using Card
+
+
+Explanation
+- Payment defines the contract: It says that every payment class must have
+  a pay() method.
+- pay() is implicitly public abstract: We don't need to write public
+  abstract because Java adds them automatically.
+- UpiPayment and CardPayment implement the interface: Both classes agree to
+  provide their own pay() method.
+- Each class provides its own implementation: UPI prints a UPI payment
+  message, while Card prints a card payment message.
+- The Payment reference can refer to either implementation: We can use the
+  same reference type, Payment, to work with both UPI and Card payment objects.
+- Why is public required? Interface methods are public, so the implementing
+  method must also be public. We cannot reduce its visibility.
+
+Easy way to remember
+Interface = Rules to follow.
+Payment says what a payment class must do. UpiPayment and CardPayment decide how to do it.
+
+
+4.6 The implements Keyword
+Definition
+The implements keyword is used by a class to declare that it implements an
+interface.
+
+Syntax:
+class ClassName implements InterfaceName {
+    // Implement interface methods
+}
+
+
+
+extends vs implements
+
+extends	                             implements
+A class extends another class.	A class implements an interface.
+A class can extend only 	    A class can implement multiple interfaces.
+one direct superclass.
+Used for class inheritance.  	Used to fulfill interface contracts.
+Example: class Dog extends Animal	Example: class Dog implements Runnable
+
+A class can also extend one class and implement multiple interfaces:
+class SmartPhone extends Phone
+        implements Camera, MusicPlayer {
+}
+
+
+This is valid if Phone is a class and Camera and MusicPlayer are interfaces. A concrete SmartPhone class must implement their required abstract methods.
+
+
+
+
+
+# Multiple Inheritance Through Interfaces in Java
+
+## 1. What Is Multiple Inheritance?
+
+**Multiple inheritance means a class inherits from more than one parent class.**
+
+For example, conceptually:
+
+
+class C extends A, B {
+}
+
+
+Java does not allow a class to extend multiple classes.
+However, Java allows a class to implement multiple interfaces.
+
+
+class C implements A, B {
+}
+
+
+## 2. Why Does Java Not Support Multiple Class Inheritance?
+
+Suppose two parent classes have a method with the same name.
+
+
+class A {
+
+    void sound() {
+        System.out.println("Sound from A");
+    }
+}
+
+class B {
+
+    void sound() {
+        System.out.println("Sound from B");
+    }
+}
+
+
+Now imagine Java allowed:
+
+```java
+class C extends A, B {
+}
+```
+
+If we create an object and call:
+
+```java
+C obj = new C();
+obj.sound();
+```
+
+Which method should execute?
+
+- `A.sound()` → prints `Sound from A`
+- `B.sound()` → prints `Sound from B`
+
+This creates ambiguity because both parent classes provide their own
+implementation of `sound()`.
+
+**Therefore, Java does not allow a class to extend multiple classes.**
+
+
+
+## 3. How Do Interfaces Help?
+
+An interface can declare a method without providing its implementation.
+
+```java
+interface A {
+
+    void sound();
+}
+
+interface B {
+
+    void sound();
+}
+```
+
+Both interfaces declare `sound()`, but neither provides a method body.
+
+Now a class can implement both interfaces:
+
+```java
+class C implements A, B {
+
+    @Override
+    public void sound() {
+        System.out.println("Sound from C");
+    }
+}
+```
+
+Using the class:
+
+```java
+class Main {
+
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.sound();
+    }
+}
+```
+
+Output:
+
+```text
+Sound from C
+```
+
+
+### Why Is There No Confusion?
+
+Both interfaces require the `sound()` method, but neither supplies a
+competing implementation.
+
+Class `C` provides one implementation that satisfies both interfaces.
+
+```text
+Interface A → requires sound()
+                     \
+                      → Class C implements sound()
+                     /
+Interface B → requires sound()
+```
+
+
+## 4. What If Both Interfaces Have Default Methods?
+
+Interfaces can also provide method implementations using `default` methods.
+
+```java
+interface A {
+
+    default void sound() {
+        System.out.println("Sound from A");
+    }
+}
+
+interface B {
+
+    default void sound() {
+        System.out.println("Sound from B");
+    }
+}
+```
+
+If a class implements both interfaces, Java cannot choose between these
+conflicting default implementations automatically.
+
+The class must override the method to resolve the conflict.
+
+```java
+class C implements A, B {
+
+    @Override
+    public void sound() {
+        System.out.println("Sound from C");
+    }
+}
+```
+
+Output:
+
+```text
+Sound from C
+```
+
+## 5. Important Interview Points
+
+1. Java does not support extending multiple classes.
+2. Java allows a class to implement multiple interfaces.
+3. Interfaces can declare methods that implementing classes must implement.
+4. One implementation can satisfy the same abstract method declared by multiple interfaces.
+5. If two interfaces provide conflicting default methods, the implementing class must resolve the conflict.
+6. This feature is commonly called **multiple inheritance through interfaces**.
+
+## 6. One-Line Revision
+
+**Java avoids ambiguity from multiple class inheritance by allowing a class
+ to implement multiple interfaces. When conflicting default implementations
+ exist, the class must resolve the conflict.**
+
+
+
+
+
+
+4.8 Default and Static Methods in Interfaces
+
+An interface can contain methods with implementations. Two important types
+are default methods and static methods.
+
+A. Default Methods
+Definition: A default method is a method inside an interface that already
+has a method body.
+
+We use the default keyword to declare it.
+Example
+interface Vehicle {
+
+    default void start() {
+        System.out.println("Vehicle is starting");
+    }
+}
+
+class Car implements Vehicle {
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        Car c = new Car();
+        c.start();
+    }
+}
+
+
+Output:
+Vehicle is starting
+
+
+
+- Vehicle is an interface.
+- start() is a default method with an implementation.
+- Car implements Vehicle.
+- Car does not need to write its own start() method because the interface
+  already provides one.
+- When we call c.start(), the default implementation executes.
+
+Can a class change the default method?
+Yes. A class can override the default method to provide its own implementation.
+class Car implements Vehicle {
+
+    @Override
+    public void start() {
+        System.out.println("Car engine started");
+    }
+}
+
+
+Now c.start() prints:
+Car engine started
+
+
+Remember: A default method provides a ready-made implementation that an
+          implementing class can use or override.
+
+
+
+B. Static Methods in Interfaces
+
+Definition: A static method belongs to the interface itself, not to an
+implementing object's instance.
+
+We declare it using the static keyword and call it using the interface name.
+
+Example
+interface Calculator {
+
+    static int add(int a, int b) {
+        return a + b;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        System.out.println(Calculator.add(10, 20));
+    }
+}
+
+
+Output:
+30
+
+Explanation
+- Calculator is an interface.
+- add() is a static method with an implementation.
+- It adds two numbers and returns the result.
+- We call it using Calculator.add(10, 20).
+- We don't need to create a Calculator object.
+
+Remember: A static method belongs to the interface, so call it using the interface name.
+
+
+
+C. Default Method vs Static Method
+Default method	          Static method
+Declared using default	   Declared using static
+Has a method body	        Has a method body
+Called using an implementing object 	Called using the interface name
+Can be overridden by an implementing class	Cannot be overridden as an instance method
+Example: c.start()	Example: Calculator.add(10, 20)
+
+
+Default method
+      ↓
+Provides a ready-made implementation
+      ↓
+Called using an object
+      ↓
+Can be overridden
+
+
+Static method
+      ↓
+Belongs to the interface
+      ↓
+Called using the interface name
+      ↓
+Not overridden as an instance method
+
+
+
+
+4.9 Abstract Class vs Interface
+
+This is one of the most important Java interview questions.
+Both abstract classes and interfaces support abstraction, but they serve
+different purposes.
+
+Example: Abstract class
+Use an abstract class when related classes share common state and
+implementation.
+
+abstract class Employee {
+
+    String name;
+
+    Employee(String name) {
+        this.name = name;
+    }
+
+    void displayName() {
+        System.out.println(name);
+    }
+
+    abstract double calculateSalary();
+}
+
+class FullTimeEmployee extends Employee {
+
+    FullTimeEmployee(String name) {
+        super(name);
+    }
+
+    @Override
+    double calculateSalary() {
+        return 50000;
+    }
+}
+
+
+The abstract class stores shared employee data and provides common behavior.
+
+Example: Interface
+Use an interface when you want to define a capability that different
+classes can implement.
+
+interface Payable {
+    void makePayment();
+}
+
+class EmployeePayment implements Payable {
+    @Override
+    public void makePayment() {
+        System.out.println("Employee payment processed");
+    }
+}
+
+class CustomerPayment implements Payable {
+    @Override
+    public void makePayment() {
+        System.out.println("Customer payment processed");
+    }
+}
+
+
+Both classes can perform a payment, even though they represent different
+kinds of entities.
+
+
+Complete comparison table
+
+Feature	            Abstract class	               Interface
+Declaration	          abstract class	           interface
+
+Object creation	 Cannot instantiate directly	Cannot instantiate directly
+
+Methods	         Abstract and concrete methods	Abstract, default, static,
+                                                and private methods
+
+Instance variables	Allowed	Not allowed;        fields are constants
+
+Constructors	      Allowed	                  Not allowed
+
+State	Can maintain instance state	         Cannot maintain per-object
+                                              instance fields
+
+Inheritance	A class can extend one class	A class can implement multiple interfaces
+
+Keywords	    extends                     	implements
+
+Main purpose	Shared state and implementation	Contract or capability
+
+Example	           Employee	                    Payable
+
+
+When should you use each?
+Use an abstract class when:
+- Several related classes share common fields.
+- They need a common constructor.
+- You want to provide shared implementation.
+- You want subclasses to implement some specific methods.
+
+Use an interface when:
+- Different classes should follow the same contract.
+- You want a class to support multiple capabilities.
+- You want to separate the required behavior from a particular class hierarchy.
+
+Interview answer: An abstract class is useful for sharing state and
+implementation among related classes, whereas an interface defines a
+contract that classes can implement, including classes from different
+inheritance hierarchies.
+
+
+One example that makes the difference clearer
+Imagine you have:
+- Circle
+- Rectangle
+- Triangle
+
+All three are shapes. They share common state, such as color, and common
+behavior, such as showColor(). An abstract class is a natural place to put
+that shared implementation.
+
+Now imagine Circle, Printer, and PaymentService all need a start() operation.
+They aren't all the same kind of object, but they can all support that capability.
+An interface is useful for defining that shared contract.
+
+Remember this
+You're correct that both can require subclasses to implement methods.
+That is not the main difference.
+- Use an abstract class when you want a shared base with common state,
+  constructors, or implementation.
+- Use an interface when you want to define a capability or contract that
+  potentially unrelated classes can implement.
+
+
+
+4.10 Real-World Abstraction Examples
+Here are three examples that connect abstraction to practical software development.
+
+
+
+
+Example 1: ATM system
+
+
+What the user sees
+- Withdraw money
+- Check balance
+- Deposit money
+
+What is hidden
+- Transaction validation
+- Communication with banking systems
+- Account verification
+- Transaction processing
+
+A user interacts with simple operations without needing to know every
+internal implementation detail.
+
+Java illustration:
+abstract class ATM {
+    abstract void withdraw(double amount);
+    abstract void checkBalance();
+}
+
+
+Different ATM implementations can provide the actual transaction logic.
+
+
+Example 3: Notification system
+An application may send notifications through email or SMS.
+interface Notification {
+
+    void send(String message);
+}
+
+class EmailNotification implements Notification {
+
+    @Override
+    public void send(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+
+class SMSNotification implements Notification {
+
+    @Override
+    public void send(String message) {
+        System.out.println("Sending SMS: " + message);
+    }
+}
+
+
+Usage:
+public class Main {
+
+    public static void main(String[] args) {
+
+        Notification n = new EmailNotification();
+        n.send("Welcome!");
+
+        n = new SMSNotification();
+        n.send("Your OTP is 1234");
+    }
+}
+
+
+Output:
+Sending email: Welcome!
+Sending SMS: Your OTP is 1234
+
+
+This example demonstrates both abstraction and runtime polymorphism: the Notification interface defines the contract, and the actual implementation determines how the message is sent.
+
+
+
+
+
+
+
+Final revision notes
+
+The Four Pillars of OOP
+
+Pillar	            Main purpose	               Common Java mechanism
+Encapsulation	 Bundle data and methods;            control access private,
+                                                     getters, setters
+
+Inheritance  	Reuse and extend  class behavior	 extends
+
+Polymorphism	Support different behaviors through Overloading and overriding
+                a common method or type
+
+Abstraction 	Expose essential behavior while 	Abstract classes and interfaces
+                hiding implementation details
+
